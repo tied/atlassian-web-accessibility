@@ -60,7 +60,7 @@
                             $dateFormatter.format( $permission.creationDate )
                         </td>
                         <td>
-                            <center><a href="$req.contextPath/pages/removepagepermission.action?pageId=$page.id&permissionId=$permission.id&#url_xsrfToken()"><img src="$staticResourceUrlPrefix/images/icons/ulock_16.gif" height="16" width="16" border="0" align="absmiddle" title="$i18n.getText("removerestrictions.name")"></a><center>
+                            <center><a href="$req.contextPath/pages/removepagepermission.action?pageId=$page.id&permissionId=$permission.id&#url_xsrfToken()" aria-label="$i18n.getText("removerestrictions.name")"><img src="$staticResourceUrlPrefix/images/icons/ulock_16.gif" height="16" width="16" border="0" align="absmiddle" alt="$i18n.getText("removerestrictions.name")"></a><center>
                         </td>
                     </tr>
                     #end
@@ -71,3 +71,4 @@
     </td>
 </tr>
 </table>
+

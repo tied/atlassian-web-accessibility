@@ -27,27 +27,19 @@
 {template .logo}
     // if the user profile still has the default picture, AND the usericon getting displayed is the current user, THEN generate a link to set the profile picture
     {if $profilePictureInfo.default and $username == $currentUsername}
-        <a {if $canView} {if not($disableUserHover)}class="userLogoLink"{/if} data-username="{$username}"{/if} href="{contextPath()}/users/profile/editmyprofilepicture.action" title="{getText('add.a.profile.picture')}">
-            <img class="userLogo logo defaultLogo" src="{staticResourceUrlPrefix()}/images/icons/profilepics/add_profile_pic.png" alt="{getText('accessibility.user.icon')}: {getText('add.a.profile.picture')}">
-        </a>
+        <img class="userLogo logo defaultLogo{if not($disableUserHover)} userLogoLink{/if}" src="{staticResourceUrlPrefix()}/images/icons/profilepics/add_profile_pic.png" alt="">
     {else}
         // otherwise, the default case is to display the logo, depending on permissions
         {if $profilePictureInfo.anonymous}
-            <img class="userLogo logo anonymous" src="{staticResourceUrlPrefix()}/images/icons/profilepics/anonymous.png"
-            alt="{getText('accessibility.user.icon')}: {getText('user.icon.anonymous.title')}" title="{getText('user.icon.anonymous.title')}">
+            <img class="userLogo logo anonymous{if not($disableUserHover)} userLogoLink{/if}" src="{staticResourceUrlPrefix()}/images/icons/profilepics/anonymous.png"
+            alt="" title="{getText('user.icon.anonymous.title')}">
         {elseif $canView}
-        <a {if not($disableUserHover)}class="userLogoLink"{/if} data-username="{$username}" href="
-            {call Confluence.Templates.User.userLinkUrl}
-                {param username: $username /}
-            {/call}
-        ">
             <img class="userLogo logo" src="{$profilePictureInfo.uriReference}"
-            alt="{getText('accessibility.user.icon')}: {$username}" title="{$username}">
-        </a>
+            alt="" title="{$username}">
         {else}
             // anonymous users with user permission but without view profile permission should not see user logos or be linked to profiles
             <img class="userLogo logo anonymous" src="{staticResourceUrlPrefix()}/images/icons/profilepics/anonymous.png"
-            alt="{getText('accessibility.user.icon')}: {$username}" title="{$username}">
+            alt="" title="{$username}">
         {/if}
     {/if}
 {/template}

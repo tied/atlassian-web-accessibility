@@ -26,10 +26,10 @@
                         <span>$i18n.getText('activity.description.my')</span>
                         <div class="activity-toolbar">
                             #if($viewingMyProfile)
-                                <a class="icon email-notification-icon" title="$i18n.getText('activity.description.my.email')" href="$req.contextPath/users/viewmyemailsettings.action">&nbsp;</a>
-                                <a class="icon rss-icon" title="$i18n.getText('activity.description.my.feed')" href="$req.contextPath$rssDescriptor.atomHref">&nbsp;</a>
+                                <a class="icon email-notification-icon" aria-label="$i18n.getText('activity.description.my.email')" title="$i18n.getText('activity.description.my.email')" href="$req.contextPath/users/viewmyemailsettings.action">&nbsp;</a>
+                                <a class="icon rss-icon" aria-label="$i18n.getText('activity.description.my.feed')" title="$i18n.getText('activity.description.my.feed')" href="$req.contextPath$rssDescriptor.atomHref">&nbsp;</a>
                             #else
-                                <a class="icon rss-icon" title="$i18n.getText('activity.description.feed')" href="$req.contextPath$rssDescriptor.atomHref">&nbsp;</a>
+                                <a class="icon rss-icon" aria-label="$i18n.getText('activity.description.feed')" title="$i18n.getText('activity.description.feed')" href="$req.contextPath$rssDescriptor.atomHref">&nbsp;</a>
                             #end
                         </div>
                     </h2>

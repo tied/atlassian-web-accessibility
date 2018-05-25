@@ -769,7 +769,7 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 
 #macro (showPermissionsHeader)
         <tr>
-            <th width="25%">&nbsp;</th>
+            <th width="25%"><span class="assistive">Entity</span></th>
             <th colspan="2">$action.getText('all')</th>
             <th colspan="2">$action.getText('perms.pages')</th>
             <th colspan="2">$action.getText('perms.news')</th>
@@ -780,7 +780,7 @@ Prints the search result pagination info. for a pager object (i.e. with total si
             <th colspan="2">$action.getText('perms.space')</th>
         </tr>
         <tr>
-            <th>&nbsp;</th>
+            <th><span class="assistive">Entity Name</span></th>
             <th width="40">$action.getText('perms.view')</th>
             <th width="40">$action.getText('perms.removeown')</th>
             <th class="permissions-group-start" width="40">$action.getText('perms.add')</th>
@@ -1022,9 +1022,9 @@ Prints the search result pagination info. for a pager object (i.e. with total si
         #end
     #else
         #if ($row.isTypeAllowed($permission))
-            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" width=16 height=16 align=absmiddle border=0>
+            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" width=16 height=16 align=absmiddle border=0 alt="$action.getText('perms.can.use')">
         #else
-            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png" width=16 height=16 align=absmiddle border=0>
+            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png" width=16 height=16 align=absmiddle border=0 alt="$action.getText('perms.cant.use')">
         #end
     #end
 </td>
@@ -1076,7 +1076,7 @@ Prints the search result pagination info. for a pager object (i.e. with total si
     <form id="${prefix}quick-search" class="quick-search" method="get" action="$req.contextPath/dosearchsite.action">
         <fieldset>
             <label class="assistive" for="${prefix}quick-search-query">$action.getText("quick.search.${prefix}legend")</label>
-            <input id="${prefix}quick-search-query" class="quick-search-query" type="search"#if($accessKey) accessKey="$accessKey"#end autocomplete="off" name="queryString" size="25" title="$action.getText("quick.search.${prefix}legend")" />
+            <input id="${prefix}quick-search-query" class="quick-search-query" role="search" type="search"#if($accessKey) accessKey="$accessKey"#end autocomplete="off" name="queryString" size="25" title="$action.getText("quick.search.${prefix}legend")" />
             <input id="${prefix}quick-search-submit" class="quick-search-submit" type="submit" value="$action.getText("quick.search.${prefix}submit")" />
             <div class="aui-dd-parent quick-nav-drop-down"></div>
         </fieldset>
@@ -1582,8 +1582,8 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 
 		#if ($labels.size() > 0)
 			<br />
-        	<span class="smalltext">
-        	$action.getText('labels.name'):
+		<span class="smalltext">
+		$action.getText('labels.name'):
 			#set($remaining = $labels.size() - $max)
 			#foreach($label in $labels)#if($velocityCount <= $max)#if($velocityCount > 1), #end <a href="$req.contextPath/label/$generalUtil.urlEncode($label)" rel="nofollow">$label</a>#end#end
 			#if($remaining > 0)
@@ -1894,3 +1894,4 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 #macro (httpStatsElapse $tag)
     $generalUtil.elapse($tag)
 #end
+

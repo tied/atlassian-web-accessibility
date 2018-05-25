@@ -10,7 +10,7 @@
 <table class="aui tableview attachments">
     <tr>
         #if ($old == "true")
-            <th class="expand-column attachment-history">&nbsp;</th>
+            <th class="expand-column attachment-history"><span class="assistive">Expand History</span></th>
         #end
         <th class="filename-column">#sortLink("name", "${sortPathPrefixHtml}name" $action.getText('name.word'))</th>
         <th class="filesize-column">#sortLink("size", "${sortPathPrefixHtml}size" $action.getText('file.size'))</th>
@@ -19,7 +19,7 @@
         <th class="labels">$action.getText('labels.name')</th>
         <th class="comment">$action.getText('comment.name')</th>
         #if ($showActions == "true")
-            <th class="actions-column">&nbsp;</th>
+            <th class="actions-column"><span class="assistive">Actions</span></th>
         #end
     </tr>
 
@@ -42,7 +42,7 @@
             #if ($old == "true")
                 <td class="attachment-history">
                     #if ($allVersions.size() > 0)
-                        <a href="#" class="icon icon-section-closed" title="$action.getText('show.attachment.history')"></a>
+                        <a href="#" role="button" aria-expanded="false" class="icon icon-section-closed" title="$action.getText('show.attachment.history')" aria-label="$action.getText('show.attachment.history')"></a>
                     #end
                 </td>
             #end
@@ -127,3 +127,4 @@
         #end
     #end
 </table>
+

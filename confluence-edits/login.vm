@@ -5,7 +5,7 @@
 
 #set($showSignup = $action.isShowSignUp())
 
-<html>
+<html lang="en">
 	<head>
         #requireResource("confluence.web.resources:master-styles")
         #requireResource("confluence.web.resources:login")
@@ -153,7 +153,7 @@
                 <ul id="login-language">
                     #foreach ($lang in $action.getInstalledLanguages())
                         <li>
-                            <a href="$req.contextPath/login.action?language=$lang.name">$action.getLanguageManager().getDisplayName($lang)</a>
+                            <a href="$req.contextPath/login.action?language=$lang.name" lang="$lang.name">$action.getLanguageManager().getDisplayName($lang)</a>
                         </li>
                     #end
                 </ul>

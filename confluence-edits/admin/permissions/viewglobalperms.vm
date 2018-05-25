@@ -53,10 +53,10 @@
                                     data-permission-group="$generalUtil.htmlEncode($groupRow.groupName)"
                                     data-permission-set="$groupRow.isTypeAllowed($permission)">
                                     #if ($groupRow.isTypeAllowed($permission))
-                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png">
+                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" alt="$action.getText('perms.can.use')">
                                         #if ($permission == 'useconfluence') $action.getText('perms.can.use') #end
                                     #else
-                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png">
+                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png" alt="$action.getText('perms.cant.use')">
                                         #if ($permission == 'useconfluence') $action.getText('perms.cant.use') #end
                                     #end
                                 </td>
@@ -98,10 +98,10 @@
                                     data-permission-user="$generalUtil.htmlEncode($userRow.username)"
                                     data-permission-set="$userRow.isTypeAllowed($permission)">
                                     #if ($userRow.isTypeAllowed($permission))
-                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png">
+                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" alt="$action.getText('perms.can.use')">
                                         #if ($permission == 'useconfluence') $action.getText('perms.can.use') #end
                                     #else
-                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png">
+                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png" alt="$action.getText('perms.cant.use')">
                                         #if ($permission == 'useconfluence') $action.getText('perms.cant.use') #end
                                     #end
                                 </td>
@@ -143,16 +143,16 @@
                             #set ($authenticatedRow = $action.unlicensedAuthenticatedPermissionRow)
                             <td id="unlicensed-limiteduseconfluence" class="permissionCell">
                                 #if ($authenticatedRow.isTypeAllowed('LIMITEDUSECONFLUENCE'))
-                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" data-enabled> $i18n.getText('perms.can.use')
+                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" data-enabled alt="$action.getText('perms.can.use')"> $i18n.getText('perms.can.use')
                                 #else
-                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png"> $i18n.getText('perms.cant.use')
+                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png" alt="$action.getText('perms.cant.use')"> $i18n.getText('perms.cant.use')
                                 #end
                             </td>
                             <td id="unlicensed-viewuserprofiles" class="permissionCell">
                                 #if ($authenticatedRow.isTypeAllowed('VIEWUSERPROFILES'))
-                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" data-enabled>
+                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" data-enabled alt="$action.getText('perms.can.use')">
                                 #else
-                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png">
+                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png" alt="$action.getText('perms.cant.use')">
                                 #end
                             </td>
                         </tr>
@@ -192,9 +192,9 @@
                     </td>
                     <td id="anonymous-viewuserprofiles" class="permissionCell">
                         #if ($anonymousRow.isTypeAllowed('VIEWUSERPROFILES'))
-                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" data-enabled>
+                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" data-enabled alt="$action.getText('perms.can.use')">
                         #else
-                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png">
+                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png" alt="$action.getText('perms.cant.use')">
                         #end
                     </td>
                 </tr>
@@ -203,3 +203,4 @@
         #parse ( "/breadcrumbs.vm" )
     </body>
 </html>
+
