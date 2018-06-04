@@ -1,0 +1,168 @@
+.aui-header .aui-header-logo-answers .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-answers.png);
+    width: 103px;
+}
+.aui-header .aui-header-logo-atlassian .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-atlassian.png);
+    width: 87px;
+}
+.aui-header .aui-header-logo-aui .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-aui.png);
+    width: 36px;
+}
+.aui-header .aui-header-logo-bamboo .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-bamboo.png);
+    width: 95px;
+}
+.aui-header .aui-header-logo-bitbucket .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-bitbucket.png);
+    width: 100px;
+}
+.aui-header .aui-header-logo-clover .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-clover.png);
+    width: 72px;
+}
+.aui-header .aui-header-logo-confluence .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-confluence.png);
+    width: 118px;
+}
+.aui-header .aui-header-logo-crowd .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-crowd.png);
+    width: 71px;
+}
+.aui-header .aui-header-logo-crucible .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-crucible.png);
+    width: 89px;
+}
+.aui-header .aui-header-logo-developers .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-developers.png);
+    width: 111px;
+}
+.aui-header .aui-header-logo-experts .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-experts.png);
+    width: 64px;
+}
+.aui-header .aui-header-logo-fecru .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-fecru.png);
+    width: 51px;
+}
+.aui-header .aui-header-logo-fisheye .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-fisheye.png);
+    width: 87px;
+}
+.aui-header .aui-header-logo-hipchat .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-hipchat.png);
+    width: 97px;
+}
+.aui-header .aui-header-logo-jira .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-jira.png);
+    width: 57px;
+}
+.aui-header .aui-header-logo-marketplace .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-marketplace.png);
+    width: 116px;
+}
+.aui-header .aui-header-logo-stash .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-stash.png);
+    width: 70px;
+}
+.aui-header .aui-header-logo-support .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-support.png);
+    width: 90px;
+}
+.aui-header .aui-header-logo-university .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-university.png);
+    width: 113px;
+}
+.aui-header .aui-header-logo-cloud .aui-header-logo-device {
+    background-image: url(images/logos/aui-header-logo-cloud.png);
+    width: 126px;
+}
+
+.aui-header .aui-quicksearch {
+
+    @unfocused-background-color: rgba(0, 0, 0, 0.2);
+    @focused-background-color: rgba(0, 0, 0, 0.25);
+    @unfocused-font-color: rgba(255, 255, 255, 0.6);
+    @focused-font-color: #fff;
+    @border-radius: 3px;
+    @height: 30px;
+    @margin-top: 5px;
+    @margin-bottom: 5px;
+    @icon-height: 16px;
+    @icon-width: 16px;
+    @baseline-adjustment: 1px;
+    @icon-margin-top: (@height + @margin-top + @margin-bottom - @icon-width) / 2 - @baseline-adjustment;
+    @padding-left-right: 10px;
+    @icon-right-indent: @icon-width;
+    @text-padding-right: @icon-right-indent + @padding-left-right;
+
+    position: relative;     //needs to be relative so we can have a absolutely positioned icon
+
+    input[type='text'] {
+        background: @unfocused-background-color;
+        border-radius: @border-radius;
+        box-shadow: none;
+        color: @unfocused-font-color;
+        height: @height;
+        margin: @margin-top 0;
+        padding-right: @text-padding-right;
+
+        &[type='text']:focus {
+            background: @focused-background-color;
+            color: @focused-font-color;
+        }
+
+
+        /* Placeholder styling
+         * - You have to one rule per vendor because user agents are required to ignore a rule with an unknown selector.
+         *   Since WebKit doesn’t know the proprietary Mozilla selector and vice versa, you have to include them separately.
+         *   See http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css#answer-2610741
+         */
+
+        &::-webkit-input-placeholder {
+            color: @unfocused-font-color;
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+            color: @unfocused-font-color;
+        }
+
+        &:-ms-input-placeholder {
+            color: @unfocused-font-color;
+        }
+
+        //focus placeholder
+
+        &:focus {
+            &::-webkit-input-placeholder {
+                color: @focused-font-color;
+            }
+
+            &::-moz-placeholder {  /* Firefox 19+ */
+                color: @focused-font-color;
+            }
+
+            &:-ms-input-placeholder {
+                color: @focused-font-color;
+            }
+        }
+
+    }
+
+    //icon
+    &:after {
+        color: @unfocused-font-color;
+        content: "\f18d"; // search icon
+        font-family: "Atlassian Icons";
+        height: @icon-height;
+        margin-top: @icon-margin-top;
+        pointer-events: none; // IE10+
+        position: absolute;
+        right: @icon-right-indent;
+        top: 0;
+        width: @icon-width;
+    }
+}
+
+

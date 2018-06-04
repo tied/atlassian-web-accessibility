@@ -1,0 +1,127 @@
+@import 'imports/global';
+
+.ffi {
+    background-color: @aui-ffi-field-bg-color;
+    border-color: @aui-ffi-field-border-color;
+    border-radius: @aui-ffi-field-border-radius;
+    box-shadow: none;
+    color: @aui-ffi-field-text-color;
+    font-size: @aui-ffi-field-font-size;
+    max-width: @aui-ffi-field-default-width;
+
+    form.aui .field-group & {
+        float: none;
+        margin: 0;
+        padding: 0;
+        word-wrap: normal;
+        text-align: left;
+        width: 100%;
+    }
+    form.aui.top-label .field-group & {
+        display: inline-block;
+        margin: 0;
+        width: 100%;
+    }
+    form.aui.long-label .field-group & {
+        margin: 0;
+        width: 100%;
+    }
+
+    /* The actual input - made opaque but styled so the cursor positions well */
+    input[type="file"] {
+        padding: 0 @aui-ffi-field-horizontal-padding;
+    }
+
+    // The field value
+    &[data-ffi-value]:after {
+        color: @aui-ffi-value-text-color;
+        padding: 0 @aui-ffi-field-horizontal-padding;
+    }
+
+    // The "browse" button
+    &:before {
+        background: @aui-ffi-button-bg-gradient-color-end;
+        background: -webkit-linear-gradient(top, @aui-ffi-button-bg-gradient-color-start 0, @aui-ffi-button-bg-gradient-color-end 100%);
+        background: linear-gradient(to bottom, @aui-ffi-button-bg-gradient-color-start 0, @aui-ffi-button-bg-gradient-color-end 100%);
+        border-left-color: @aui-ffi-button-border-color;
+        color: @aui-ffi-button-text-color;
+        padding: 0 @aui-ffi-button-horizontal-padding;
+        text-shadow: @aui-ffi-button-text-shadow-x @aui-ffi-button-text-shadow-y @aui-ffi-button-text-shadow-blur @aui-ffi-button-text-shadow-color;
+
+    }
+    &:hover:before {
+        background: @aui-ffi-button-bg-gradient-color-end-hover;
+        background: -webkit-linear-gradient(top, @aui-ffi-button-bg-gradient-color-start-hover 0, @aui-ffi-button-bg-gradient-color-end-hover 100%);
+        background: linear-gradient(to bottom, @aui-ffi-button-bg-gradient-color-start-hover 0, @aui-ffi-button-bg-gradient-color-end-hover 100%);
+        color: @aui-ffi-button-text-color-hover;
+        text-shadow: @aui-ffi-button-text-shadow-x @aui-ffi-button-text-shadow-y @aui-ffi-button-text-shadow-blur @aui-ffi-button-text-shadow-color-hover;
+    }
+    &:active {
+        &:before,
+        &:hover:before {
+            background-color: @aui-ffi-button-bg-gradient-color-end;
+            background-image: none;
+            text-decoration:none;
+            text-shadow: none;
+        }
+    }
+
+    // focusing the field
+    &.is-focused {
+        border-color: @aui-ffi-field-border-color-focused;
+    }
+
+    // disabled field
+    &.is-disabled {
+        background-color: @aui-ffi-field-bg-color-disabled;
+        color: @aui-ffi-field-text-color-disabled;
+
+        // the button
+        &:before,
+        &:hover:before,
+        &:active:before,
+        &:active:hover:before {
+            background: -webkit-linear-gradient(top, @aui-ffi-button-bg-gradient-color-start-disabled 0, @aui-ffi-button-bg-gradient-color-end-disabled 100%);
+            background: linear-gradient(to bottom, @aui-ffi-button-bg-gradient-color-start-disabled 0, @aui-ffi-button-bg-gradient-color-end-disabled 100%);
+            border-color: @aui-ffi-button-border-color-disabled;
+            box-shadow: none;
+            color: @aui-ffi-button-text-color-disabled;
+            text-shadow: none;
+        }
+
+        // the value
+        &:after {
+            color: @aui-ffi-field-text-color-disabled;
+        }
+    }
+}
+
+/* The clear field button */
+.ffi-clear {
+    background-image: none;
+    opacity: 1;
+    -ms-filter: none;
+    &:hover {
+        opacity: 1;
+        -ms-filter: none;
+    }
+    &:before {
+        color: @aui-ffi-clear-icon-color;
+        content: "\f188";
+        font-family: "Atlassian Icons";
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased; /* Improves the rendering of icons */
+        font-style: normal;
+        font-weight: normal;
+        left: 0;
+        line-height: 1;
+        margin-top: -8px;
+        position: absolute;
+        speak: none; /* This prevents screen readers from pronouncing the pseudo element text content used to trigger the icon font */
+        text-indent: 0;
+        top: 50%;
+    }
+    &:hover:before {
+        color: @aui-ffi-clear-icon-color-hover;
+    }
+}
