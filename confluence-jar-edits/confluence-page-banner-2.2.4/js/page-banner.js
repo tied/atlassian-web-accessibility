@@ -84,10 +84,13 @@ define('confluence-page-banner/page-banner', [
         }
 
         $restrictionsIcon.attr('title', labelName);
+        $restrictionsIcon.attr('aria-label', labelName);
         applyTooltip($restrictionsIcon);
 
         updateSystemContentItems();
     };
+
+    $("#content-metadata-page-restrictions").append('<span class="assistive">Page Restrictions</span>');
 
     var setup = function() {
         updateSystemContentItems();

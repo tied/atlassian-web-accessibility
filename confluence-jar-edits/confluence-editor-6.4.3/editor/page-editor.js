@@ -1018,4 +1018,3 @@ require('confluence/module-exporter').safeRequire('confluence-editor/editor/page
      */
     AJS.Editor = Confluence.Editor;
 });
-

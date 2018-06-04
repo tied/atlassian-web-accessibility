@@ -124,4 +124,3 @@ require('confluence/module-exporter').safeRequire('confluence-editor/unpublished
     tinymce.create('tinymce.plugins.UnpublishedChanges', UnpublishedChanges);
     tinymce.PluginManager.add('unpublishedchanges', tinymce.plugins.UnpublishedChanges);
 });
-

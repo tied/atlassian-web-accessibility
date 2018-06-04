@@ -42,9 +42,7 @@
             <div class="stream-item-meta">
                 {foreach $viewer in $viewers}
                     <span class="viewer-image">
-                        <a class="confluence-userlink" data-username="{$viewer.userName}" href="{$viewer.url}">
-                            <img class="avatar userLogo logo smaller" src="{$viewer.avatarUrl}" alt="{$viewer.fullName}"/>
-                        </a>
+                        <img class="avatar userLogo logo smaller" src="{$viewer.avatarUrl}" alt=""/>
                     </span>
                 {/foreach}
                <ol class="middot-list">

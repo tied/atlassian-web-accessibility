@@ -21,21 +21,19 @@
         {/call}
     </div>
     <div class="update-items">
-        <h4>
-            {call Confluence.Templates.User.usernameLink}
-                {param canView: $canViewProfile /}
-                {param username}
-                    {if $modifier}
-                        {$modifier.name|noAutoescape}
-                    {/if}
-                {/param}
-                {param fullName}
-                    {if $modifier}
-                        {$modifier.fullName|noAutoescape}
-                    {/if}
-                {/param}
-            {/call}
-        </h4>
+        {call Confluence.Templates.User.usernameLink}
+            {param canView: $canViewProfile /}
+            {param username}
+                {if $modifier}
+                    {$modifier.name|noAutoescape}
+                {/if}
+            {/param}
+            {param fullName}
+                {if $modifier}
+                    {$modifier.fullName|noAutoescape}
+                {/if}
+            {/param}
+        {/call}
         <ul>
             {foreach $changeItem in $recentUpdates}
                 {call .updateItem}

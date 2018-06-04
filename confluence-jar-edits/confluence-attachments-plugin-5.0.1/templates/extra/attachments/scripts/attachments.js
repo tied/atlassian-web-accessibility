@@ -168,6 +168,7 @@ AJS.$(function($) {
                     $icon.closest('tr').next().toggleClass("hidden");
 
                     if ($icon.is('.icon-section-opened')) {
+                        $icon.attr('aria-expanded', 'false').attr('role', 'button');
                         var $row = $icon.closest("tr");
                         var attachmentId = $row.data('attachment-id');
 
@@ -178,6 +179,8 @@ AJS.$(function($) {
                         if (!attachmentsTableContainer.find("tr.history-" + attachmentId).length && $row.next().find(".attachment-history-wrapper").length) {
                             loadAttachmentHistory($row);
                         }
+                    } else {
+                        $icon.attr('aria-expanded', 'true').attr('role', 'button');
                     }
             });
 

@@ -106,7 +106,6 @@ require([
                 /**
                  * Creates an HTML element representing a single item in the TOC, including outline level and a link.
                  */
-                 // TODO: Fix this
                 function createTocItemBody(element, outline) {
                     var focusLink = element.id.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\\\$&");
                     return $(Confluence.Plugins.TableOfContents.Client.tocItemBody({

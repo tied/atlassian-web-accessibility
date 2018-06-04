@@ -46,7 +46,6 @@ define('confluence-quick-edit/handlers/comment/top-level', [
          * which may lead to unexpected behavior and error
          */
         $("#comments-section").one("click", ".quick-comment-prompt", topLevelHandler.activateEventHandler);
-
         $('#rte-savebar').scrollWindowToElement();
         QuickComment.postInitialise(options);
     }

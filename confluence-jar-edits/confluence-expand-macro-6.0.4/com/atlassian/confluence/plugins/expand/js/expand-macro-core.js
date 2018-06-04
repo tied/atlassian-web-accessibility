@@ -28,11 +28,13 @@
                 if ($expanderContent.hasClass("expand-hidden")) {
                     $expanderContent.css("display","block");                
                     $expanderContent.animate({opacity:1});
+                    $expander.attr('aria-expanded','true');
                     userAction = 'expand';
                 } else {
                     $expanderContent.animate({opacity:0}, {
                         complete : function() {
                             $expanderContent.hide();
+                            $expander.attr('aria-expanded','false');
                         }
                     });
                     userAction = 'collapse';

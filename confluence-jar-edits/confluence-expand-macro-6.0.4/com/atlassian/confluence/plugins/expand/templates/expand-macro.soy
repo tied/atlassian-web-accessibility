@@ -7,8 +7,8 @@
  */
 {template .dynamicBefore}
     <div id="expander-{$toggleId}" class="expand-container">
-    <div id="expander-control-{$toggleId}" class="expand-control">
-        <span class="expand-control-icon icon">&nbsp;</span><span class="expand-control-text">{$title}</span>
+    <div id="expander-control-{$toggleId}" class="expand-control" aria-expanded="false" role="button" tabindex="0" aria-label="Expand {$title} Section">
+        <span class="expand-control-icon icon"></span><span class="expand-control-text">{$title}</span>
     </div>
     <div id="expander-content-{$toggleId}" class="expand-content expand-hidden">
 {/template}
@@ -20,7 +20,7 @@
  */
 {template .staticBefore}
     <div id="expander-{$toggleId}" class="expand-container">
-    <div id="expander-control-{$toggleId}" class="expand-control">
+    <div id="expander-control-{$toggleId}" class="expand-control" aria-expanded="true" role="button" tabindex="0" aria-label="Expand {$title} Section">
         <span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="{baseUrl()}/images/icons/grey_arrow_down.png"></span><span class="expand-control-text">{$title}</span>
     </div>
     <div id="expander-content-{$toggleId}" class="expand-content">

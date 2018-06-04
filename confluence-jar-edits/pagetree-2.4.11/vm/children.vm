@@ -11,11 +11,12 @@
         #if ($hasChildren)
             #if ($startDepth > 1 || $idsToExpandAsList.contains($p.id) || $isAncestorPage)
                 #set ($iconClass = "icon-section-opened")
+                #set ($ariaExpanded = "true")
             #else
                 #set ($iconClass = "icon-section-closed")
+                #set ($ariaExpanded = "false")
             #end
-            <a id="plusminus${p.id}-${treeId}" class="plugin_pagetree_childtoggle icon $iconClass" href="#if($idsToExpandAsList.contains($p.id))$action.generateCollapseNodeLinkForNonJSUsers($p)#else $!action.generateExpandNodeLinkForNonJSUsers($p)#end">
-            </a>
+            <a id="plusminus${p.id}-${treeId}" class="plugin_pagetree_childtoggle icon $iconClass" href="#if($idsToExpandAsList.contains($p.id))$action.generateCollapseNodeLinkForNonJSUsers($p)#else $!action.generateExpandNodeLinkForNonJSUsers($p)#end" aria-expanded="$ariaExpanded" role="button" aria-label="Expand Page Tree"></a>
         #else
             <span class="no-children icon"></span>
         #end

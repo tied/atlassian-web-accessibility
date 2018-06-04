@@ -49,13 +49,13 @@
                 </div>
             </nav>
 
-            <div id="space-search-result" class="tabs-pane active-pane">
+            <div id="space-search-result" class="tabs-pane active-pane" tabindex="-1">
                 <div id="space-search-title-bar">
                     <h2 class="space-search-title"></h2>
                     <div id="space-search">
                         <div class="loading-throbber"></div>
                         <form id="space-search-form" action="$req.contextPath/dosearchsite.action" class="aui">
-                            #assistiveLabel("queryString" "$i18n.getText('search.filter.label')")
+                            #assistiveLabel("$i18n.getText('search.filter.label')" "space-search-query")
                             <input id="space-search-query" name="queryString" type="text" placeholder="$i18n.getText("filter.name")" autocomplete="off" class="text">
                             <input name="type" type="hidden" value="spacedesc">
                         </form>

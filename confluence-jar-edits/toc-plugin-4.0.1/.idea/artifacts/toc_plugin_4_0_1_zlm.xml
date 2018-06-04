@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="toc-plugin-4.0.1-zlm">
-    <output-path>Z:/IIS/download/confluence</output-path>
-    <root id="archive" name="toc-plugin-4.0.1-zlm.jar">
-      <element id="dir-copy" path="$PROJECT_DIR$" />
-    </root>
-  </artifact>
-</component>

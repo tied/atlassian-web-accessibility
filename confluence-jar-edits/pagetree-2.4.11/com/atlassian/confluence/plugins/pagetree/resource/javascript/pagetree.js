@@ -30,9 +30,9 @@
                     // toggle images
                     var link = $("#plusminus" + id);
                     if (mode == MODE_EXPAND) {
-                        link.removeClass("icon-section-closed").addClass("icon-section-opened");
+                        link.removeClass("icon-section-closed").addClass("icon-section-opened").attr('aria-expanded', 'true');
                     } else {
-                        link.removeClass("icon-section-opened").addClass("icon-section-closed");
+                        link.removeClass("icon-section-opened").addClass("icon-section-closed").attr('aria-expanded', 'false');
                     }
 
                     if (mode == MODE_EXPAND) {
@@ -318,7 +318,7 @@
                         makePlusMinusButtonsClickable(pagetreeChildrenDiv, mobile);
 
                         /* Make the + a - */
-                        $("#plusminus" + _rootPage).addClass("icon-section-opened").removeClass("icon-section-closed");
+                        $("#plusminus" + _rootPage).addClass("icon-section-opened").removeClass("icon-section-closed").attr('aria-expanded', 'true');
 
                         /* Highlight target page if it exists */
                         $("#childrenspan" + targetPages[parseInt(treeId)] + "-" + treeId).addClass("plugin_pagetree_current");
