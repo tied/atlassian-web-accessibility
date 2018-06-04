@@ -363,7 +363,7 @@
     <a id="$webMenu.id" class="aui-nav-link aui-dropdown2-trigger" href="#" aria-haspopup="true" aria-owns="${webMenu.id}-content" title="$!menuTitle">
         <span class="$!menuClass">$!menuTitle</span>
     </a>
-    <nav id="${webMenu.id}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+    <nav id="${webMenu.id}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true" aria-label="$!menuTitle">
         #foreach ($section in $webMenu.sections)
             <div class="aui-dropdown2-section">
                 #if ($section.label)
@@ -390,7 +390,7 @@
 *#
 #macro(menuMacros_renderLanguageMenu $menuId $menuTitle $menuClass $languages)
 <a id="$menuId" class="aui-nav-link aui-dropdown2-trigger aui-dropdown2-trigger-arrow $!menuClass" href="#" aria-haspopup="true" aria-owns="${menuId}-content">$!menuTitle</a>
-<nav id="${menuId}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+<nav id="${menuId}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true" aria-label="$!menuTitle">
     <div class="aui-dropdown2-section">
         <ul class="aui-list-truncate">
             #foreach ($lang in $languages)
@@ -425,7 +425,7 @@
             </div>
             <span class="aui-icon-dropdown"></span>
         </a>
-        <nav id="${webMenu.id}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+        <nav id="${webMenu.id}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true" aria-label="$!menuTitle">
             #foreach ($section in $webMenu.sections)
                 <div class="aui-dropdown2-section">
                     <ul #if($section.id) id="$section.id"#end
@@ -502,4 +502,3 @@
     </div>
 </form>
 #end
-
