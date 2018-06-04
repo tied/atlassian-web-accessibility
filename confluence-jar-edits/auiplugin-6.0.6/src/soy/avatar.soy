@@ -23,7 +23,7 @@
     {call aui.renderExtraAttributes data="all" /}>
     <span class="aui-avatar-inner">
         <img src="{$avatarImageUrl}"
-            {if $accessibilityText} alt="{$accessibilityText}"{/if}
+            {if $accessibilityText} alt="{$accessibilityText}"{else} alt=""{/if}
             {if $title} title="{$title}"{/if}
             {if $imageClasses} class="{$imageClasses}"{/if} />
     </span>

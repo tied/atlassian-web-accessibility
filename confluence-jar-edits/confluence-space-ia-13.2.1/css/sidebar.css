@@ -703,3 +703,13 @@ li.child-item > a,
 .space-favourite-hidden {
     display: none;
 }
+
+.anonymous a.expand-collapse-trigger {
+    margin-top: -41px !important;
+}
+.collapsed .space-tools-section.anonymous {
+    height: 16px !important;
+}
+.collapsed .acs-side-bar.anonymous {
+    bottom: 20px !important;
+}
