@@ -1,0 +1,14 @@
+#requireResourcesForContext("plugin.viewstorage")
+#requireResourcesForContext("page")
+<html>
+<head>
+    <title>$i18n.getText("view.storage.page.title")</title>
+    $!webResourceManager.getCssResources($spaceKey)    
+</head>
+
+<body>
+<div class="wiki-content">
+    $action.sourceHtml
+</div>
+</body>
+</html>

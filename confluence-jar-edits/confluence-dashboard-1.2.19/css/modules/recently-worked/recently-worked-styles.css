@@ -1,0 +1,9 @@
+.recently-worked .blank-slate-text {
+  max-width: 400px; }
+
+.recently-worked .blank-slate-image {
+  width: 119px;
+  height: 100px;
+  background-image: url("assets/images/2.0/icon-recent-empty.svg");
+  background-repeat: no-repeat;
+  margin: auto; }

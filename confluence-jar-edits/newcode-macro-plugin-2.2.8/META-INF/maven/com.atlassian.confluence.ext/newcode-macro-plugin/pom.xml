@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <name>newcode-macro-plugin</name>
+    <groupId>com.atlassian.confluence.ext</groupId>
+    <artifactId>newcode-macro-plugin</artifactId>
+    <version>2.2.8</version>
+    <inceptionYear>2006</inceptionYear>
+    <description>A new syntax highlighting macro with more features and supported languages than the original Code Macro shipped in confluence.</description>
+    <url>https://ecosystem.atlassian.net/wiki/display/NCODE</url>
+    <packaging>atlassian-plugin</packaging>
+
+    <parent>
+        <groupId>com.atlassian.pom</groupId>
+        <artifactId>public-pom</artifactId>
+        <version>3.0.98</version>
+    </parent>
+
+    <properties>
+        <atlassian.plugin.key>com.atlassian.confluence.ext.newcode-macro-plugin</atlassian.plugin.key>
+        <atlassian.plugin.name>Code Macro Plugin</atlassian.plugin.name>
+        <atlassian.plugin.version>${project.version}</atlassian.plugin.version>
+        <!-- Confluence version -->
+        <confluence.version>5.8.1</confluence.version>
+        <atlassian.product.version>${confluence.version}</atlassian.product.version>
+        <!-- Confluence data version -->
+        <atlassian.product.data.version>${atlassian.product.version}</atlassian.product.data.version>
+        <!-- Confluence plugin functional test library version -->
+        <atlassian.product.test-lib.version>2.13.0</atlassian.product.test-lib.version>
+        <jdkLevel>1.8</jdkLevel>
+        <amps.version>6.1.6</amps.version>
+
+        <jvm.args.custom />
+        <jvm.args>-Xmx1024m -XX:MaxPermSize=256m ${jvm.args.custom}</jvm.args>
+    </properties>
+
+    <developers>
+        <developer>
+            <name>Agnes Ro</name>
+            <organization>Atlassian</organization>
+            <organizationUrl>http://www.atlassian.com</organizationUrl>
+            <email>agnes@atlassian.com</email>
+            <roles>
+                <role>Developer 1.0 series</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Mike Cannon-Brookes</name>
+            <organization>Atlassian</organization>
+            <organizationUrl>http://www.atlassian.com</organizationUrl>
+            <email>mike@atlassian.com</email>
+            <roles>
+                <role>Developer 1.0 series</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>jbenckhuijsen</id>
+            <name>Jeroen Benckhuijsen</name>
+            <organization>Atos Origin Netherlands B.V.</organization>
+            <organizationUrl>http://www.atosorigin.nl</organizationUrl>
+            <timezone>+1</timezone>
+            <email>jeroen.benckhuijsen@atosorigin.com</email>
+            <roles>
+                <role>Project lead</role>
+                <role>Lead developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@bitbucket.org:atlassian/confluence-newcode-macro-plugin.git</connection>
+        <developerConnection>scm:git:git@bitbucket.org:atlassian/confluence-newcode-macro-plugin.git</developerConnection>
+        <url>https://bitbucket.org/atlassian/confluence-newcode-macro-plugin</url>
+        <tag>newcode-macro-plugin-2.2.8</tag>
+    </scm>
+
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://studio.plugins.atlassian.com/browse/NCODE</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>bamboo</system>
+        <url>http://bamboo.developer.atlassian.com/browse/NCODE</url>
+    </ciManagement>
+
+    <licenses>
+        <license>
+            <distribution>repo</distribution>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.atlassian.confluence</groupId>
+                <artifactId>confluence-plugins-platform-pom</artifactId>
+                <version>${atlassian.product.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mozilla</groupId>
+            <artifactId>rhino</artifactId>
+            <version>1.7R4</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.confluence</groupId>
+            <artifactId>confluence</artifactId>
+            <version>${atlassian.product.version}</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.sourceforge.cssparser</groupId>
+                    <artifactId>cssparser</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.sourceforge.nekohtml</groupId>
+                    <artifactId>nekohtml</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.confluence.plugin</groupId>
+            <artifactId>func-test-package</artifactId>
+            <version>${atlassian.product.test-lib.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.bundles</groupId>
+            <artifactId>json</artifactId>
+            <version>20070829</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.8.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.confluence.plugins</groupId>
+            <artifactId>confluence-functestrpc-plugin</artifactId>
+            <version>${confluence.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.confluence.plugins</groupId>
+            <artifactId>confluence-functest-rest-plugin</artifactId>
+            <version>${confluence.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.png</exclude>
+                    <exclude>**/*.jar</exclude>
+                    <exclude>**/*.swf</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.png</include>
+                    <include>**/*.jar</include>
+                    <include>**/*.swf</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-confluence-plugin</artifactId>
+                <version>${amps.version}</version>
+                <!-- use the latest version of the SDK -->
+                <extensions>true</extensions>
+                <configuration>
+                    <productVersion>${atlassian.product.version}</productVersion>
+                    <productDataVersion>${atlassian.product.version}</productDataVersion>
+                    <skipManifestValidation>true</skipManifestValidation>
+                    <jvmArgs>${jvm.args}</jvmArgs>
+                    <instructions>
+                        <Export-Package>
+                            com.atlassian.confluence.ext.code.*
+                        </Export-Package>
+                        <Import-Package>
+                            com.atlassian.confluence.content.render.xhtml*;version="${confluence.version}",
+                            com.atlassian.confluence.core;version="${confluence.version}",
+                            com.atlassian.confluence.macro*;version="${confluence.version}",
+                            com.atlassian.confluence.renderer;version="${confluence.version}",
+                            com.atlassian.confluence.security;version="${confluence.version}",
+                            com.atlassian.confluence.setup.settings;version="${confluence.version}",
+                            com.atlassian.confluence.user;version="${confluence.version}",
+                            com.atlassian.confluence.util*;version="${confluence.version}",
+                            com.atlassian.confluence.xhtml.api;version="${confluence.version}",
+                            com.atlassian.plugin,
+                            com.atlassian.plugin.event,
+                            com.atlassian.plugin.module,
+                            com.atlassian.plugin.descriptors,
+                            com.atlassian.plugin.elements,
+                            com.atlassian.plugin.tracker,
+                            com.atlassian.plugin.webresource,
+                            com.atlassian.renderer;version="6.2.17",
+                            com.atlassian.renderer.v2;version="6.2.17",
+                            com.atlassian.renderer.v2.macro;version="6.2.17",
+                            com.atlassian.renderer.v2.macro.basic;version="6.2.17",
+                            com.atlassian.user,
+                            com.atlassian.xwork*,
+                            com.google.common.collect.*,
+                            com.opensymphony.webwork*,
+                            org.apache.commons.io*;version="1.4",
+                            org.apache.commons.lang3*;version="3.4",
+                            org.apache.commons.collections.map*;version="3.2.1",
+                            org.dom4j,
+                            org.jsoup,
+                            org.jsoup.nodes,
+                            org.jsoup.select,
+                            org.slf4j,
+                            org.springframework.beans;version="2.5.6",
+                            org.springframework.beans.factory;version="2.5.6"
+                        </Import-Package>
+                    </instructions>
+                    <containerId>tomcat8x</containerId>
+                    <pluginArtifacts>
+                        <pluginArtifact>
+                            <groupId>com.atlassian.confluence.plugins</groupId>
+                            <artifactId>confluence-functestrpc-plugin</artifactId>
+                            <version>${confluence.version}</version>
+                        </pluginArtifact>
+                        <pluginArtifact>
+                            <groupId>com.atlassian.confluence.plugins</groupId>
+                            <artifactId>confluence-functest-rest-plugin</artifactId>
+                            <version>${confluence.version}</version>
+                        </pluginArtifact>
+                    </pluginArtifacts>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${jdkLevel}</source>
+                    <target>${jdkLevel}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <!--
+						During release:perform, enable the "release" profile
+					-->
+                    <releaseProfiles>release</releaseProfiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-license</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}</directory>
+                                    <includes>
+                                        <include>LICENSE.txt</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>${basedir}/src/main/build/checkstyle.xml</configLocation>
+                    <propertyExpansion>basedir=${basedir}</propertyExpansion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>

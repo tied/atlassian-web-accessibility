@@ -1,0 +1,1 @@
+var brushName;var brushAliases;var SyntaxHighlighter=function(){var a={brushes:{},readBrushes:function(){for(var b in SyntaxHighlighter.brushes){brushAliases=SyntaxHighlighter.brushes[b].aliases;brushName=""+b}}};a.Highlighter=function(){};return a}();

@@ -1,0 +1,1 @@
+window.Confluence.UI.Components.SpacePicker=require("confluence-ui-components/js/space-picker");AJS.deprecate.prop(window.Confluence.UI.Components.SpacePicker,"build",{sinceVersion:"1.4.22",extraInfo:"Use require('confluence-ui-components/js/space-picker')"});

@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: bamboo-agent
+Build-Jdk: 1.8.0_131
+Atlassian-Build-Date: 2017-06-26T03:07:25+0000
+

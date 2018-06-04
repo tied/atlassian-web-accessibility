@@ -1,0 +1,116 @@
+body[data-aui-version^="5.9"] .space-tools-dropdown {
+    width: 170px;
+}
+
+.space-tools-section {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+body[data-aui-version^="5.7"] #inline-dialog-space-tools .contents {
+    padding: 0;
+    border: none;
+}
+
+body[data-aui-version^="5.7"] #inline-dialog-space-tools.aui-style-default {
+    /* AUI overrides because we've flipped the direction of the 'dropdown' */
+    border-radius: 3px 3px 0 0;
+}
+
+#space-tools-menu-trigger {
+    margin: 5px 7px;
+}
+
+#space-tools-menu-trigger.aui-button.aui-dropdown2-trigger.active {
+    /* AUI overrides because we've flipped the direction of the 'dropdown' */
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-width: 1px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-color: transparent;
+}
+
+body[data-aui-version^="5.7"] #space-tools-menu-trigger.aui-button.aui-dropdown2-trigger.active {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-color: #707070;
+}
+
+body[data-aui-version^="5.7"] #space-tools-menu {
+    display:none !important;
+}
+
+body[data-aui-version^="5.7"] .space-tools-menu ul {
+    padding: 0;
+    list-style: none;
+}
+
+body[data-aui-version^="5.7"] .space-tools-menu a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.configure-mode .space-tools-section {
+    display: none;
+}
+
+.configure-mode .acs-side-bar {
+    bottom: 0; /* stalking space tools section is hidden in configure mode */
+}
+
+.collapsed .space-tools-section {
+    height: 80px;
+}
+
+body[data-aui-version^="5.7"] .collapsed #space-tools-menu-trigger .label {
+    display: none;
+}
+
+.collapsed #space-tools-menu-trigger .aui-icon {
+    margin-right: 5px;
+}
+
+.collapsed #space-tools-menu-trigger .aui-button-label {
+    display: none;
+}
+
+.collapsed #space-tools-menu-trigger {
+    display: block;
+    width: 45px;
+    margin: 5px auto;
+}
+
+body[data-aui-version^="5.7"] .collapsed #space-tools-menu-trigger {
+    padding-right: 13px !important; /* override space left for dropdown arrow */
+}
+
+.collapsed #space-tools-menu-trigger:after {
+    margin-left: -13px; /* override position of dropdown arrow */
+}
+
+.expand-collapse-trigger {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f5f5f5;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    /* Data URI for img/icon-collapse-large.png */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAPElEQVR4AWMYbKBgZsGZAgYQRLDABFzwf0EagoWqQLBgFUQQwUJVcAYqiGARVkDQCqIdiYD4vYkJ6aYAANjUcDFHA4gKAAAAAElFTkSuQmCC');
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.collapsed .expand-collapse-trigger {
+    /* Data URI for img/icon-expand-large.png */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAPElEQVR4AWMYPKDgTMHMAgYghLIQEMZIK/gPlUCwEArgEqsKBBEsNAVQiTMIFkEFBK0gyZH4vYkJ6awAAOTScYHXEeq7AAAAAElFTkSuQmCC');
+    width: 100%;
+    position: static;
+}

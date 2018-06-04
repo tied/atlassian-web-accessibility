@@ -1,0 +1,91 @@
+{namespace DashboardTemplates.Stream}
+
+/**
+*   @param canViewProfile
+*   @param currentUsername
+*   @param profilePictureInfo
+*   @param recentUpdates
+*   @param modifier
+*/
+{template .item}
+    <div class="update-item-profile">
+        {call Confluence.Templates.User.logo}
+            {param canView: $canViewProfile /}
+            {param currentUsername: $currentUsername /}
+            {param username}
+                {if $modifier}
+                    {$modifier.name|noAutoescape}
+                {/if}
+            {/param}
+            {param profilePictureInfo: $profilePictureInfo /}
+        {/call}
+    </div>
+    <div class="update-items">
+        <h4>
+            {call Confluence.Templates.User.usernameLink}
+                {param canView: $canViewProfile /}
+                {param username}
+                    {if $modifier}
+                        {$modifier.name|noAutoescape}
+                    {/if}
+                {/param}
+                {param fullName}
+                    {if $modifier}
+                        {$modifier.fullName|noAutoescape}
+                    {/if}
+                {/param}
+            {/call}
+        </h4>
+        <ul>
+            {foreach $changeItem in $recentUpdates}
+                {call .updateItem}
+                    {param changeItem: $changeItem /}
+                    {param changeSetNumber: 0 /}
+                    {param changeItemNumber: index($changeItem) /}
+                {/call}
+            {/foreach}
+        </ul>
+    </div>
+{/template}
+
+/**
+ * Renders an individual update item
+ * @param changeItem
+ * @param changeSetNumber
+ * @param changeItemNumber
+ */
+{template .updateItem private="true"}
+    <li class="update-item">
+        <div class="update-item-icons">
+            {if $changeItem.thumbnailable}
+                <a id="twixie-{$changeSetNumber}{$changeItemNumber}" href="" data-thumbnail-id="{$changeSetNumber}{$changeItemNumber}" class="update-item-arrow icon icon-section-closed"></a>
+            {else}
+                <span class="update-item-arrow"></span>
+            {/if}
+            {call Confluence.Templates.Icons.contentIconFont}
+                {param content: $changeItem.entity /}
+                {param iconTitle: $changeItem.friendlyContentType /}
+                {param iconCss: $changeItem.iconCss /}
+                {param linkHref: $changeItem.urlPath /}
+            {/call}
+        </div>
+        <div class="update-item-content">
+            <span class="update-item-title">{$changeItem.html |noAutoescape}</span>
+            {if $changeItem.summary}
+                <p class="update-item-summary text-wrapped">{$changeItem.summary}</p>
+            {/if}
+            <div class="update-item-date-wrapper">
+                <span class="update-item-date">{$changeItem.updateDescription}
+                {if $changeItem.viewChangesLink}
+                    &nbsp;(<a href="{$changeItem.viewChangesLink}">{getText('view.change')}</a>)
+                {/if}
+                </span>
+            </div>
+            {if $changeItem.thumbnailable}
+                <div class="update-item-thumbnail-container">
+                    <a href="{$changeItem.imageUrl}"><img id="thumbnail-{$changeSetNumber}{$changeItemNumber}" class="thumbnail" src="{$changeItem.thumbnailUrl}" width="{$changeItem.thumbnailWidth}" height="{$changeItem.thumbnailHeight}" style="display: none" /></a>
+                </div>
+            {/if}
+        </div>
+    </li>
+{/template}

@@ -1,0 +1,78 @@
+#requireResource("com.atlassian.confluence.plugins.confluence-collaborative-editor-plugin:configuration-resources")
+<html>
+    <head>
+        <title>$i18n.getText("collab.admin.configure.title")</title>
+    </head>
+    <body>
+        #if ($action.hasActionErrors())
+        <div class="aui-message closeable shadowed error">
+            #foreach ( $actionError in $action.actionErrors )
+                <p>$generalUtil.htmlEncode( $actionError )</p>
+            #end
+        </div>
+        #end
+        #if ( $action.hasActionMessages() )
+        <div class="aui-message closeable shadowed info">
+            #foreach ( $actionMessage in $action.actionMessages )
+                <p>$generalUtil.htmlEncode( $actionMessage )</p>
+            #end
+        </div>
+        #end
+        <form class="aui" name="collab-form" method="POST" action="${req.contextPath}/admin/confluence-collaborative-editor-plugin/doconfigure.action">
+            #form_xsrfToken()
+            <div class="form-section">
+                <h2>$i18n.getText("collab.admin.configure.heading.enable")</h2>
+                <p class="status-container">
+                    $i18n.getText("collab.admin.configure.status")
+                    #if ( $collabEditingEnabled.equals("true") )
+                        <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">$i18n.getText("collab.admin.configure.enabled")</span>
+                    #else
+                        <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-error">$i18n.getText("collab.admin.configure.disabled")</span>
+                    #end
+                    #if ( $debug )
+                        <span class="aui-lozenge aui-lozenge-subtle">$i18n.getText("collab.admin.configure.debug")</span>
+                    #end
+                </p>
+                <input type="checkbox" id="collabEditingEnabled" name="collabEditingEnabled" #if ( $collabEditingEnabled.equals("true") )checked#end class="checkbox">
+                <label class="checkbox-caption" for="collabEditingEnabled">$i18n.getText("collab.admin.configure.field.enable")</label>
+                <div class="field-group">
+                    <input type="text" name="baseUrl" id="baseUrl" value="$generalUtil.htmlEncode( $baseUrl )" class="text long-field"#if ( !$debug ) disabled#end>
+                    <label for="baseUrl">$i18n.getText("collab.admin.configure.field.serviceurl")#if ( $debug )<span class="aui-icon icon-required">required</span>#end</label>
+                </div>
+                <div class="field-group">
+                    <input type="text" name="appId" id="appId" value="$generalUtil.htmlEncode( $appId )" class="text long-field">
+                    <label for="appId">$i18n.getText("collab.admin.configure.field.appId")<span class="aui-icon icon-required">required</span></label>
+                </div>
+                <div class="field-group last">
+                    <input type="password" name="appSecret" id="appSecret" value="$generalUtil.htmlEncode( $appSecret )" class="text">
+                    <label for="secret">$i18n.getText("collab.admin.configure.field.secret")<span class="aui-icon icon-required">required</span></label>
+                    <div class="description">Length must be at least 32 characters</div>
+                </div>
+                #if ( $appId )
+                    ## Render a horizontal rule here when the amended section is not rendered below.
+                    <hr>
+                #end
+                <div class="aui-message aui-message-warning">
+                    <p>$i18n.getText("collab.admin.configure.warning")</p>
+                </div>
+                <input class="aui-button aui-button-primary" type="submit" value="$i18n.getText("save.name")">
+            </div>
+        </form>
+        #if ( !$appId )
+            <form class="aui" name="collab-form" method="POST" action="${req.contextPath}/admin/confluence-collaborative-editor-plugin/dogenerate.action">
+                #form_xsrfToken()
+                <div class="form-section with-spacing">
+                    <hr>
+                    <div class="aui-message aui-message-error">
+                        <p>$i18n.getText("collab.admin.configure.generate.warning")</p>
+                    </div>
+                    <div class="field-group last">
+                        <input type="text" name="baseUrl" id="baseUrl" value="$generalUtil.htmlEncode( $baseUrl )" class="text long-field"#if ( !$debug ) disabled#end>
+                        <label for="baseUrl">$i18n.getText("collab.admin.configure.field.serviceurl")#if ( $debug )<span class="aui-icon icon-required">required</span>#end</label>
+                    </div>
+                    <input class="aui-button" type="submit" value="$i18n.getText("collab.admin.configure.generate")">
+                </div>
+            </form>
+        #end
+    </body>
+</html>

@@ -1,0 +1,37 @@
+{namespace Confluence.Templates.Editor.Components.ColorPicker}
+
+/**
+ * Color picker for editor (same color palette as tinymce color picker)
+ */
+{template .display}
+    {let $colors: ['000000','993300','333300','003300','003366','000080','333399','333333',
+                   '800000','FF6600','808000','008000','008080','0000FF','666699','808080',
+                   'FF0000','FF9900','99CC00','339966','33CCCC','3366FF','800080','999999',
+                   'FF00FF','FFCC00','FFFF00','00FF00','00FFFF','00CCFF','993366','C0C0C0',
+                   'FF99CC','FFCC99','FFFF99','CCFFCC','CCFFFF','99CCFF','CC99FF','FFFFFF'] /}
+
+    <a class="toolbar-trigger aui-button" href="#" id="rte-button-color" data-color="003366" data-tooltip="{getText('tinymce.colorpicker.color')}">
+        {call Confluence.Templates.Icons.iconSpan}
+            {param type: 'editor-color' /}
+            {param text: getText('tinymce.colorpicker.picker_title') /}
+        {/call}
+        <span class="selected-color"></span>
+    </a>
+    <div class="aui-dd-parent">
+        <a class="toolbar-trigger aui-dd-trigger aui-button" href="#" id="rte-button-color-selector" data-control-id="colorSelector" data-tooltip="{getText('tinymce.colorpicker.more_colors')}">
+            {call Confluence.Templates.Icons.iconSpan}
+                {param type: 'dropdown' /}
+                {param text: getText('tinymce.colorpicker.more_colors') /}
+            {/call}
+        </a>
+        <div class="color-picker-container">
+            <div class="color-picker aui-dropdown hidden">
+                <ul>
+                    {foreach $color in $colors}
+                        <li><a href="#" style="background-color: #{$color}" data-color="{$color}">&nbsp;</a></li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+    </div>
+{/template}

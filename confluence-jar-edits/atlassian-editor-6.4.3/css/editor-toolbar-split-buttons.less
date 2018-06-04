@@ -1,0 +1,219 @@
+@import (reference) "editor-toolbar.less";
+
+/*
+    Mixin for the main clickable area on a split button
+ */
+.split-editor-toolbar-button-fix () {
+    border-width: 1px;
+    border-right-width: 0;
+    margin-right: 0;
+    -moz-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+    // AUI buttons in the same group have a left margin applied on hover so that the button doesn't
+    // change its position when a border is rendered - now that we're faking 'subtle' button
+    // styling we want to prevent this behaviour and override it with a margin of 0
+    margin-left: 0;
+}
+
+/*
+    Mixin for the drop-down arrow clickable area on a split button
+ */
+.split-editor-toolbar-dd-trigger-fix () {
+    border-color: transparent;
+    border-width: 1px;
+    border-left-style: solid;
+    margin-right: 1px;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+
+/*
+    Split buttons (and their drop-downs) require all sorts of custom styling.
+    These buttons have IDs on them but we nest the rules beneath #rte-toolbar
+    so that they have enough specificity to override the 'default' styles
+    applied in editor-toolbar.less.
+ */
+#rte-toolbar {
+    #color-picker-control {
+        float: none;
+        // Override the left margin to be 1px more than the default (-6px) so that there's
+        // a gap between this button and the active underline button.
+        margin-left: -5px;
+
+        // On hover over the split button's div, apply hover effect to button and dd trigger at the same time
+        &:hover #rte-button-color-selector,
+        &:hover > a.aui-button {
+            .hover-effect();
+        }
+
+        & > a.aui-button {
+            .split-editor-toolbar-button-fix();
+        }
+
+        .aui-dd-parent > a.toolbar-trigger {
+            .split-editor-toolbar-dd-trigger-fix();
+            width: 15px;
+            margin-right: 1px;
+            &:after {
+                margin-left: -10px;
+            }
+            span {
+                width: 9px;
+            }
+        }
+
+        .color-picker-container {
+            position: absolute;
+            left: -18px;
+        }
+
+        // Styles for colour selection in the dropdown
+        div.color-picker {
+            left: -11px; // align with the colour button, and not the drop-down trigger
+            position: absolute;
+            overflow: auto;
+            padding: 6px;
+            width: 160px;
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    display: inline;
+                    float: left;
+                    height: 16px;
+                    line-height: 16px;
+                    padding: 2px;
+                    width: 16px;
+
+                    a {
+                        border: 1px solid #ddd;
+                        border-radius: 2px;
+                        display: block;
+                        height: 14px;
+                        line-height: 14px;
+                        padding: 0px;
+                        text-align: justify;
+                        width: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    // The table cell colour picker is a 'split button' with two clickable areas and needs some custom styling
+    #table-highlight-group {
+        // So that this stays the same color as the toolbar after a user picks a cell highlight color
+        background-color: inherit;
+
+        // On hover over the split button's div, apply hover effect to button and dd trigger at the same time
+        &:hover > button.aui-button,
+        &:hover #table-highlight-colour:not(.disabled) .toolbar-trigger {
+            .hover-effect();
+        }
+
+        .aui-button {
+            .split-editor-toolbar-button-fix();
+            // Solving Firefox rendering issues to do with implicit icon heights and vertical-alignment
+            vertical-align: top;
+            .icon {
+                height: 20px;
+            }
+            // End of solving Firefox rendering issues
+
+            .highlight-indicator {
+                position: absolute;
+                padding: 0;
+                width: 8px;
+                height: 5px;
+                margin: 7px 0 0 -12px;
+            }
+        }
+
+        // Groups the drop-down trigger with the drop-down contents
+        #table-highlight-colour {
+            float: none;
+
+            .toolbar-trigger {
+                .split-editor-toolbar-dd-trigger-fix();
+                width: 15px;
+                // CONFDEV-13971
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                &::after {
+                    margin-left: -11px;
+                }
+            }
+
+            .aui-dropdown {
+                overflow: auto;
+                padding: 4px;
+                width: 60px;
+                min-width: 0; /* CONFDEV-8832 - On default sets a min-width of 150px - wtf! */
+            }
+
+            ul.table-highlight-picker {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    display: inline;
+                    float: left;
+                    height: 16px;
+                    line-height: 16px;
+                    padding: 2px;
+                    width: 16px;
+
+                    a {
+                        border: 1px solid #ccc;
+                        border-radius: 2px;
+                        display: block;
+                        height: 14px;
+                        line-height: 14px;
+                        padding: 0px;
+                        text-align: justify;
+                        width: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*
+    These rules set the colours on the table cell highlight picker - kept flat for readability.
+
+    Darker than the colours in the RTE, as the toolbar backgrounds are grey instead of white.
+    We want the colours to be perceived the same.
+    Calculation = 95% * brightness of the colour in RTE.
+*/
+#table-highlight-group .table-highlight-picker a,
+#table-highlight-group .highlight-indicator {
+    background-color: #f0f0f0;
+}
+#table-highlight-group.highlight-blue .highlight-indicator,
+#table-highlight-group .table-highlight-picker a.highlight-blue {
+    background-color: #e0f0ff;
+}
+#table-highlight-group.highlight-green .highlight-indicator,
+#table-highlight-group .table-highlight-picker a.highlight-green {
+    background-color: #ddfade;
+}
+#table-highlight-group.highlight-red .highlight-indicator,
+#table-highlight-group .table-highlight-picker a.highlight-red {
+    background-color: #ffe7e7;
+}
+#table-highlight-group.highlight-yellow .highlight-indicator,
+#table-highlight-group .table-highlight-picker a.highlight-yellow {
+    background-color: #ffffdd;
+}
+#table-highlight-group[data-remove-highlight="true"] .highlight-indicator,
+#table-highlight-group .table-highlight-picker a[data-remove-highlight="true"] {
+    background-color: transparent;
+}

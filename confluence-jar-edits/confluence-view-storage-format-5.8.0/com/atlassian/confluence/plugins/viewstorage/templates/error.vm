@@ -1,0 +1,23 @@
+#requireResourcesForContext("plugin.viewstorage")
+#requireResourcesForContext("page")
+<html>
+<head>
+    <title>$i18n.getText("view.storage.page.title")</title>
+    $!webResourceManager.getCssResources($spaceKey)    
+</head>
+
+<body>
+    <div class="aui-message error">
+        <span class="svg-icon error size-18"></span>
+        <ul>
+            <li>$i18n.getText("view.storage.formatting.error")<br>$i18n.getText("view.storage.formatting.raw.message")</li>
+        </ul>
+    </div>
+    
+    <div class="monospaceInput">
+        <div class="padded">
+            $action.rawSource
+        </div>
+    </div>
+</body>
+</html>

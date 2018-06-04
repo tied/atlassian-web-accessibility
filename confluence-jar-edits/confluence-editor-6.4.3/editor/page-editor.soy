@@ -1,0 +1,172 @@
+{namespace Confluence.Templates.Editor.Page}
+
+/**
+ * A Save button appropriate to the content type being edited.
+ * @param contentType "page", "blogpost", "comment"
+ * @param sharedDraftsEnabled
+ * @param isNewPage flag indicating whether the flag is a new (unpublished) page
+ */
+{template .saveButton}
+    <button id="rte-button-publish"
+        class="aui-button aui-button-primary default-submit"
+        type="submit"
+        name="confirm" value="Save"
+        title="{call .saveButtonTitle}
+                   {param contentType: $contentType /}
+                   {param sharedDraftsEnabled: $sharedDraftsEnabled /}
+                   {param isNewPage: $isNewPage /}
+               {/call}"
+        tabindex="101">
+        {call .saveButtonText}
+           {param contentType: $contentType /}
+           {param sharedDraftsEnabled: $sharedDraftsEnabled /}
+           {param isNewPage: $isNewPage /}
+        {/call}
+    </button>
+{/template}
+
+/**
+ * Title for Save button appropriate to the content type being edited.
+ * @param contentType "page", "blogpost", "comment"
+ * @param sharedDraftsEnabled
+ * @param isNewPage
+ */
+{template .saveButtonTitle}
+    {if $contentType == 'blogpost'}
+        {getText('editor.publish.blog.desc')}
+    {elseif $contentType == 'page'}
+        {if $sharedDraftsEnabled}
+            {if $isNewPage}
+                {getText('editor.shared.draft.publish.desc')}
+            {else}
+                {getText('editor.shared.draft.update.desc')}
+            {/if}
+        {else}
+            {getText('editor.save.page.desc')}
+        {/if}
+    {else}
+        {getText('editor.save.page')}
+    {/if}
+{/template}
+
+/**
+ * Text for Save button appropriate to the content type being edited.
+ * @param contentType "page", "blogpost", "comment"
+ * @param sharedDraftsEnabled
+ * @param isNewPage
+ */
+{template .saveButtonText}
+    {if $sharedDraftsEnabled and ($contentType == 'blogpost' or $contentType == 'page')}
+        {if $isNewPage}
+            {getText('publish.name')}
+         {else}
+            {getText('update.word')}
+         {/if}
+    {elseif $contentType == 'blogpost'}
+        {getText('editor.publish.blog')}
+    {else}
+        {getText('editor.save.page')}
+    {/if}
+{/template}
+
+/**
+ * A cancel button appropriate to the content type being edited.
+ * @param contentType
+ * @param sharedDraftsEnabled
+ */
+{template .cancelButton}
+    {if $sharedDraftsEnabled and ($contentType == 'page' or $contentType == 'blogpost')}
+        /* Cancel button */
+        <ul class="aui-buttons rte-toolbar-group-done close">
+            <button class="aui-button shared-drafts" type="submit" id="rte-button-cancel" name="cancel" value="cancel">
+                <span class="icon aui-icon aui-icon-small aui-iconfont-close-dialog"></span>
+            </button>
+        </ul>
+    {else}
+        /* Cancel link */
+        <button class="toolbar-item-link aui-button aui-button-link" type="submit" id="rte-button-cancel" name="cancel" value="cancel">
+            <span class="trigger-text">
+                {if $contentType == 'page' or $contentType == 'blogpost'}
+                    {getText('close.name')}
+                {else}
+                    {getText('cancel.name')}
+                {/if}
+            </span>
+        </button>
+    {/if}
+{/template}
+
+/**
+ * Header for quit-dialog
+ * @param dialogType 'exit' , 'publish' , 'diff'
+ */
+{template .quitDialogHeader}
+    {switch $dialogType}
+        {case 'exit'}
+            <h2 class="aui-dialog2-header-main">{getText('editor.quit-dialog.title.exit')}</h2>
+        {case 'publish'}
+            <h2 class="aui-dialog2-header-main">{getText('editor.quit-dialog.title.publish')}</h2>
+        {case 'diff'}
+            <h2 class="aui-dialog2-header-main">{getText('editor.quit-dialog.title.diff')}</h2>
+    {/switch}
+    <a class="aui-dialog2-header-close">
+        <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">{getText('close.name')}</span>
+    </a>
+{/template}
+
+/**
+ * Content for quit-dialog
+ * @param dialogType 'exit' , 'publish' , 'diff'
+ * @param contributors list of contributor
+ */
+{template .quitDialogContent}
+    {switch $dialogType}
+        {case 'exit'}
+            {if length($contributors) == 0}
+                {getText('editor.quit-dialog.cancel.changes.by.one')|noAutoescape}
+            {else}
+                {getText('editor.quit-dialog.cancel.changes.by.many')|noAutoescape}
+                {call .contributorList}
+                    {param contributors: $contributors /}
+                {/call}
+            {/if}
+        {case 'publish'}
+            {getText('editor.quit-dialog.publish.changes')|noAutoescape}
+            {call .contributorList}
+                {param contributors: $contributors /}
+            {/call}
+        {case 'diff'}
+            <div>
+                <div class="legend">
+                    <span class="legend-title">{getText('heading.key')}: </span>
+                    <span class="diff-html-added">{getText('these.lines.were.added')}</span>
+                    <span class="diff-html-removed">{getText('these.lines.were.removed')}</span>
+                    <span class="diff-html-changed">{getText('this.content.was.modified')}</span>
+                </div>
+                <hr/>
+                <div class="wiki-content"></div>
+            </div>
+    {/switch}
+{/template}
+
+/**
+ * Hidden input to be appended to a <form>
+ */
+{template .hiddenInputCancel}
+    <input type="hidden" name="cancel" value="cancel">
+{/template}
+
+/**
+ * List of contributors
+ * @param contributors list of contributor
+ */
+{template .contributorList}
+    <ul class="contributor-list">
+        {foreach $contributor in $contributors}
+            <li>
+                <div class="contributor-avatar"><img src="{$contributor.avatarURL}"></div>
+                <div class="contributor-name"><span>{$contributor.fullname}</span></div>
+            </li>
+        {/foreach}
+    </ul>
+{/template}

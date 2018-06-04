@@ -1,0 +1,1 @@
+AJS.$(document).bind("postPaste",function(b,a,c){AJS.$(c.node).find('span[class|="code"]').contents().unwrap();AJS.$(c.node).find('pre[class|="code"]').each(function(d,f){f.className=f.className.replace(/\bcode-.[^\s]*\b/gi,"")})});

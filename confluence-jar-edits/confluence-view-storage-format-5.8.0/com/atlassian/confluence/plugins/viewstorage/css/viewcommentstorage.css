@@ -1,0 +1,21 @@
+.comment-actions .action-view-comment-storage {
+    padding:0;
+}
+
+.comment-actions .action-view-comment-storage a:hover {
+    visibility: visible; /* for IE */
+}
+.comment-actions .action-view-comment-storage a {
+    outline: none;
+}
+
+.comment-actions .action-view-comment-storage a,
+.comment-actions .action-view-comment-storage a span /* span for IE */ {
+    background: url(../../../images/icons/document_zoom_in_16.png) no-repeat 50% 50%;
+    width: 16px;
+    height: 16px;
+    display: block;
+    text-indent: -9999px;
+    cursor: pointer;
+    margin-top: 1px;
+}

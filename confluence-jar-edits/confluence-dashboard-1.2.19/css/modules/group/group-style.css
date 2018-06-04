@@ -1,0 +1,15 @@
+.group-wrapper {
+  padding: 0 0 20px 0; }
+  .group-wrapper .group-container {
+    padding-bottom: 20px; }
+    .group-wrapper .group-container:last-child {
+      padding-bottom: 0;
+      border-bottom: solid 1px #ccc; }
+  .group-wrapper ul, .group-wrapper li {
+    margin: 0;
+    padding: 0; }
+  .group-wrapper .sticky-header {
+    padding-top: 14px;
+    margin: 0; }
+    .group-wrapper .sticky-header.stick, .group-wrapper .sticky-header.stuck {
+      border-bottom: 1px solid #ccc; }

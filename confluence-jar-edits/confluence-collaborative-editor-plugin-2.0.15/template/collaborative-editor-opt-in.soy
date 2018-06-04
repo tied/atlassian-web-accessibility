@@ -1,0 +1,129 @@
+{namespace Confluence.Templates.CollaborativeEditor.Admin.OptIn}
+
+/**
+ * Template for the opt in experience.
+ * @param collabEditingEnabled
+ * @param optInEnabled
+ * @param synchronyExplicitlyDisabled
+ * @param imgUrlPrefix
+ */
+{template .page}
+{webResourceManager_requireResourcesForContext('collab.opt-in')}
+<html>
+     <head>
+        <title>
+            <div class="title-container">
+                <div class="title-text">{getText('collab.opt-in.title')}</div>
+            </div>
+        </title>
+     </head>
+     <body>
+        <div class="opt-in">
+            <div class="aui-group">
+                <p>{getText('collab.opt-in.preamble')}</p>
+                <p>{getText('collab.opt-in.preamble2')|noAutoescape}</p>
+            </div>
+            <div class="aui-group">
+                <p class="diagram-container"><img src="{$imgUrlPrefix}/diagram-of-feature.png" alt="{getText('collab.opt-in.diagram-img.alt')}"></p>
+            </div>
+            <div class="aui-group">
+                <h2>{getText('collab.opt-in.whats-new.title')}</h2>
+            </div>
+            <div class="aui-group">
+                {call .section}
+                    {param imgSize: 'big' /}
+                    {param imgClass: 'new-collaboration' /}
+                    {param title: getText('collab.opt-in.true-collab.title') /}
+                    {param description:  getText('collab.opt-in.true-collab.desc') /}
+                {/call}
+                {call .section}
+                    {param imgSize: 'big' /}
+                    {param imgClass: 'new-no-merge-conflicts' /}
+                    {param title: getText('collab.opt-in.no-conflicts.title') /}
+                    {param description: getText('collab.opt-in.no-conflicts.desc') /}
+                {/call}
+                {call .section}
+                    {param imgSize: 'big' /}
+                    {param imgClass: 'new-autosave' /}
+                    {param title: getText('collab.opt-in.no-save.title') /}
+                    {param description: getText('collab.opt-in.no-save.desc')  /}
+                {/call}
+            </div>
+            <div class="aui-group">
+                <h2>{getText('collab.opt-in.things-you-should-know.title')}</h2>
+            </div>
+            <div class="aui-group">
+                {call .section}
+                    {param imgSize: 'small' /}
+                    {param imgClass: 'know-no-disabling' /}
+                    {param title: getText('collab.opt-in.for-keeps.title') /}
+                    {param description: getText('collab.opt-in.for-keeps.desc') /}
+                {/call}
+                {call .section}
+                    {param imgSize: 'small' /}
+                    {param imgClass: 'know-limited-auditing' /}
+                    {param title: getText('collab.opt-in.changes-to-audit.title') /}
+                    {param description: getText('collab.opt-in.changes-to-audit.desc') /}
+                {/call}
+                {call .section}
+                    {param imgSize: 'small' /}
+                    {param imgClass: 'know-draft-versioning' /}
+                    {param title: getText('collab.opt-in.no-versioning.title') /}
+                    {param description: getText('collab.opt-in.no-versioning.desc') /}
+                {/call}
+            </div>
+            <div class="aui-group">
+                <h2>{getText('collab.opt-in.changes-to-drafts.title')}</h2>
+            </div>
+            <div class="aui-group">
+                <img class="drafts-view" src="{$imgUrlPrefix}/drafts-view.png" alt="{getText('collab.opt-in.draft-img.alt')}">
+                <p>{getText('collab.opt-in.changes-to-drafts.desc1')}</p>
+                <p>{getText('collab.opt-in.changes-to-drafts.desc2')|noAutoescape}</p>
+                <p>{getText('collab.opt-in.changes-to-drafts.desc3')}</p>
+            </div>
+            <div class="button-container">
+                {if not $optInEnabled}
+                    <div class="aui-message aui-message-info">
+                        <p class="title">
+                            <strong>{getText('collab.opt-in.disabled.title')}</strong>
+                        </p>
+                        <p>{getText('collab.opt-in.disabled')}</p>
+                    </div>
+                {elseif $synchronyExplicitlyDisabled}
+                    <div class="aui-message aui-message-warning">
+                        <p class="title">
+                            <strong>{getText('collab.synchrony.disabled.title')}</strong>
+                        </p>
+                        <p>{getText('collab.synchrony.disabled')}</p>
+                    </div>
+                {elseif $collabEditingEnabled}
+                    <span class="collab-editing-active">
+                        <span class="aui-icon aui-icon-small aui-iconfont-approve"></span><p>{getText('collab.opt-in.active')}</p>
+                    </span>
+                    <p class="collab-editing-feedback">{getText('collab.opt-in.feedback.desc', 'href="#" id="collabFeedbackTrigger"')|noAutoescape}</p>
+                {else}
+                    <button id="enable-collab" class="aui-button aui-button-primary">{getText('collab.opt-in.button.label')}</button>
+                {/if}
+            </div>
+        </div>
+
+        <form id="opt-in-form" class="hidden" action="{contextPath()}/admin/confluence-collaborative-editor-plugin/dooptin.action">
+            <input type="hidden" name="atl_token" value="">
+        </form>
+     </body>
+<html>
+{/template}
+
+/**
+ * @param imgSize (big|small)
+ * @param imgClass
+ * @param title
+ * @param description
+ */
+{template .section}
+<div class="aui-item details">
+    <div class="opt-in-img-container {$imgSize} {$imgClass}"></div>
+    <h4>{$title}</h4>
+    <p>{$description}</p>
+</div>
+{/template}

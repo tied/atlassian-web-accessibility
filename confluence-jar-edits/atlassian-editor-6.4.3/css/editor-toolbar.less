@@ -1,0 +1,136 @@
+/*
+    Mixin that mimics the subtle-button hover effect for regular buttons
+ */
+.hover-effect () {
+    background: linear-gradient(to bottom, #fff 0%, #f5f5f5 100%);
+    border-color: #999;
+}
+
+/*
+    Mixin that mimics the subtle button appearance (and adds the hover effect) for regular buttons
+ */
+.pseudo-subtle-button () {
+    background: 0 0;
+    border-color: transparent;
+    border-left-width: 1px;
+    border-radius: 3px;
+    color: #707070;
+    margin-right: 1px;
+
+    &:hover {
+        // AUI buttons in the same group have a left margin applied on hover so that the button doesn't
+        // change its position when a border is rendered - now that we're faking 'subtle' button
+        // styling we want to prevent this behaviour and override it with a margin of 0
+        margin-left: 0;
+        &:not(.disabled) {
+            .hover-effect();
+        }
+    }
+}
+
+/*
+    Make toolbar buttons 'subtle' - we use an ID to be more specific than AUI's rules for 'normal' buttons.
+ */
+#rte-toolbar {
+    li.toolbar-item.aui-button,
+    .toolbar-trigger.aui-button,
+    .toolbar-contextual > .aui-buttons > .aui-button:not(.aui-dd-trigger),
+    .toolbar-splitbutton > .aui-dd-parent > .toolbar-trigger,
+    #rte-button-cancel.shared-drafts,
+    .aui-buttons .aui-dd-parent {
+        .pseudo-subtle-button();
+
+        &.active,
+        &.active .aui-button {
+            border-color: #ccc;
+        }
+    }
+}
+/*
+    The formatting toolbar needs special overrides because its markup differs from the other dropdowns
+    in the toolbar, and its appearance should match the ADG guidelines for texts (rather than icons).
+ */
+#rte-toolbar #format-dropdown {
+    #format-dropdown-display {
+        color: #333;
+    }
+
+    &.active .aui-button {
+        border-color: #ccc;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .contenteditor #draft-status {
+        display: none !important;
+    }
+}
+
+#toolbar { // This is a list of specific overrides we used for compact styles that were never defined outside of AUI.
+    li.toolbar-item,
+    #rte-button-color,
+    #rte-button-more,
+    #rte-button-link,
+    #rte-button-insert-table,
+    #rte-button-insert,
+    #rte-button-pagelayout,
+    #rte-button-pagelayout-2,
+    #rte-button-insert-template {
+        padding: 0 6px;
+    }
+
+    #rte-button-more .icon-dropdown {
+        margin-left: 3px;
+    }
+
+    #insert-menu-options {
+        left: -6px;
+    }
+
+
+    #rte-button-link .trigger-text,
+    #confluence-insert-files > .trigger-text,
+    #insert-table-dropdown .dropdown-text,
+    #insert-menu .dropdown-text,
+    #rte-button-insert-template .dropdown-text {
+        display: none;
+    }
+
+    #rte-button-link .icon-dropdown,
+    #insert-table-dropdown .icon-dropdown,
+    #insert-menu .icon-dropdown,
+    #rte-button-pagelayout .icon-dropdown,
+    #rte-button-insert-template .icon-dropdown {
+        width: 22px;
+        margin-left: 0;
+        padding-right: 0;
+    }
+
+    #rte-button-pagelayout .icon-layout {
+        margin-top: 2px;
+    }
+
+    /* 'insert' section of the toolbar should group its buttons closer together,
+        two IDs required so that styles are preserved on hover */
+    #rte-button-insert,
+    #rte-button-link {
+        margin: 0 -6px;
+    }
+
+    li#insert-table-dropdown,
+    #pagelayout-menu,
+    #page-layout-2,
+    #table-highlight-colour,
+    #format-dropdown,
+        /* template editor */
+    #template-menu {
+        padding: 0;
+    }
+
+    #rte-toolbar-row-default .aui-button,
+    #rte-button-cancel.shared-drafts {
+        /* button.aui-button height is 28px with default styles */
+        height: 26px;
+        padding: 0 6px;
+    }
+}
