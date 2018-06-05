@@ -141,8 +141,8 @@ body.spaces .aui-tabs > .tabs-menu .menu-item a:visited {
 }
 
 #set ($buttonTopBGColour = $colorScheme.headerButtonBaseBackgroundColor)
-## buttonHoverTopBGColour should be a 20% opaicty black overlay on top of button, 5% darken is an approximation
-#set ($buttonHoverTopBGColour = $colourUtils.darken($buttonTopBGColour, 5))
+## buttonHoverTopBGColour should be a 20% opaicty black overlay on top of button, 10% darken is an approximation
+#set ($buttonHoverTopBGColour = $colorScheme.topBarMenuSelectedTextColor)
 
 #header .aui-header .aui-nav .aui-button-primary {
     background-color: $buttonTopBGColour;
