@@ -56,8 +56,7 @@
 #elseif($url.contains("/spacedirectory/view.action"))
     <script>
     $(document).ready(function() {
-        $('#space-search-result').attr('tabindex', '-1');
-        $('#main, #space-directory').attr('tabindex', '-1');
+        $('#main, #space-directory, #space-search-result').attr('tabindex', '-1');
     });
     </script>
     <li><a href="#title-heading">$action.getText("assistive.skiplink.to.content")</a></li>
