@@ -56,7 +56,7 @@
 #elseif($url.contains("/spacedirectory/view.action"))
     <script>
     $(document).ready(function() {
-        $('#space-search-result').attr('id', 'main-content');
+        $('#space-search-result').attr('tabindex', '-1');
         $('#main, #space-directory').attr('tabindex', '-1');
     });
     </script>
@@ -197,7 +197,7 @@
 
                 $!sitemeshPage.getProperty("page.page-metadata-banner")
 
-                <h1 id="title-text" class="with-breadcrumbs">
+                <h1 id="title-text" class="with-breadcrumbs" tabindex="-1">
                 #if ($sitemeshPage.getProperty("page.title-text-span"))
                     $sitemeshPage.getProperty("page.title-text-span")
                 #else
