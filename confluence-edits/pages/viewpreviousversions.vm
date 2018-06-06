@@ -82,14 +82,15 @@
             </style>
 
             <table id="page-history-container" width="100%" cellspacing="0" class="aui tableview">
+                <caption class="assistive">$action.getText('content.history.label')</caption>
                 <thead>
                     <tr>
-                        <th><span class="assistive">Compare</span></th>
-                        <th>$action.getText("heading.version.number")</th>
-                        <th>$action.getText("heading.version.date")</th>
-                        <th>$action.getText("heading.contributors")</th>
-                        <th>$action.getText("heading.comment")</th>
-                        <th>$action.getText("heading.actions")</th>
+                        <th scope="col"><span class="assistive">Compare</span></th>
+                        <th scope="col">$action.getText("heading.version.number")</th>
+                        <th scope="col">$action.getText("heading.version.date")</th>
+                        <th scope="col">$action.getText("heading.contributors")</th>
+                        <th scope="col">$action.getText("heading.comment")</th>
+                        <th scope="col">$action.getText("heading.actions")</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -163,4 +164,3 @@
         <p><a href="${req.contextPath}/pages/viewinfo.action?pageId=${page.id}" class="aui-button aui-button-link">$action.getText('return.to.page.info')</a></p>
     #end
 </html>
-
