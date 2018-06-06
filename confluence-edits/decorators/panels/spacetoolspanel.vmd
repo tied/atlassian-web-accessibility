@@ -16,7 +16,7 @@ For each tab, we use the first web-item of the section as a link.
     #set ($spaceToolsTabs = $spaceToolsTabsHelper.getNavigation($action, $selectedSpaceToolsWebItem))
     #set ($canAdministerSpace = $permissionHelper.canAdminister($action.authenticatedUser, $action.space))
 
-    <nav class="aui-navgroup aui-navgroup-horizontal spacetools-nav">
+    <nav class="aui-navgroup aui-navgroup-horizontal spacetools-nav" aria-label="Space Tools Navigation">
         <div class="aui-navgroup-inner">
             <div class="aui-navgroup-primary">
                 <ul class="aui-nav">
