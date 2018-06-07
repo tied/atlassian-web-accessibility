@@ -160,6 +160,7 @@
             #form_xsrfToken()
             <input id="remove-historical-version-pageid" type="hidden" name="pageId" value="" />
             <input id="remove-historical-version-content-type" type="hidden" name="contentType" value="$action.page.type" />
+            <button aria-hidden="true" class="assitive" type="submit" aria-label="Delete Historical Version"></button>
         </form>
         <p><a href="${req.contextPath}/pages/viewinfo.action?pageId=${page.id}" class="aui-button aui-button-link">$action.getText('return.to.page.info')</a></p>
     #end
