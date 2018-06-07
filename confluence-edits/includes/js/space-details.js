@@ -26,6 +26,7 @@ define('confluence/space-details', [
             }
         },
         initialiser: function ($) {
+            $('nav.spacetools-nav').attr('aria-label','Space Tools Navigation');
             $('.spacetools-nav-secondary').on('click', '.menu-item a', function(){
                 var $menuItem = $(this).parent();
                 var webItemKey = $menuItem.attr('data-web-item-key');
