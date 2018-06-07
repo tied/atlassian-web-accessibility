@@ -23,10 +23,10 @@
         </td>
         <td class="entity-attribute space-labels">
         </td>
+        {if $isLoggedIn}
         <td class="entity-attribute entity-icon entity-info-icon right" data-entity-id="{$spaceKey}" data-entity-type="space">
             <a class="aui-icon aui-icon-small aui-iconfont-info" href="{contextPath()}/spaces/viewspacesummary.action?key={$spaceKey}">{getText('space.details')}</a>
         </td>
-        {if $isLoggedIn}
             <td class="entity-attribute entity-icon entity-favourites space-favourites" data-entity-id="{$spaceKey}" data-entity-type="space" data-entity-scope="space-directory">
                 <a class="icon icon-remove-fav hidden" title="{getText('space.stop.favourite')}" href="#">{getText('favourite.remove.space.short', $spaceName)}</a>
                 <a class="icon icon-add-fav hidden" title="{getText('space.start.favourite')}" href="#">{getText('favourite.add.space.short', $spaceName)}</a>
