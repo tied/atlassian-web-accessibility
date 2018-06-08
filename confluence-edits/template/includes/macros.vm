@@ -1075,6 +1075,7 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 
     <form id="${prefix}quick-search" class="quick-search" method="get" action="$req.contextPath/dosearchsite.action">
         <fieldset>
+            <legend class="assistive">$action.getText("quick.search.${prefix}legend")</legend>
             <label class="assistive" for="${prefix}quick-search-query">$action.getText("quick.search.${prefix}legend")</label>
             <input id="${prefix}quick-search-query" class="quick-search-query" role="search" type="search"#if($accessKey) accessKey="$accessKey"#end autocomplete="off" name="queryString" size="25" title="$action.getText("quick.search.${prefix}legend")" />
             <input id="${prefix}quick-search-submit" class="quick-search-submit" type="submit" value="$action.getText("quick.search.${prefix}submit")" />
@@ -1894,4 +1895,3 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 #macro (httpStatsElapse $tag)
     $generalUtil.elapse($tag)
 #end
-
