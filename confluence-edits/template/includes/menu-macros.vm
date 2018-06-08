@@ -238,7 +238,7 @@
     #end
 
     <div class="aui-item aui-item-navgroup">
-        <nav class="aui-navgroup aui-navgroup-vertical">
+        <nav class="aui-navgroup aui-navgroup-vertical" aria-label="Side Navigation">
             <div class="aui-navgroup-inner">
 
             #foreach ($webSectionKey in $webSectionKeys)
@@ -483,6 +483,7 @@
 
 <form id="quick-search" class="aui-quicksearch dont-default-focus header-quicksearch" action="$req.contextPath/dosearchsite.action" method="get">
     <fieldset>
+        <legend class="assistive">$action.getText("quick.search.legend")</legend>
         #if($isSpaceSearch && $spaceKey)
             <input type='hidden' name='where' value='$generalUtil.htmlEncode($spaceKey)'/>
         #end
