@@ -14,10 +14,11 @@
                 #end
                 #pagination($action.paginationSupport $contextPath)
                 <table width="100%" cellspacing="1" class="aui tableview">
+                    <caption class="assistive">$action.getText("action.undefined.pages")</caption>
                     <thead>
                     <tr>
-                        <th>$action.getText("heading.title.undef")</th>
-                        <th>$action.getText("heading.referrer.title")</th>
+                        <th scope="col">$action.getText("heading.title.undef")</th>
+                        <th scope="col">$action.getText("heading.referrer.title")</th>
                     </tr>
                     </thead>
                     #if( !$action.undefinedPages || $action.undefinedPages.size()==0 )
