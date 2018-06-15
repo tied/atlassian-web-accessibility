@@ -43,7 +43,7 @@
             #if ($old == "true")
                 <td class="attachment-history">
                     #if ($allVersions.size() > 0)
-                        <a href="#" role="button" aria-expanded="false" class="icon icon-section-closed" title="$action.getText('show.attachment.history')" aria-label="$action.getText('show.attachment.history')"></a>
+                        <a href="#" role="button" aria-expanded="false" class="icon icon-section-closed" title="$action.getText('show.attachment.history')" aria-label="$action.getText('show.attachment.history')"><span class="assistive">$action.getText('show.attachment.history')</span></a>
                     #end
                 </td>
             #end
