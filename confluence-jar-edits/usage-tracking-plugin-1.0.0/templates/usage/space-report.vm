@@ -51,10 +51,11 @@
 			#set ($commonParams = "max=$topItems|style=list|display=icon,count|timespan=$usageTimespan")
 
 			<table style="margin-top: 1em">
+				<caption class="assistive">Popular Activity</caption>
 				<tr>
-					<th>$action.getText("usage.popular.content") ($action.getText("usage.views.name"))</th>
-					<th>$action.getText("usage.active.content") ($action.getText("usage.edits.name"))</th>
-					<th>$action.getText("usage.active.users") ($action.getText("usage.edits.name"))</th>
+					<th scope="col">$action.getText("usage.popular.content") ($action.getText("usage.views.name"))</th>
+					<th scope="col">$action.getText("usage.active.content") ($action.getText("usage.edits.name"))</th>
+					<th scope="col">$action.getText("usage.active.users") ($action.getText("usage.edits.name"))</th>
 				</tr>
 				<tr style="vertical-align: top">
 					<td width="34%">
