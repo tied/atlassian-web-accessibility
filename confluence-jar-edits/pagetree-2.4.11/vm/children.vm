@@ -16,7 +16,7 @@
                 #set ($iconClass = "icon-section-closed")
                 #set ($ariaExpanded = "false")
             #end
-            <a id="plusminus${p.id}-${treeId}" class="plugin_pagetree_childtoggle icon $iconClass" href="#if($idsToExpandAsList.contains($p.id))$action.generateCollapseNodeLinkForNonJSUsers($p)#else $!action.generateExpandNodeLinkForNonJSUsers($p)#end" aria-expanded="$ariaExpanded" role="button" aria-label="Expand Page Tree"></a>
+            <a id="plusminus${p.id}-${treeId}" class="plugin_pagetree_childtoggle icon $iconClass" href="#if($idsToExpandAsList.contains($p.id))$action.generateCollapseNodeLinkForNonJSUsers($p)#else $!action.generateExpandNodeLinkForNonJSUsers($p)#end" aria-expanded="$ariaExpanded" role="button" aria-label="Toggle Page Tree"><span class="assistive">Toggle Page Tree</span></a>
         #else
             <span class="no-children icon"></span>
         #end
