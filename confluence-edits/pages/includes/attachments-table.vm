@@ -38,7 +38,7 @@
         #end
 
         #set ($allVersions = $attachmentHelper.getAllVersions($attachment))
-        
+
         <tr id="attachment-$currentAttachmentId" data-attachment-filename="$generalUtil.htmlEncode($attachment.fileName)" #if ($action.highlight.contains($attachment.fileName)) class="attachment-highlight"#end>
             #if ($old == "true")
                 <td class="attachment-history">
@@ -128,3 +128,4 @@
         #end
     #end
 </table>
+

@@ -207,7 +207,7 @@
         <a id="${webMenu.id}-link" class="$!menuClass aui-button aui-button-subtle ajs-menu-title aui-dropdown2-trigger" href="#" aria-haspopup="true" aria-owns="$webMenu.id" data-container="#navigation" aria-label="$menuId">
             <span>
                 #if ($menuIconClass)
-                    <span class="aui-icon aui-icon-small aui-iconfont-$menuIconClass"></span>
+                    <span class="aui-icon aui-icon-small aui-iconfont-$menuIconClass"><span class="assistive">$menuId</span></span>
                 #end
                 $!menuTitle
             </span>
@@ -331,7 +331,7 @@
         #end
         <span>
             #if ($iconClass != "")
-                <span class="aui-icon aui-icon-small aui-iconfont-$iconClass"></span>
+                <span class="aui-icon aui-icon-small aui-iconfont-$iconClass"><span class="assistive">$itemTooltip</span></span>
             #end
             $itemLabel
         </span>## span for IE
@@ -503,3 +503,4 @@
     </div>
 </form>
 #end
+
