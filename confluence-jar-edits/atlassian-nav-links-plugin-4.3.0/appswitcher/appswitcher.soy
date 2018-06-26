@@ -1,0 +1,186 @@
+{namespace navlinks.templates.appswitcher}
+
+/**
+ * Render an applications section
+ * @param list
+ * @param title
+ */
+{template .linkSection}
+    {if length($list) > 0}
+        <div class="aui-nav-heading sidebar-section-header">{$title}</div>
+        <ul class="aui-nav nav-links">
+            {foreach $link in $list}
+                {call .applicationsItem data="$link" /}
+            {/foreach}
+        </ul>
+    {/if}
+{/template}
+
+/**
+ * @param label
+ * @param link
+ * @param? self
+ */
+{template .applicationsItem private="true"}
+    <li class="nav-link">
+        <a href="{$link}" {if $self}class="checked"{/if} title="{$link}">
+            <span class="nav-link-label">{$label}</span>
+        </a>
+    </li>
+{/template}
+
+/**
+ * @param label
+ * @param link
+ * @param? self
+ * @param? description
+ * @param? showDescription
+ */
+{template .shortcutsItem private="true"}
+    <li class="nav-link">
+        <a href="{$link}" {if $self}class="checked"{/if} title="{$link}">
+            <span class="nav-link-label">{$label}</span>
+            {if $showDescription and $description}
+                <span class="nav-link-description">{$description}</span>
+            {/if}
+        </a>
+    </li>
+{/template}
+
+/**
+ * App switcher error content
+ */
+{template .error}
+    <div class="app-switcher-error">{getText('appswitcher.error')|noAutoescape}</div>
+{/template}
+
+/**
+ * App switcher loading content
+ */
+{template .sidebarContents}
+<div class="aui-page-panel-nav">
+    <nav class="aui-navgroup aui-navgroup-vertical">
+        <div class="app-switcher-section app-switcher-applications">
+            <div class="aui-nav-heading">{getText('appswitcher.applicationSectionTitle')}</div>
+            <div class="app-switcher-loading">{getText('appswitcher.loading')|noAutoescape}</div>
+        </div>
+        <div class="app-switcher-section app-switcher-shortcuts">
+            <div class="aui-nav-heading">{getText('appswitcher.projectShortcutSectionTitle')}</div>
+            <div class="app-switcher-loading">{getText('appswitcher.loading')|noAutoescape}</div>
+        </div>
+    </nav>
+</div>
+{/template}
+
+/**
+ * App switcher trigger
+ */
+{template .trigger private="true"}
+    <span class="aui-icon aui-icon-small aui-iconfont-appswitcher">{getText('appswitcher.trigger')}</span>
+{/template}
+
+/**
+ * @param avatarUrl
+ * @param name
+ */
+{template .projectHeaderSection}
+    <div class="app-switcher-title">
+        {call aui.avatar.avatar}
+            {param size: 'large' /}
+            {param avatarImageUrl: $avatarUrl /}
+            {param isProject: true /}
+            {param title: $name /}
+        {/call}
+        <div class="sidebar-project-name">{$name}</div>
+    </div>
+{/template}
+
+/**
+ * @param id
+ * @param links
+ */
+{template .cogDropdown private="true"}
+    {let $dropdownList}
+        {call .dropdownList}
+            {param list: $links/}
+        {/call}
+    {/let}
+
+    {call aui.dropdown2.dropdown2}
+        {param menu: [
+            'id': $id,
+            'content': $dropdownList,
+            'extraClasses': 'aui-style-default sidebar-customize-section'
+        ] /}
+        {param trigger: [
+            'showIcon': false,
+            'content': '<span class="aui-icon aui-icon-small aui-iconfont-configure"></span>',
+            'container': '#app-switcher'
+        ] /}
+    {/call}
+{/template}
+
+/**
+ * @param list
+ */
+{template .dropdownList}
+    <ul class="sidebar-admin-links">
+    {foreach $link in $list}
+        <li class="nav-link">
+            <a href="{$link.href}" title="{$link.title}">
+                <span class="nav-link-label">{$link.label}</span>
+            </a>
+        </li>
+    {/foreach}
+    </ul>
+
+{/template}
+/**
+ * App Switcher Icon & Sidebar
+ */
+{template .switcher}
+    {if showAppSwitcher()}
+        {if isSideBarEnabled()}
+            {let $sidebarContents}
+                {call .sidebarContents/}
+            {/let}
+            {let $triggerContent}
+                {call .trigger /}
+            {/let}
+
+            {call .sidebar}
+                {param sidebar: [
+                    'id': 'app-switcher',
+                    'content': $sidebarContents
+                ] /}
+                {param trigger: [
+                    'showIcon': false,
+                    'content': $triggerContent
+                ] /}
+            {/call}
+        {else}
+            {call navlinks.templates.appswitcher_old.switcher/}
+        {/if}
+    {/if}
+{/template}
+
+/**
+ * AppNav Sidebar
+ * @param sidebar
+ * @param trigger
+ */
+{template .sidebar}
+    <a href="{$sidebar.id}"
+        class="sidebar-trigger app-switcher-trigger"
+        aria-owns="{$sidebar.id}"
+        aria-haspopup="true"
+        data-is-user-admin="{isUserAdmin()}"
+        data-is-sidebar="true"
+    >
+        {$trigger.content|noAutoescape}
+    </a>
+    <div id={$sidebar.id} class="app-switcher-sidebar aui-style-default sidebar-offscreen">
+        {$sidebar.content|noAutoescape}
+    </div>
+{/template}
+

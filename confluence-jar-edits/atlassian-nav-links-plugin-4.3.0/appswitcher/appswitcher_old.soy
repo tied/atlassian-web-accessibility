@@ -1,0 +1,173 @@
+{namespace navlinks.templates.appswitcher_old}
+
+/**
+ * Render the applications & custom apps menu
+ * @param apps
+ * @param? custom
+ * @param? showDescription
+ * @param? showAdminLink
+ * @param? adminLink
+ */
+{template .applications}
+    {call .applicationsSection}
+        {param list: $apps /}
+        {param listClass: 'nav-links' /}
+        {param showDescription: $showDescription /}
+    {/call}
+    {if $custom}
+        {call .applicationsSection}
+            {param list: $custom /}
+            {param showDescription: $showDescription /}
+        {/call}
+    {/if}
+    {if $showAdminLink}
+        {call .adminSection}
+            {param adminLink: $adminLink /}
+        {/call}
+    {/if}
+{/template}
+
+/**
+ * Render an applications section
+ * @param list
+ * @param? listClass
+ * @param? showDescription
+ */
+{template .applicationsSection private="true"}
+    {if length($list) > 0}
+        {call aui.dropdown2.section}
+            {param content}
+                <ul{if $listClass} class="{$listClass}"{/if}>
+                    {foreach $link in $list}
+                        {call .applicationsItem data="$link"}
+                            {param showDescription: $showDescription /}
+                        {/call}
+                    {/foreach}
+                </ul>
+            {/param}
+        {/call}
+    {/if}
+{/template}
+
+/**
+ * @param label
+ * @param link
+ * @param? self
+ * @param? description
+ * @param? showDescription
+ */
+{template .applicationsItem private="true"}
+    <li class="nav-link{if $self} nav-link-local{/if}">
+        <a href="{$link}" class="aui-dropdown2-radio {if $self}aui-dropdown2-checked{/if}" title="{$link}">
+            <span class="nav-link-label">{$label}</span>
+            {if $showDescription and $description}
+                <span class="nav-link-description">{$description}</span>
+            {/if}
+        </a>
+    </li>
+{/template}
+
+/**
+ * Renders the section with the edit link for admins.
+ *
+ * @param adminLink
+*/
+{template .adminSection private="true"}
+    {call aui.dropdown2.section}
+        {param content}
+            <ul class="nav-links">
+                <li>
+                    <a class="nav-link-edit-wrapper" href="{$adminLink}">
+                        <span class="nav-link-edit">{getText('appswitcher.edit')|noAutoescape}</span>
+                    </a>
+                </li>
+            </ul>
+        {/param}
+    {/call}
+{/template}
+
+/**
+ * App switcher error content
+ */
+{template .error}
+    <div class="app-switcher-error">{getText('appswitcher.error')|noAutoescape}</div>
+{/template}
+
+/**
+ * App switcher loading content
+ */
+{template .loading}
+    <div class="app-switcher-loading">{getText('appswitcher.loading')|noAutoescape}</div>
+{/template}
+
+/**
+ * App switcher trigger
+ */
+{template .trigger private="true"}
+    <span class="aui-icon aui-icon-small aui-iconfont-appswitcher">{getText('appswitcher.trigger')}</span>
+{/template}
+
+/**
+ * App Switcher Icon & Dropdown
+ */
+{template .switcher}
+    {if showAppSwitcher()}
+        {let $loadingContent}
+            {call .loading /}
+        {/let}
+        {let $triggerContent}
+            {call .trigger /}
+        {/let}
+
+        {call aui.dropdown2.dropdown2}
+            {param menu: [
+                'id': 'app-switcher',
+                'content': $loadingContent,
+                'extraClasses': 'aui-style-default',
+                'extraAttributes': [
+                    'data-environment': environment(),
+                    'data-is-switcher': 'true'
+                ]
+            ] /}
+            {param trigger: [
+                'showIcon': false,
+                'content': $triggerContent,
+                'extraClasses': 'app-switcher-trigger',
+                'extraAttributes': [
+                    'href' : '#app-switcher'
+                ]
+            ] /}
+        {/call}
+    {/if}
+{/template}
+
+/**
+ * @param suggestionApp
+ * @param isBillingSystemEnabled
+ */
+{template .suggestionApp}
+    {let $href: ($isBillingSystemEnabled == true ? $suggestionApp.billingSystemDiscoveryUrl : $suggestionApp.discoveryUrl) /}
+    <li class="app-discovery-suggestion-app">
+        <a id="{$suggestionApp.appName}" href="{$href}" class="app-discovery-link aui-icon-container app-discovery-{$suggestionApp.appName}-product-icon"
+            title="{$href}" target="_blank"/>
+        <div class="app-discovery-small">{$suggestionApp.appDesc}</div>
+    </li>
+{/template}
+
+/**
+ * Suggestion apps
+ */
+{template .suggestionApps}
+    <ul class='nav-links suggestion-apps'>
+        <li>
+            <span class='app-discovery-suggest-title nav-link-label'>
+                <h6>{getText('appswitcher.suggestion.title')}</h6>
+            </span>
+        </li>
+    </ul>
+    <div class='buttons-container app-discovery-suggest-apps-buttons'>
+        <div class='buttons'>
+                <button class='aui-button aui-button-link app-discovery-cancel-button' name='cancel' accesskey='c' href='#'>{getText('appswitcher.suggestion.button.nothanks')}</button>
+        </div>
+    </div>
+{/template}

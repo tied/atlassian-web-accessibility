@@ -1,0 +1,22 @@
+{namespace navlinks.templates.adminshortcuts}
+
+/**
+ * Renders the specified administration links.
+ *
+ * @param links
+ */
+{template .section}
+    {call aui.dropdown2.section}
+        {param id: 'nl-remote-admin-section' /}
+        {param label: getText('adminshortcuts.label') /}
+        {param content}
+            <ul class="aui-list-truncate">
+                {foreach $link in $links}
+                    <li>
+                        <a href="{$link.link}">{$link.label}</a>
+                    </li>
+                {/foreach}
+            </ul>
+        {/param}
+    {/call}
+{/template}

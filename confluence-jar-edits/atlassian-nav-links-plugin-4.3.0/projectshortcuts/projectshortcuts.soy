@@ -1,0 +1,77 @@
+{namespace navlinks.templates.projectshortcuts}
+
+/**
+ * Shortcut Links Dialog Content
+ * @param localShortcuts array containing the local project shortcuts
+ * @param remoteShortcuts array containing the remote project shortcuts
+ */
+{template .dialogContent}
+    {if $localShortcuts and length($localShortcuts) > 0}
+        {call .dialogContentShortcuts}
+            {param shortcuts: $localShortcuts /}
+            {param listClass: 'projectshortcut-links' /}
+        {/call}
+    {/if}
+    {if $remoteShortcuts != null}
+        {if length($remoteShortcuts) > 0}
+            <h2 class="projectshortcuts-heading">Related Links</h2>
+            {call .dialogContentShortcuts data="$remoteShortcuts"}
+                {param shortcuts: $remoteShortcuts /}
+                {param listClass: 'projectshortcut-links' /}
+            {/call}
+        {/if}
+    {else}
+        {call .dialogLoading /}
+    {/if}
+{/template}
+
+/**
+ * Shortcut links dialog.  THis implementation includes a header and icon and should be
+ * removed once an implemenatation of the PDL dialog exists.
+ *
+ * @param title 
+ * @param logoUrl url for the logo img src
+ * @param contentHtml
+**/
+{template .headingWrapper}
+    <div class="project-dialog-header-wrapper">
+        <div class="project-header">
+            <img class="project-img" src="{$logoUrl}">
+            <h2 class="dialog-title">{$title}</h2>
+        </div>
+        <div class="project-content-wrapper">
+            {$contentHtml |noAutoescape}
+        </div>
+    </div>
+{/template}
+
+/**
+ * Project shortcuts in Dialog
+ * @param? shortcuts project description
+ * @param? listClass
+ */
+{template .dialogContentShortcuts private="true"}
+    <ul{if $listClass} class="{$listClass}"{/if}>
+        {foreach $shortcut in $shortcuts}
+            <li{if isLast($shortcut)} class="last"{/if}>{call .dialogContentShortcut data="$shortcut" /}</li>
+        {/foreach}
+    </ul>
+{/template}
+
+/**
+ * Individual Project shortcut in Dialog
+ * @param? tooltip shortcut description
+ * @param label shortcut label
+ * @param link shortcut link
+ */
+{template .dialogContentShortcut private="true"}
+    <a href="{$link}"{if $tooltip} title="{$tooltip}"{/if}>{$label}</a>
+{/template}
+
+/**
+ * Loading message for dialog
+ * @param? text
+ */
+{template .dialogLoading}
+    <div class="projectshortcuts-loading">{if hasData() and $text}{$text}{/if}</div>
+{/template}

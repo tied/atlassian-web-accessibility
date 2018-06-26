@@ -1,0 +1,18 @@
+#* @vtlvariable name="baseUrl" type="com.atlassian.plugins.navlink.util.url.BaseUrl" *#
+#* @vtlvariable name="selfUrl" type="java.lang.String" *#
+#* @vtlvariable name="buildDate" type="java.lang.String" *#
+#* @vtlvariable name="hostApplication" type="com.atlassian.plugins.navlink.producer.capabilities.ApplicationWithCapabilities" *#
+#* @vtlvariable name="json" type="com.atlassian.plugins.navlink.util.JsonStringEncoder" *#
+{
+"links": {
+"self": "$json.asHtml($baseUrl.resolve($selfUrl))"
+},
+"application": "$json.asHtml($hostApplication.type)",
+"buildDate": "$json.asHtml($buildDate)",
+"capabilities": {
+#set ($capabilities = $hostApplication.capabilities)
+#foreach ($capability in $capabilities.entrySet())
+"$json.asHtml($capability.key)": "$json.asHtml($baseUrl.resolve($capability.value))"#if ($velocityCount < $capabilities.size()), #end
+#end
+}
+}

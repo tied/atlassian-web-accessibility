@@ -1,0 +1,34 @@
+#* @vtlvariable name="jiraBaseUrl" type="java.lang.String" *#
+#* @vtlvariable name="baseUrl" type="com.atlassian.plugins.navlink.util.url.BaseUrl" *#
+#* @vtlvariable name="selfUrl" type="java.lang.String" *#
+#* @vtlvariable name="collectionUrl" type="java.lang.String" *#
+#* @vtlvariable name="languageTag" type="java.lang.String" *#
+#* @vtlvariable name="navigationLinks" type="java.util.Map<com.atlassian.plugins.navlink.producer.navigation.rest.MenuItemKey,java.util.Set<com.atlassian.plugins.navlink.producer.navigation.NavigationLink>>" *#
+#* @vtlvariable name="weight" type="java.lang.Integer" *#
+#* @vtlvariable name="stringEscapeUtils" type="org.apache.commons.lang.StringEscapeUtils" *#
+#* @vtlvariable name="json" type="com.atlassian.plugins.navlink.util.JsonStringEncoder" *#
+{
+"links":{
+"self":"$json.asHtml($baseUrl.resolve($selfUrl))",
+"collection":"$json.asHtml($baseUrl.resolve($collectionUrl))",
+"base":"$json.asHtml($baseUrl.resolve("/"))"
+}#if (!$navigationLinks.isEmpty()), #end
+#set ($menuItems = $navigationLinks.keySet())
+#foreach ($menuItem in $menuItems)
+"$json.asHtml($menuItem.get())":[
+    #set ($navigationLinksPerMenuKey = $navigationLinks.get($menuItem))
+    #foreach ($navigationLink in $navigationLinksPerMenuKey)
+        #set ($index = $velocityCount - 1)
+    {
+        #if ($navigationLink.getHref()) "href": "$json.asHtml($baseUrl.resolve($navigationLink.getHref()))", #end
+        #if ($navigationLink.getLabel()) "label": "$json.asHtml($navigationLink.getLabel())", #end
+        #if ($navigationLink.getIconUrl()) "icon": "$json.asHtml($baseUrl.resolve($navigationLink.getIconUrl()))", #end
+        #if ($navigationLink.getTooltip()) "tooltip": "$json.asHtml($navigationLink.getTooltip())", #end
+    "lang": "$json.asHtml($languageTag)",
+    "weight":$navigationLink.weight()
+    }#if ($velocityCount < $navigationLinksPerMenuKey.size()), #end
+    #end
+
+]#if ($velocityCount < $menuItems.size()), #end
+#end
+}

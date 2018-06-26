@@ -1,0 +1,27 @@
+{namespace com.atlassian.plugins.custom_apps.ui}
+/** Template for admin page
+ * @param title
+ * @param description
+ * @param loginRedirectUrl
+ */
+{template .customAppsAdminPage}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{$title}</title>
+  <meta name='decorator' content='atl.admin'/>
+  <meta name="admin.active.section" content="admin_system_menu/top_system_section/user_interface"/>
+  <meta name="admin.active.tab" content="custom-apps-admin-link"/>
+  <content tag="selectedWebItem">confluence-custom-apps-manage-menu</content>
+</head>
+<body>
+  <h2 class="custom-apps-title formtitle">{$title}</h2>
+  <input type="hidden" id="custom-apps-login-redirect-url" value="{$loginRedirectUrl}"/>
+  <div id="aui-message-bar"></div>
+  <p>{$description}</p>
+  <table id='custom-app-admin-content'>
+  </table>
+</body>
+</html>
+{/template}

@@ -1,0 +1,63 @@
+{namespace customapps.admin}
+/**
+ * @param allowedGroupsId
+ */
+{template .getAllowedGroupsEditView}
+<span id="allowedGroupsId{$allowedGroupsId}">
+    <input name="allowedGroups" type="hidden" style="width:200px"/>
+</span>
+{/template}
+
+/**
+ * @param? hideId
+ */
+{template .getHideEditViewCheckBox}
+<input type='checkbox' id="hideId{$hideId}"/>
+{/template}
+
+/**
+ *
+ */
+{template .getHideEditViewHidden}
+<input name='hide' type="hidden"/>
+{/template}
+
+/**
+ * @param value
+ */
+{template .getReadView}
+<span class="custom-apps-restfultable-readonly">{$value}</span>
+{/template}
+
+/**
+ * @param name
+ * @param value
+ */
+{template .getEditView}
+<input type='text' class="text" name="{$name}" value="{$value}"/>
+{/template}
+
+/**
+ * @param href
+ * @param linkText
+ */
+{template .getSourceReadViewManageLink}
+<a title="{$href}/plugins/servlet/customize-application-navigator" href='{$href}/plugins/servlet/customize-application-navigator'>{$linkText}</a>
+{/template}
+
+/**
+ * @param href
+ * @param linkText
+ */
+{template .getSourceReadViewLocationLink}
+<a title="{$href}" href='{$href}'>{$linkText}</a>
+{/template}
+
+
+/**
+ */
+{template .refreshButton}
+<a id="refresh-capabilities-link" href="#" title="{getText('custom-apps.manage.refresh.title')}">
+    <span id="refresh-capabilities-icon" class="aui-icon aui-icon-small aui-iconfont-build">{getText('custom-apps.manage.refresh')}</span>
+</a>
+{/template}

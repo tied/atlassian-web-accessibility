@@ -1,0 +1,24 @@
+{
+  "appswitcher.trigger.click": [],
+  "appswitcher.dropdown.show": [],
+  "appswitcher.dropdown.display.error": [],
+  "appswitcher.app.link.click": [
+    {
+      "product": [
+        "custom",
+        "bitbucket-cloud",
+        "confluence",
+        "bamboo",
+        "jira"
+      ]
+    }
+  ],
+  "appswitcher.configure.link.click": [],
+  "appswitcher.discovery.nothanks.button.click": [],
+  "appswitcher.discovery.user.select.jira": [],
+  "appswitcher.discovery.user.select.confluence": [],
+  "appswitcher.discovery.user.select.bamboo": [],
+  "appswitcher.discovery.siteadmin.select.inproduct.jira": [],
+  "appswitcher.discovery.siteadmin.select.inproduct.confluence": [],
+  "appswitcher.discovery.siteadmin.select.inproduct.bamboo": []
+}

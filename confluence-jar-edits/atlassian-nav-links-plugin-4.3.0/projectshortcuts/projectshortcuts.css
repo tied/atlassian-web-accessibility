@@ -1,0 +1,142 @@
+.dialog-panel-body .projectshortcuts-heading {
+    color: #707070;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 20px 0 0;
+    text-transform: uppercase;
+}
+
+.projectshortcut-links {
+    color: #707070;
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+.projectshortcut-links > li {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.projectshortcut-links > li:after {
+    content: "\2022";
+    margin: 0 10px;
+}
+
+.projectshortcut-links > .last:after {
+    content: normal;
+    margin: 0;
+}
+
+.projectshortcuts-heading + .projectshortcut-links {
+    margin-top: 0;
+}
+
+.projectshortcuts-loading {
+    padding-bottom: 48px;
+    position: relative;
+    text-align: center;
+}
+
+.projectshortcuts-loading:after {
+    bottom: 0;
+    content: url(data:image/gif;base64,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);
+    left: 50%;
+    margin-left: -8px;
+    position: absolute;
+}
+
+.aui-dialog #projectShortcutsContent {
+    padding-left: 11px;
+}
+
+.project-shortcut-dialog-trigger {
+    cursor: pointer;
+    float: left;
+    position: relative;
+}
+
+.project-shortcut-dialog-trigger:after {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAJFBMVEX///////9dXV3W1tZ6enplZWXLy8utra3g4OD09PSOjo6EhISIeIDmAAAAAXRSTlMAQObYZgAAAGJJREFUeNplT9sOQCEIMsjs8v//e45aW1u8aMACJTDxY8pBRTXS/pFv1VYCTTV07WWjq3vQfAXoHois6hqTKHUJzJdBDp8GSWVsBw/Bi7CbMLyfZixPbBbLlCj2VH+Pe87/AEwfAnbLq1BrAAAAAElFTkSuQmCC) no-repeat 0 0;
+    content: "";
+    display: none;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    position: absolute;
+}
+
+.project-shortcut-dialog-trigger:hover:after {
+    display: block;
+}
+
+.project-shortcut-helptip h3 {
+    font-size: 19px;
+    line-height: 1.2106;
+    margin-top: 0px;
+}
+
+/************************************************************                   **/
+/* Everything with the class .project-dialog-header-wrapper                      */
+/* can be deleted once PDL dialog is in AUI and it supports images in the title  */
+.project-dialog-header-wrapper .project-header {
+    border-bottom: 1px solid #CCC;
+    padding: 10px 0px 14px 15px;
+    background-color: #F2F2F2;
+    margin: 0px;
+    height: 48px;
+}
+
+.project-dialog-header-wrapper .project-header img {
+    height: 48px;
+    width: 48px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+#project-shortcuts-dialog .dialog-panel-body {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+
+.project-dialog-header-wrapper h2.dialog-title {
+    border-bottom: 0;
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 5px;
+    min-width: 50%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 18px;
+    margin-left: 18px;
+    line-height: 48px;
+}
+
+.poject-dialog-header-wrapper {
+    padding: 20px;
+}
+
+.project-dialog-header-wrapper .project-right-column {
+    padding-left: 10px;
+}
+
+.project-dialog-header-wrapper .project-content-wrapper {
+    padding: 20px 60px 20px 85px;
+    color: #333;
+}
+
+.project-dialog-header-wrapper .project-heading {
+    background-color: #F2F2F2;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-bottom: 25px;
+    padding-right: 60px;
+}
+
+.projectshortcuts-description {
+    padding-top: 20px;
+    max-height: 72px;
+    overflow: hidden;
+}
