@@ -75,7 +75,7 @@
               suggestions.forEach(function (sugg) {
                   var label = sugg.getLabel();
                   var imageSrc = sugg.get('img-src');
-                  var image = imageSrc ? '<img src="' + imageSrc + '"/>' : '';
+                  var image = imageSrc ? '<img src="' + imageSrc + '" alt=""/>' : '';
                   var newValueText = sugg.get('new-value') ? ' (<em>' + AJS.I18n.getText('aui.select.new.value') + '</em>)' : '';
                   html += '<li role="option" class="aui-select-suggestion" id="' + generateListItemID(listId, i) + '">' + image + label + newValueText + '</li>';
                   i++;

@@ -36,13 +36,15 @@
         #if(!$mobile)
         <div id="pagetreesearch">
             <form method="POST" class="$!aui-form" action="${contextPath}/plugins/pagetreesearch/pagetreesearch.action" name="pagetreesearchform">
+                <legend class="assistive">$action.getText('pagetreesearch.button.text')</legend>
                 #if ( $noRoot )
                     <input type="hidden" name="ancestorId" value="">
                 #else
                     <input type="hidden" name="ancestorId" value="$!rootPageId">
                 #end
                 <input type="hidden" name="spaceKey" value="$!generalUtil.htmlEncode( $spaceKey )">
-                <input type="text"  class="$!aui-medium-text" size="20" name="queryString">
+                <label class="assistive" for="pageTreeQueryString">$action.getText('pagetreesearch.button.text')</label>
+                <input type="text" id="pageTreeQueryString" class="$!aui-medium-text" size="20" name="queryString">
                 <input type="submit" class="$!aui-button" value="$action.getText('pagetreesearch.button.text')">
             </form>
         </div>
