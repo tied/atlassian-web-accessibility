@@ -1459,7 +1459,7 @@
                 "class": "select2-container"
             }).html([
                 "    <a href='#' onclick='return false;' class='select2-choice'>",
-                "   <span></span><abbr class='select2-search-choice-close' style='display:none;'></abbr>",
+                "   <span></span><abbr class='select2-search-choice-close' style='display:none;'><span class='assistive'>Remove Filter</span></abbr>",
                 "   <div><b></b></div>",
                 "</a>",
                 "    <div class='select2-drop select2-offscreen'>",
@@ -2161,7 +2161,7 @@
             var choice = $(
                     "<li class='select2-search-choice'>" +
                     "    <div></div>" +
-                    "    <a href='#' onclick='return false;' class='select2-search-choice-close' tabindex='-1'></a>" +
+                    "    <a href='#' onclick='return false;' class='select2-search-choice-close' tabindex='0'><span class='assistive'>Remove Filter</span></a>" +
                     "</li>"),
                 id = this.id(data),
                 val = this.getVal(),
@@ -2169,6 +2169,7 @@
 
             formatted = this.opts.formatSelection(data, choice);
             choice.find("div").replaceWith("<div>" + this.opts.escapeMarkup(formatted) + "</div>");
+            choice.find("a span").replaceWith("<span class='assistive'>Remove " + this.opts.escapeMarkup(formatted) + " Filter</div>");
             choice.find(".select2-search-choice-close")
                 .bind("mousedown", killEvent)
                 .bind("click dblclick", this.bind(function (e) {
