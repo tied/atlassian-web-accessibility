@@ -48,17 +48,19 @@
                     <span id="spaceDescription" class="field-value">$generalUtil.plain2html($space.description.bodyContent.body)</span>
                 </div>
 
-                <div class="field-group">
-                    <span class="label" for="spaceAdmins">$spaceAdmins</span>
-                    <span id="spaceAdmins" class="field-value">
-                        #foreach ($admin in $adminsList)
-                            #userLink($admin)#if($velocityCount < $adminsList.size()),#end
-                        #end
-                        #if ($thereAreMoreAdmins)
-                            <a href="$allAdminsUrl">&hellip;</a>
-                        #end
-                    </span>
-                </div>
+                #if ($action.remoteUser)
+                    <div class="field-group">
+                        <span class="label" for="spaceAdmins">$spaceAdmins</span>
+                        <span id="spaceAdmins" class="field-value">
+                            #foreach ($admin in $adminsList)
+                                #userLink($admin)#if($velocityCount < $adminsList.size()),#end
+                            #end
+                            #if ($thereAreMoreAdmins)
+                                <a href="$allAdminsUrl">&hellip;</a>
+                            #end
+                        </span>
+                    </div>
+                #end
         </form>
 
     </div>
