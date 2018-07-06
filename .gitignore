@@ -3,3 +3,7 @@
 yuicompressor/
 uglify-js/
 google-closure-compiler/
+closure-compiler/
+commander/
+source-map/
+package-lock.json
