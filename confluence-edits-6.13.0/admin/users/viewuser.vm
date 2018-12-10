@@ -63,7 +63,7 @@
                     #tag( "TextField" "label='fullname.name'" "name='user.fullName'" "theme='aui'")
 
                     <div class="field-group viewMode">
-                        <label for="email.name">$i18n.getText("email.name")</label>
+                        <span class="label" for="email.name">$i18n.getText("email.name")</span>
                         <span id="email.name" class="field-value">
                             <a href='mailto:$htmlUtil.urlEncode($!user.email)'>$htmlUtil.htmlEncode($!user.email)</a>
                         </span>
@@ -90,7 +90,7 @@
 
                     ## Login
                     <div class="field-group viewMode">
-                        <label for="login.section.name">$i18n.getText("login.section.name")</label>
+                        <span class="label"  for="login.section.name">$i18n.getText("login.section.name")</span>
                         <div id="login.section.name" class="field-value">
                             #set ($loginInfo = $action.getLoginInfo())
                             #if($loginInfo.requiresElevatedSecurityCheck())
@@ -118,7 +118,7 @@
 
                     ## Groups
                     <div class="field-group viewMode">
-                        <label for="groups-name">$i18n.getText("groups.name")</label>
+                        <span class="label" for="groups-name">$i18n.getText("groups.name")</span>
                         <div id="groups-name" class="field-value">
                             #set ($groups = $userAccessor.getGroups($user))
                             #if ($groups.isEmpty())

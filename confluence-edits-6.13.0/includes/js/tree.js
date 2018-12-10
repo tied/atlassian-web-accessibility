@@ -459,6 +459,7 @@ define('confluence/tree', [
                     ul.appendChild(li);
                     this.$li[0].appendChild(ul);
                     this.$li.addClass("opened");
+                    $(".click-zone:first", this.$li).attr('aria-label','Collapse Page Tree').attr('aria-expanded','true');
                     $(".click-zone:first", this.$li).css("display", "inline");
                     $(".rollback:first", this.$li).css("display", "none");
                 }
@@ -550,6 +551,7 @@ define('confluence/tree', [
                     ul.show();
                     this.closed = false;
                     this.$li.removeClass("closed").addClass("opened");
+                    $(".click-zone:first", this.$li).attr('aria-label','Collapse Page Tree').attr('aria-expanded','true');
                     updateVisibleNodes();
                     callback(true);
                     return true;
@@ -867,8 +869,10 @@ define('confluence/tree', [
             }
             if ($(this.parentNode).hasClass("closed")) {
                 obj.visibleNodes[this.parentNode.num].open();
+                $(this).attr('aria-expanded','true').attr('aria-label','Collapse Page Tree');
             } else {
                 obj.visibleNodes[this.parentNode.num].close();
+                $(this).attr('aria-expanded','false').attr('aria-label','Expand Page Tree');
             }
             return false;
         };
@@ -933,7 +937,7 @@ define('confluence/tree', [
             a.appendChild(dec);
             a.className = node.linkClass;
             var clickZone = document.createElement("div");
-            $(clickZone).addClass("click-zone");
+            $(clickZone).addClass("click-zone").attr('tabindex','0');
             $(clickZone).click(clickZoneHandler);
             $(li).mouseover(liOverHandler).mouseout(liOutHandler);
             li.appendChild(clickZone);
@@ -978,8 +982,10 @@ define('confluence/tree', [
             var $li = $(li);
             if ($li.hasClass("opened")) {
                 $li.removeClass("opened").addClass("closed");
+                $(clickZone).attr('aria-label','Expand Page Tree').attr('aria-expanded','false');
                 li.closed = true;
             } else if ($li.hasClass("closed")) {
+                $(clickZone).attr('aria-label','Expand Page Tree').attr('aria-expanded','false');
                 li.toBeLoaded = true;
             } else {
                 $(clickZone).css("display", "none");

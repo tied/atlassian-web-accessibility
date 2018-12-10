@@ -127,7 +127,7 @@
     #set ($itemClass = '')
     #set ($itemClass = $item.styleClass)
 
-<a #if ($item.link.id) id="$item.link.id"#end href="$itemRenderedUrl" #if ($itemClass) class="$itemClass aui-nav-imagelink"#end #if ($item.link.hasAccessKey()) accessKey="$item.link.getAccessKey($helper)"#end #if ($itemTooltip) title="$itemTooltip"#end>
+<a #if ($item.link.id) id="$item.link.id"#end #if ($item.link.id =="notifications-anchor") aria-label="Notifications"#end href="$itemRenderedUrl" #if ($itemClass) class="$itemClass aui-nav-imagelink"#end #if ($item.link.hasAccessKey()) accessKey="$item.link.getAccessKey($helper)"#end #if ($itemTooltip) title="$itemTooltip"#end>
     #if ($item.icon)
         #set ($icon = $item.icon)
         <img alt="$itemLabel" src="$icon.url.getDisplayableUrl($req, $webInterfaceContext)" height="$icon.height" width="$icon.width" title="$itemLabel">
@@ -204,10 +204,10 @@
 ## don't display the menu if there are no menu sections
     #if(!$webMenu.isEmpty())
     <li class="normal ajs-menu-item">
-        <a id="${webMenu.id}-link" class="$!menuClass aui-button aui-button-subtle ajs-menu-title aui-dropdown2-trigger" href="#" aria-haspopup="true" aria-owns="$webMenu.id" data-container="#navigation">
+        <a id="${webMenu.id}-link" class="$!menuClass aui-button aui-button-subtle ajs-menu-title aui-dropdown2-trigger" href="#" aria-haspopup="true" aria-owns="$webMenu.id" data-container="#navigation" aria-label="$menuId">
             <span>
                 #if ($menuIconClass)
-                    <span class="aui-icon aui-icon-small aui-iconfont-$menuIconClass"></span>
+                    <span class="aui-icon aui-icon-small aui-iconfont-$menuIconClass"><span class="assistive">$menuId</span></span>
                 #end
                 $!menuTitle
             </span>
@@ -238,7 +238,7 @@
     #end
 
     <div class="aui-item aui-item-navgroup">
-        <nav class="aui-navgroup aui-navgroup-vertical">
+        <nav class="aui-navgroup aui-navgroup-vertical" aria-label="Side Navigation">
             <div class="aui-navgroup-inner">
 
             #foreach ($webSectionKey in $webSectionKeys)
@@ -331,7 +331,7 @@
         #end
         <span>
             #if ($iconClass != "")
-                <span class="aui-icon aui-icon-small aui-iconfont-$iconClass"></span>
+                <span class="aui-icon aui-icon-small aui-iconfont-$iconClass"><span class="assistive">$itemTooltip</span></span>
             #end
             $itemLabel
         </span>## span for IE
@@ -363,7 +363,7 @@
     <a id="$webMenu.id" class="aui-nav-link aui-dropdown2-trigger aui-dropdown2-trigger-arrowless" href="#" aria-haspopup="true" aria-owns="${webMenu.id}-content" title="$!menuTitle">
         <span class="$!menuClass">$!menuTitle</span>
     </a>
-    <nav id="${webMenu.id}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+    <nav id="${webMenu.id}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true" aria-label="$!menuTitle">
         #foreach ($section in $webMenu.sections)
             <div class="aui-dropdown2-section">
                 #if ($section.label)
@@ -390,7 +390,7 @@
 *#
 #macro(menuMacros_renderLanguageMenu $menuId $menuTitle $menuClass $languages)
 <a id="$menuId" class="aui-nav-link aui-dropdown2-trigger aui-dropdown2-trigger-arrow $!menuClass" href="#" aria-haspopup="true" aria-owns="${menuId}-content">$!menuTitle</a>
-<nav id="${menuId}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+<nav id="${menuId}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true" aria-label="$!menuTitle">
     <div class="aui-dropdown2-section">
         <ul class="aui-list-truncate">
             #foreach ($lang in $languages)
@@ -425,7 +425,7 @@
             </div>
             <span class="aui-icon-dropdown"></span>
         </a>
-        <nav id="${webMenu.id}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+        <nav id="${webMenu.id}-content" class="aui-dropdown2 aui-style-default" aria-hidden="true" aria-label="$!menuTitle">
             #foreach ($section in $webMenu.sections)
                 <div class="aui-dropdown2-section">
                     <ul #if($section.id) id="$section.id"#end
@@ -483,6 +483,7 @@
 
 <form id="quick-search" class="aui-quicksearch dont-default-focus header-quicksearch" action="$req.contextPath/dosearchsite.action" method="get">
     <fieldset>
+        <legend class="assistive">$action.getText("quick.search.legend")</legend>
         #if($isSpaceSearch && $spaceKey)
             <input type='hidden' name='where' value='$htmlUtil.htmlEncode($spaceKey)'/>
         #end
@@ -490,7 +491,7 @@
             <input type="hidden" name="spaceSearch" value="$isSpaceSearch"/>
         #end
         <label for="quick-search-query" class="assistive">$action.getText("quick.search.legend")</label>
-        <input id="quick-search-query" class="text app-search search quick-search-query" type="text"
+        <input id="quick-search-query" class="text app-search search quick-search-query" type="text" role="search"
                accessKey="$accessKey" autocomplete="off" name="queryString" title="$action.getText("quick.search.legend")" #if ($isSpaceSearch && $spaceKey) placeholder="$action.getText("space.quick.search.placeholder")" #else placeholder="$action.getText("quick.search.placeholder")" #end/>
         <input id="quick-search-submit" class="quick-search-submit" type="submit" value="$action.getText("quick.search.submit")"/>
 

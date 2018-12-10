@@ -64,6 +64,8 @@ body.spaces .aui-tabs > .tabs-menu .menu-item a:visited {
 #com-atlassian-confluence .aui-dd-parent .aui-dropdown .dropdown-item.active a,
 .ajs-menu-bar .ajs-menu-item li.active a,
 .aui-dd-parent .aui-dropdown li.active,
+.aui-dd-parent .aui-dropdown li.active span,
+.aui-dd-parent .aui-dropdown a:focus span,
 .ajs-menu-bar .ajs-menu-item.opened .ajs-drop-down li.active a,
 .ajs-content-hover .popup-follow a:hover {
     color: $colorScheme.menuItemSelectedTextColor;
@@ -139,7 +141,7 @@ body.spaces .aui-tabs > .tabs-menu .menu-item a:visited {
 
 #set ($buttonTopBGColour = $colorScheme.headerButtonBaseBackgroundColor)
 ## buttonHoverTopBGColour should be a 20% opaicty black overlay on top of button, 5% darken is an approximation
-#set ($buttonHoverTopBGColour = $colourUtils.darken($buttonTopBGColour, 5))
+#set ($buttonHoverTopBGColour = $colourUtils.darken($buttonTopBGColour, 10))
 
 #header .aui-header .aui-nav .aui-button-primary {
     background-color: $buttonTopBGColour;
@@ -148,7 +150,7 @@ body.spaces .aui-tabs > .tabs-menu .menu-item a:visited {
 
 #header .aui-header .aui-nav .aui-button-primary:hover,
 #header .aui-header .aui-nav .aui-button-primary:focus {
-    filter: brightness(1.2);
+    background-color: $buttonHoverTopBGColour;
     color: $colorScheme.headerButtonTextColor;
 }
 
