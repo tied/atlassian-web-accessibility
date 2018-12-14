@@ -1,5 +1,5 @@
 # Confluence 6.13.0 Accessibility Modifications
-Tested on Confluence Version 6.13.0
+Currently undergoing testing on Confluence Version 6.13.0
 
 All of these files go into \<install dir\>/confluence
   
