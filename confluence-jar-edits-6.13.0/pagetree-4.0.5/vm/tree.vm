@@ -70,6 +70,7 @@
     </ul>
 
     <fieldset class="hidden">
+        <legend class="assistive">Hidden Fields for Pagetree</legend>
         <input type="hidden" name="treeId" value="">
         <input type="hidden" name="treeRequestId" value="${contextPath}/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=${excerpt}&amp;sort=${sort}&amp;reverse=${reverse}&amp;disableLinks=${disableLinks}&amp;expandCurrent=${expandCurrent}">
         <input type="hidden" name="treePageId" value="$!tgtpage.id">
@@ -89,6 +90,7 @@
 
         ## Ancestor IDs
         <fieldset class="hidden">
+            <legend class="assistive">Hidden Fields for Pagetree ancestorId</legend>
             #if ($ancestors && !$ancestors.isEmpty())
                 #foreach( $ancestor in $ancestors )
                     <input type="hidden" name="ancestorId" value="${ancestor.id}">
