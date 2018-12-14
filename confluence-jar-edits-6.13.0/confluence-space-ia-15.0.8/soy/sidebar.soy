@@ -43,21 +43,21 @@
 * @param accessMode
 */
 {template .sidebar}
-<div class="acs-side-bar ia-scrollable-section">
+<div class="acs-side-bar ia-scrollable-section{if not $hasConfigurePermission} anonymous{/if}">
     <div class="acs-side-bar-space-info tipsy-enabled" data-configure-tooltip="{getText('sidebar.main.configure.flyout.help')}">
         <div class="avatar">
             <div class="space-logo" data-key="{$space.key}" data-name="{$space.name}" data-entity-type="confluence.space">
                 <div class="avatar-img-container">
                     <div class="avatar-img-wrapper">
-                        <a href="{$space.homeUrl}" title="{$space.name}">
-                            <img class="avatar-img" src="{$space.logoUrl}" alt="{$space.name}">
+                        <a href="{$space.homeUrl}" title="{$space.name} Space">
+                            <img class="avatar-img" src="{$space.logoUrl}" alt="{$space.name} Logo">
                         </a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="space-information-container">
-            <div class="name"><a href="{$space.homeUrl}" title="{$space.name}">{$space.name}</a></div>
+            <div class="name">{$space.name}</div>
             <div class="flyout-handle icon aui-icon aui-icon-small aui-iconfont-edit"></div>
             {if $hasFavouriteSpacePermission or $accessMode == 'READ_ONLY'}
                 <div class="favourite-space-icon {if $accessMode == 'READ_ONLY'}disabled{/if}">
@@ -88,9 +88,9 @@
         {/if}
     </div>
     <div class="hidden">
-        <a href="{$space.browseSpaceUrl}" id="space-pages-link"></a> /* used by keyboard-shortcut plugin for Browse Space ("g, s") */
+        <a href="{$space.browseSpaceUrl}" id="space-pages-link"><span class="assistive">{getText('sidebar.main.configure.flyout.heading')}</span></a> /* used by keyboard-shortcut plugin for Browse Space ("g, s") */
         <script type="text/x-template" title="logo-config-content">
-            <h2>{getText('sidebar.main.configure.flyout.heading')}</h2>
+            <span class="label">{getText('sidebar.main.configure.flyout.heading')}</span>
             <div class="personal-space-logo-hint">{getText('sidebar.main.configure.flyout.personalspace.tip', contextPath() + '/users/profile/editmyprofilepicture.action')|noAutoescape}</div>
         </script>
     </div>
@@ -107,10 +107,14 @@
  * @param isFavouriteSpace
  */
 {template .renderFavouriteSpace}
-    <button title="{getText('sidebar.favourite.space.add.dashboard')}" id="space-favourite-add" class="space-favourite aui-icon aui-icon-small aui-iconfont-unstar"></button>
+    <button title="{getText('sidebar.favourite.space.add.dashboard')}" id="space-favourite-add" class="space-favourite aui-icon aui-icon-small aui-iconfont-unstar">
+        <span class="assistive">{getText('sidebar.favourite.space.add.dashboard')}</span>
+    </button>
     <button class="{if not $isFavouriteSpace} space-favourite-hidden {/if} space-favourite aui-icon aui-icon-small aui-iconfont-star"
             id="space-favourite-remove"
-            title="{getText('sidebar.favourite.space.remove.dashboard')}"></button>
+            title="{getText('sidebar.favourite.space.remove.dashboard')}">
+        <span class="assistive">{getText('sidebar.favourite.space.remove.dashboard')}</span>
+    </button>
 {/template}
 
 /**
@@ -134,14 +138,14 @@
     {if $quickLinksState != 'hide'}
         <div class="quick-links-wrapper">
             {if length($quickLinks)}
-                <h5 class="ia-quick-links-header-title">{getText('sidebar.main.quick.links')}</h5>
+                <span class="ia-quick-links-header-title label">{getText('sidebar.main.quick.links')}</span>
                 {call .renderLinksSection}
                     {param links: $quickLinks /}
                     {param sectionClass: 'quick-links-section tipsy-enabled' /}
                     {param collectorToHighlight: null /}
                 {/call}
             {elseif $hasConfigurePermission}
-                <h5 class="ia-quick-links-header-title">{getText('sidebar.main.quick.links')}</h5>
+                <span class="ia-quick-links-header-title label">{getText('sidebar.main.quick.links')}</span>
                 <p class="tip">{getText('sidebar.main.configure.tip', '', 'configure-sidebar')|noAutoescape}</p>
             {/if}
         </div>
@@ -211,12 +215,12 @@
     {if $pageTreeState != 'hide'}
         {if $forBlogs}
             <div class="ia-secondary-header">
-                <h5 class="ia-secondary-header-title blog">
+                <span class="ia-secondary-header-title blog label">
                     <span class="icon"></span>
                     <span class="label">
                         {getText('sidebar.title.blog')}
                     </span>
-                </h5>
+                </span>
             </div>
             <div class="ia-secondary-content">
                 {call .pagetreeList}
@@ -225,11 +229,11 @@
             </div>
         {elseif $forSettings}
             <div class="ia-secondary-header">
-                <h5 class="ia-secondary-header-title settings">
+                <span class="ia-secondary-header-title settings label">
                     <span class="label">
                         {getText('sidebar.title.settings')}
                     </span>
-                </h5>
+                </span>
             </div>
             <div class="ia-secondary-content">
                 {call .pagetreeList}
@@ -238,12 +242,12 @@
             </div>
         {elseif $navType == 'page-tree'}
                 <div class="ia-secondary-header">
-                    <h5 class="ia-secondary-header-title page-tree">
+                    <span class="ia-secondary-header-title page-tree label">
                         <span class="icon"></span>
                         <span class="label">
                             {getText('sidebar.title.tree')}
                         </span>
-                    </h5>
+                    </span>
                 </div>
                 {if $pageTreeEmpty}
                         <p class="tip">
@@ -352,37 +356,37 @@
  * @param pageTreeState
  */
 {template .renderSpaceToolsSection}
-    <div class="space-tools-section">
-        <div id="space-tools-menu-additional-items" class="hidden">
-            {foreach $link in $advancedLinks}
-                <div data-label="{$link.title}" data-class="{$link.styleClass}" data-href="{$link.url}">{$link.title}</div>
-            {/foreach}
-            {if $hasConfigurePermission}
-                <div data-label="{getText('sidebar.main.configure.edit')}" data-class="configure-sidebar" data-href="">{getText('sidebar.main.configure.edit')}</div>
-            {/if}
-        </div>
-        {call aui.dropdown2.trigger}
-            {param menu: ['id': 'space-tools-menu'] /}
-            {param id: 'space-tools-menu-trigger' /}
-            {param tagName: 'button' /}
-            {param extraClasses}
-                aui-button{sp}aui-button-subtle{sp}tipsy-enabled{sp}aui-dropdown2-trigger-arrowless{sp}{if $currentlyViewed}{sp}current-item{/if}
-            {/param}
-            {param content}
-                {call aui.icons.icon}
-                    {param useIconFont: true /}
-                    {param icon: 'configure' /}
-                    {param accessibilityText: getText('sidebar.main.configure') /}
-                {/call}
-                <span class="aui-button-label">{getText('sidebar.main.settings')}</span>
-            {/param}
-        {/call}
-        {call aui.dropdown2.contents}
-            {param id: 'space-tools-menu' /}
-            {param extraClasses: 'aui-style-default space-tools-dropdown' /}
-            {param extraAttributes: ['data-aui-alignment': 'top left'] /}
-        {/call}
-        <a class="expand-collapse-trigger aui-icon aui-icon-small {if $pageTreeState == 'hide'}aui-iconfont-chevron-double-right{else}aui-iconfont-chevron-double-left{/if}"></a>
+    <div class="space-tools-section{if not $hasConfigurePermission} anonymous{/if}">
+        {if $hasConfigurePermission}
+            <div id="space-tools-menu-additional-items" class="hidden">
+                {foreach $link in $advancedLinks}
+                    <div data-label="{$link.title}" data-class="{$link.styleClass}" data-href="{$link.url}">{$link.title}</div>
+                {/foreach}
+                    <div data-label="{getText('sidebar.main.configure.edit')}" data-class="configure-sidebar" data-href="">{getText('sidebar.main.configure.edit')}</div>
+            </div>
+            {call aui.dropdown2.trigger}
+                {param menu: ['id': 'space-tools-menu'] /}
+                {param id: 'space-tools-menu-trigger' /}
+                {param tagName: 'button' /}
+                {param extraClasses}
+                    aui-button{sp}aui-button-subtle{sp}tipsy-enabled{sp}aui-dropdown2-trigger-arrowless{sp}{if $currentlyViewed}{sp}current-item{/if}
+                {/param}
+                {param content}
+                    {call aui.icons.icon}
+                        {param useIconFont: true /}
+                        {param icon: 'configure' /}
+                        {param accessibilityText: getText('sidebar.main.configure') /}
+                    {/call}
+                    <span class="aui-button-label">{getText('sidebar.main.settings')}</span>
+                {/param}
+            {/call}
+            {call aui.dropdown2.contents}
+                {param id: 'space-tools-menu' /}
+                {param extraClasses: 'aui-style-default space-tools-dropdown' /}
+                {param extraAttributes: ['data-aui-alignment': 'top left'] /}
+            {/call}
+        {/if}
+        <a class="expand-collapse-trigger aui-icon aui-icon-small {if $pageTreeState == 'hide'}aui-iconfont-chevron-double-right{else}aui-iconfont-chevron-double-left{/if}"  role="button" name="Sidebar toggle" tabindex="0"></a>
     </div>
 {/template}
 
@@ -398,7 +402,7 @@
                 <ul class="space-tools-navigation">
                     {foreach $link in $spaceToolLinks}
                         <li>
-                            <a href="{$link.href}" title="{$link.label}">{$link.label}</a>
+                            <a href="{$link.href}" tabindex="-1">{$link.label}</a>
                         </li>
                     {/foreach}
                 </ul>
@@ -408,7 +412,7 @@
                 <ul class="space-operations">
                     {foreach $link in $spaceLinks}
                         <li>
-                            <a class="{$link.className}" href="{$link.href}" title="{$link.label}">{$link.label}</a>
+                            <a class="{$link.className}" href="{$link.href}" tabindex="-1">{$link.label}</a>
                         </li>
                     {/foreach}
                 </ul>
@@ -444,8 +448,8 @@
         <table id="acs-nav-list-main" class="acs-nav-list"></table>
         <div class="acs-nav-list-quick-section{if $quickLinksState == 'hide'} hidden-section{/if}">
             <div class="quick-links-header">
-                <h5>{getText('sidebar.main.quick.links')}</h5>
-                <a href="#" class="aui-icon aui-icon-small toggle-link {if $quickLinksState == 'hide'}aui-iconfont-add-circle{else}aui-iconfont-plan-disabled{/if}" data-tooltip="{getText('sidebar.main.configure.hide.quick.links')}"/>
+                <span class="label">{getText('sidebar.main.quick.links')}</span>
+                <a href="#" class="aui-icon aui-icon-small toggle-link {if $quickLinksState == 'hide'}aui-iconfont-add-circle{else}aui-iconfont-plan-disabled{/if}" data-tooltip="{getText('sidebar.main.configure.hide.quick.links')}" aria-label="{getText('sidebar.main.configure.hide.quick.links')}"/>
             </div>
             <table id="acs-nav-list-quick" class="acs-nav-list"></table>
             <p class="tip">{getText('sidebar.main.configure.edit.tip')}</p>
@@ -464,8 +468,8 @@
 
         <div class="acs-nav-list-page-tree-section{if $pageTreeState == 'hide'} hidden-section{/if}">
             <div class="page-tree-header">
-                <h5>{getText('sidebar.main.configure.nav')}</h5>
-                <a href="#" class="aui-icon aui-icon-small {if $pageTreeState == 'hide'}aui-iconfont-add-circle{else}aui-iconfont-plan-disabled{/if}" data-tooltip="{getText('sidebar.main.configure.hide.page.tree')}"/>
+                <span class="label">{getText('sidebar.main.configure.nav')}</span>
+                <a href="#" class="aui-icon aui-icon-small toggle-link {if $pageTreeState == 'hide'}aui-iconfont-add-circle{else}aui-iconfont-plan-disabled{/if}" data-tooltip="{getText('sidebar.main.configure.hide.page.tree')}" aria-label="{getText('sidebar.main.configure.hide.quick.links')}"/>
             </div>
             <form class="aui page-tree-options">
                 <div class="radio">

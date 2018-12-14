@@ -6,11 +6,11 @@
  */
 {template .renderPageContextualNav}
     <div class="ia-secondary-header">
-        <h5 class="ia-secondary-header-title pages">
+        <div class="ia-secondary-header-title pages">
             <span class="label">
                 {getText('sidebar.pages.children')}
             </span>
-        </h5>
+        </div>
     </div>
     <div class="ia-secondary-parent-content">
         {call Confluence.Templates.Sidebar.Pages.parentPage}
@@ -86,7 +86,7 @@
     {if $parentPage}
         <ul class="parent ia-secondary-header-title wiki{if $parentPage.active} current-item{/if}">
             <li class="parent-item">
-                <a class="parent-item-link" href="{$parentPage.url}" title="{$parentPage.title}">
+                <a class="parent-item-link" href="{$parentPage.url}">
                     <span class="icon"></span>
                     <span class="label">{$parentPage.title}</span>
                 </a>
@@ -103,7 +103,7 @@
         <li class="child-item" data-page-id="{$child.pageId}">
             /* Icon sits outside of the link because (a) it makes sense, (b) it allows using 'overflow: hidden' to show an ellipsis on the link */
             <span class="icon"></span>
-            <a href="{$child.url}" title="{$child.title}">
+            <a href="{$child.url}">
                 <span class="label">{$child.title}</span>
             </a>
         </li>

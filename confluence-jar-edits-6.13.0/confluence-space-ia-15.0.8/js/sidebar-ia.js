@@ -365,6 +365,18 @@
             }
         }
 
+        $(function() {
+            $('.expand-collapse-trigger').keypress(function(e) {
+                if (e.keyCode == 13) {
+                    Confluence.Sidebar.toggle();
+                }
+            });
+        });
+
+        $("div.ia-fixed-sidebar.collapsed .space-logo a").focusin(function() {
+            Confluence.Sidebar.toggle();
+        });
+
         function setPanesWidth(width) {
             width = Math.max(width, minWidth);
             width = Math.min(width, maxWidth);
@@ -373,12 +385,14 @@
 
             if (width <= collapseWidth){
                 $fixedSidebar.addClass('collapsed');
+                $fixedSidebar.attr('aria-expanded','false');
                 $('.expand-collapse-trigger').removeClass('aui-iconfont-chevron-double-left').addClass('aui-iconfont-chevron-double-right');
                 $splitterHandle.attr('data-tooltip', Confluence.Sidebar.expandTooltip);
                 AJS.trigger('sidebar.collapsed');
             } else {
                 if ($fixedSidebar.hasClass('collapsed')){
                     $fixedSidebar.removeClass('collapsed');
+                    $fixedSidebar.attr('aria-expanded','true');
                     $splitterHandle.attr('data-tooltip', Confluence.Sidebar.collapseTooltip);
                     $('.expand-collapse-trigger').removeClass('aui-iconfont-chevron-double-right').addClass('aui-iconfont-chevron-double-left');
                     AJS.trigger('sidebar.expanded');
