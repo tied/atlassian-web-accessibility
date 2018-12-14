@@ -27,19 +27,16 @@
 {template .logo}
     // if the user profile still has the default picture, AND the usericon getting displayed is the current user, THEN generate a link to set the profile picture
     {if $profilePictureInfo.default and $username == $currentUsername}
-            <img class="userLogo logo defaultLogo" src="{staticResourceUrlPrefix()}/images/icons/profilepics/add_profile_pic.svg" alt="">
+            <img class="userLogo logo defaultLogo{if not($disableUserHover)} userLogoLink{/if}" src="{staticResourceUrlPrefix()}/images/icons/profilepics/add_profile_pic.svg" alt="">
     {else}
         // otherwise, the default case is to display the logo, depending on permissions
         {if $profilePictureInfo.anonymous}
-            <img class="userLogo logo anonymous" src="{staticResourceUrlPrefix()}/images/icons/profilepics/anonymous.svg"
-            alt="" title="{getText('user.icon.anonymous.title')}">
+            <img class="userLogo logo anonymous" src="{staticResourceUrlPrefix()}/images/icons/profilepics/anonymous.svg" alt="" title="{getText('user.icon.anonymous.title')}">
         {elseif $canView}
-            <img class="userLogo logo" src="{$profilePictureInfo.uriReference}"
-            alt="" title="{$username}">
+            <img class="userLogo logo" src="{$profilePictureInfo.uriReference}" alt="" title="{$username}">
         {else}
             // anonymous users with user permission but without view profile permission should not see user logos or be linked to profiles
-            <img class="userLogo logo anonymous" src="{staticResourceUrlPrefix()}/images/icons/profilepics/anonymous.svg"
-            alt="" title="{$username}">
+            <img class="userLogo logo anonymous" src="{staticResourceUrlPrefix()}/images/icons/profilepics/anonymous.svg" alt="" title="{$username}">
         {/if}
     {/if}
 {/template}
