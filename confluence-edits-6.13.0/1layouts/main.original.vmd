@@ -9,7 +9,7 @@
          <script>
              (function() {
                  //TODO: get url from config
-                 var jsReporting = window.jsReporting = new JsReporting(window, "https://confluence-frontend-logging.internal.app.dev.atlassian.io");
+                 var jsReporting = window.jsReporting = new JsReporting(window, "https://confsrv-frontend-logging--app.ap-southeast-2.dev.atl-paas.net");
                  var consoleInstrumenter = new ConsoleInstrumenter({flushAtCount: 10, flushAtTime: 60000});
                  jsReporting.addInstrumenter("consoleInstrument", consoleInstrumenter);
              })();
@@ -62,9 +62,6 @@
                  #displayGlobalMessages()
          </div>
      </div>
-     #if($darkFeatures.isDarkFeatureEnabled('confluence.commonheader.flush'))
-         #flushResponse()
-     #end
      #parse ("/decorators/includes/common-header.vm")
 
      #if($sitemeshPage.getProperty("page.tree"))

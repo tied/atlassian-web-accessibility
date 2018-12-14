@@ -9,7 +9,7 @@
         <script>
             (function() {
                 //TODO: get url from config
-                var jsReporting = window.jsReporting = new JsReporting(window, "https://confluence-frontend-logging.internal.app.dev.atlassian.io");
+                var jsReporting = window.jsReporting = new JsReporting(window, "https://confsrv-frontend-logging--app.ap-southeast-2.dev.atl-paas.net");
                 var consoleInstrumenter = new ConsoleInstrumenter({flushAtCount: 10, flushAtTime: 60000});
                 jsReporting.addInstrumenter("consoleInstrument", consoleInstrumenter);
             })();
@@ -116,9 +116,6 @@
                 #displayGlobalMessages()
         </div>
     </div>
-    #if($darkFeatures.isDarkFeatureEnabled('confluence.commonheader.flush'))
-        #flushResponse()
-    #end
     #parse("/decorators/includes/common-header.vm")
 
     #if($sitemeshPage.getProperty("page.tree"))
@@ -213,20 +210,17 @@
         #if($showPersonalSidebar)
             #if ($sitemeshPage.getProperty("page.personal-sidebar") && !$useNewSpaceIA)
                     $sitemeshPage.getProperty("page.personal-sidebar")
-                #end
             #end
         #else
             #if ($sitemeshPage.getProperty("page.blog-sidebar") && !$useNewSpaceIA)
                     <div id="blog-sidebar" class="sidebar" >
                         $!sitemeshPage.getProperty("page.blog-sidebar")
                     </div><!-- \#blog-sidebar -->
-                #end
             #end
             #if ($sitemeshPage.getProperty("page.sidebar"))
                     <div id="sidebar-help-tip">
                         $!sitemeshPage.getProperty("page.sidebar")
                     </div><!-- \#sidebar -->
-                #end
             #end
         #end
         </div><!-- \#sidebar-container -->
