@@ -1777,7 +1777,7 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 ## Used with AJS.I18n.getText(key) in JavaScript
 #macro (jsI18n $key)
     <label for="i18n.$key" class="assistive">i18n.$key</label>
-    <input type="hidden" title="i18n.$key" value="$generalUtil.htmlEncode($i18n.getText($key))">
+    <input type="hidden" id="i18n.$key" title="i18n.$key" value="$generalUtil.htmlEncode($i18n.getText($key))">
 #end
 
 ## Use this macro to request that a key-value pair be made available to AJS.Meta in JavaScript.

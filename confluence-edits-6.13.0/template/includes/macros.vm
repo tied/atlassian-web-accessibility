@@ -782,32 +782,32 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 
 #macro (showPermissionsHeader)
         <tr>
-            <th width="25%">&nbsp;</th>
-            <th colspan="2">$action.getText('all')</th>
-            <th colspan="2">$action.getText('perms.pages')</th>
-            <th colspan="2">$action.getText('perms.news')</th>
-            <th colspan="2">$action.getText('perms.attachments')</th>
-            <th colspan="2">$action.getText('perms.comments')</th>
-            <th>$action.getText('perms.restrictions')</th>
-            <th>$action.getText('perms.mail')</th>
-            <th colspan="2">$action.getText('perms.space')</th>
+            <th scope="col" width="25%"><span class="assistive">Entity</span></th>
+            <th scope="col" colspan="2">$action.getText('all')</th>
+            <th scope="col" colspan="2">$action.getText('perms.pages')</th>
+            <th scope="col" colspan="2">$action.getText('perms.news')</th>
+            <th scope="col" colspan="2">$action.getText('perms.attachments')</th>
+            <th scope="col" colspan="2">$action.getText('perms.comments')</th>
+            <th scope="col">$action.getText('perms.restrictions')</th>
+            <th scope="col">$action.getText('perms.mail')</th>
+            <th scope="col" colspan="2">$action.getText('perms.space')</th>
         </tr>
         <tr>
-            <th>&nbsp;</th>
-            <th width="40">$action.getText('perms.view')</th>
-            <th width="40">$action.getText('perms.removeown')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add')</th>
-            <th width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add')</th>
-            <th width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add')</th>
-            <th width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add')</th>
-            <th width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.export')</th>
-            <th width="40">$action.getText('perms.admin')</th>
+            <th scope="col"><span class="assistive">Entity Name</span></th>
+            <th scope="col" width="40">$action.getText('perms.view')</th>
+            <th scope="col" width="40">$action.getText('perms.removeown')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add')</th>
+            <th scope="col" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add')</th>
+            <th scope="col" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add')</th>
+            <th scope="col" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add')</th>
+            <th scope="col" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.export')</th>
+            <th scope="col" width="40">$action.getText('perms.admin')</th>
         </tr>
 #end
 
@@ -1782,7 +1782,7 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 ## Used with AJS.I18n.getText(key) in JavaScript
 #macro (jsI18n $key)
     <label for="i18n.$key" class="assistive">i18n.$key</label>
-    <input type="hidden" title="i18n.$key" value="$htmlUtil.htmlEncode($i18n.getText($key))">
+    <input type="hidden" id="i18n.$key" title="i18n.$key" value="$htmlUtil.htmlEncode($i18n.getText($key))">
 #end
 
 ## Use this macro to request that a key-value pair be made available to AJS.Meta in JavaScript.
