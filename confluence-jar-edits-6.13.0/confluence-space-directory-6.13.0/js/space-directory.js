@@ -214,6 +214,7 @@ define('confluence-space-directory/space-directory', [
             e.preventDefault();
             $spaceLabelItems.removeClass('aui-nav-selected');
             $this.addClass('aui-nav-selected');
+            $("#space-search-result").focus();
 
             updateList();
 
@@ -239,6 +240,7 @@ define('confluence-space-directory/space-directory', [
             $spaceLabelItems.removeClass('aui-nav-selected');
             $(".team-label a[data-tab-name='" + $(this).text() + "']").parent().addClass('aui-nav-selected');
             updateList();
+            $("#space-search-result").focus();
 
             track('space.category.click');
         });
