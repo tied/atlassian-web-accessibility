@@ -7,7 +7,7 @@
 {template .container}
     <ul id="avatar-list" class="synchrony-doc-{$docId} collaborative-avatars-list"></ul>
     <aui-inline-dialog id="more-avatars" alignment="bottom right" responds-to="toggle" aria-hidden="true">
-        <h3>{getText('collab.presence.inlinedialog.header')}</h3>
+        <h2>{getText('collab.presence.inlinedialog.header')}</h2>
         <ul id="more-avatars-list" class="collaborative-avatars-list"></ul>
     </aui-inline-dialog>
 {/template}
@@ -26,7 +26,7 @@
 {template .avatar}
     <li class="avatar-item{if $active} p{$telepointer} active{/if}{if $currentUser} no-animate-entry{/if}">
         <span title="{$title}" avatar="{$initial}"{if $active} data-origin="{$origin}"{/if} class="avatar{if $active} active{/if}"{if $username} data-username="{$username}"{/if}>
-            <img src="{$avatarUrl}">
+            <img src="{$avatarUrl}"  alt="{$username}">
         </span>
     </li>
 {/template}
@@ -36,6 +36,6 @@
  */
 {template .overlay}
     <span id="synchrony-presence-overlay" class="overlay avatar">
-        <a href="#" aria-controls="more-avatars" class="aui-button" data-aui-trigger></a>
+        <a href="#" aria-controls="more-avatars" class="aui-button" data-aui-trigger><span class="assistive">Invite User to Edit</span></a>
     </span>
 {/template}

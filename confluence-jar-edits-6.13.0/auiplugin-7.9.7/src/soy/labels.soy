@@ -31,7 +31,7 @@
         {call aui.renderExtraClasses data="all" /}
         " 
         {call aui.renderExtraAttributes data="all" /}
-        {if $url}{sp}href="{$url}"{/if}
+        {if $url}{sp}href="{$url}"{/if} aria-label="{$text} label"
     >
         {$text}
         {if $isCloseable }{call .closeIcon data="all" /}{/if}

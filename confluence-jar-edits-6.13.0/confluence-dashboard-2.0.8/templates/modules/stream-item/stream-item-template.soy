@@ -25,7 +25,6 @@
         </span>
     </div>
     <div class="update-items">
-        <h4>
             {call Confluence.Templates.User.usernameLink}
                 {param canView: $canViewProfile /}
                 {param username}
@@ -39,7 +38,6 @@
                     {/if}
                 {/param}
             {/call}
-        </h4>
         <ul>
             {foreach $changeItem in $recentUpdates}
                 <li class="update-item">
