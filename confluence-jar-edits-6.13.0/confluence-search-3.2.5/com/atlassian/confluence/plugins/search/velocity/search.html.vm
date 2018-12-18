@@ -23,7 +23,8 @@
             <form class="aui" id="search-form">
                 <h1>$action.getText('confluence-search.title')</h1>
                 <span class="search-input-wrapper">
-                    <input type="text" class="text long-field search-input" name="queryString" id="query-string" value="$!action.queryString" incremental="true" maxlength="255">
+                    <label for="query-string" class="assistive">Search</label>
+                    <input type="text" class="text long-field search-input" role="Search" title="Search" name="queryString" id="query-string" value="$!action.queryString" incremental="true" maxlength="255">
                     <span class="aui-icon aui-icon-small aui-iconfont-help help-button">Help</span>
                 </span>
                 <button type="submit" class="aui-button" id="search-query-submit-button"><span class="aui-icon aui-icon-small aui-iconfont-search">Search</span></button>
@@ -35,7 +36,7 @@
         <div class="aui-page-panel-inner">
             <div class="search-results-page-panel-nav">
                 <form id="filter-form" class="aui">
-                    <nav class="aui-navgroup aui-navgroup-vertical">
+                    <nav class="aui-navgroup aui-navgroup-vertical" aria-label="Filter" title="Filter Results">
                         <div class="aui-navgroup-inner">
                         </div>
                     </nav>

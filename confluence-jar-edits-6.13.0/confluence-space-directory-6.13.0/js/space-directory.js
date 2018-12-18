@@ -115,6 +115,9 @@ define('confluence-space-directory/space-directory', [
                 $(".no-results").toggleClass("hidden", (!noSpaces || (isAllTabActive() && !$queryTextBox.val())));
                 $(".space-list-section").toggleClass("hidden", noSpaces);
                 $("#space-directory-help").toggleClass("hidden", noSpaces);
+                if ($('#space-list caption').length == 0) {
+                    $('#space-list').prepend("<caption class='assistive' aria-label='Space List'>Space List</caption>");
+                }
 
                 for (var i = 0, il = spaces.length; i < il; i++) {
                     var space = spaces[i];
