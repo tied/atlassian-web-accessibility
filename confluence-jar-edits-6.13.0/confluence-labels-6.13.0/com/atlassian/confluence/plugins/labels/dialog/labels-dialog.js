@@ -185,7 +185,7 @@ require('confluence/module-exporter').safeRequire('confluence-labels/labels/dial
             LabelsDialog.openDialog();
         });
 
-        $(".    show-labels-editor").click(function (e) {
+        $(".show-labels-editor").click(function (e) {
             e.preventDefault();
             var target = $(e.target).closest(".labels-section-content");
             LabelsDialog.openDialog(target);
