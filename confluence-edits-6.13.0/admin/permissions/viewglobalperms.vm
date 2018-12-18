@@ -11,7 +11,7 @@
         #requireResource("confluence.web.resources:global-permissions-inline-dialog")
         <content tag="selectedWebItem">perms</content>
         <content tag="content-navigation">
-            <div id="navigation" class="content-navigation">
+            <div id="navigation" class="content-navigation" tabindex="-1">
                 <a id="edit-permissions" class="aui-button edit-permissions" href="$req.contextPath/admin/permissions/editglobalpermissions.action">
                     <span class="aui-icon aui-icon-small aui-iconfont-edit"></span>
                     $i18n.getText("globalperms.editpermissions")

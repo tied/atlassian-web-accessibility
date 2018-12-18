@@ -11,7 +11,7 @@
     #set ($ellipsisCrumbs = $helper.getEllipsisCrumbs($breadcrumbs))
     #set ($ellipsisShown = false)
 
-    <ol id="$breadcrumbsId">
+    <ol id="$breadcrumbsId" tabindex="-1">
     ## Here we want to implement pseudo-breadcrumbs for the template editor, rather than using BreadcrumbAction which would return nothing.
     #if ($contentType == "template")
         #if (!$space.key)
