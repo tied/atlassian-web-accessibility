@@ -717,7 +717,7 @@
   
               // initialize the container
               this.initContainer();
-  
+
               this.container.on("click", killEvent);
   
               installFilteredMouseMove(this.results);
@@ -773,7 +773,7 @@
               if (opts.maximumInputLength !== null) {
                   this.search.attr("maxlength", opts.maximumInputLength);
               }
-  
+
               var disabled = opts.element.prop("disabled");
               if (disabled === undefined) disabled = false;
               this.enable(!disabled);
@@ -1814,13 +1814,15 @@
               var container = $(document.createElement("div")).attr({
                   "class": "select2-container"
               }).html([
-                      "<a href='javascript:void(0)' class='select2-choice' tabindex='-1'>",
-                      "   <span class='select2-chosen'>&nbsp;</span><abbr class='select2-search-choice-close'></abbr>",
+                      "<a href='javascript:void(0)' onclick='return false;' class='select2-choice' tabindex='0'>",
+                      "   <span class='select2-chosen'>&nbsp;</span><abbr class='select2-search-choice-close'><span class='assistive'>Remove Filter</span></abbr>",
                       "   <span class='select2-arrow'><b></b></span>",
                       "</a>",
-                      "<input class='select2-focusser select2-offscreen' type='text'/>",
+                      "<label for='offscreen' class='assistive select2-offscreen-label'>Add Filer</label>",
+                      "<input id='offscreen' class='select2-focusser select2-offscreen' type='text'/>",
                       "<div class='select2-drop select2-display-none'>",
                       "   <div class='select2-search'>",
+                      "       <label class='assistive select2-input-label'>Autofill Input</label>",
                       "       <input type='text' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' class='select2-input'/>",
                       "   </div>",
                       "   <ul class='select2-results'>",
@@ -1940,9 +1942,14 @@
   
               // rewrite labels from original element to focusser
               this.focusser.attr("id", "s2id_autogen"+nextUid());
-  
-              $("label[for='" + this.opts.element.attr("id") + "']")
-                  .attr('for', this.focusser.attr('id'));
+
+              this.inputSecond = this.container.find(".select2-search .select2-input");
+              this.labelSecond = this.container.find(".select2-search .select2-input-label");
+              $(this.labelSecond).attr('for', 'select2-input-aui');
+              $(this.inputSecond).attr('id', 'select2-input-aui');
+
+              this.label = this.container.find(".select2-offscreen-label");
+              $(this.label).attr('for', this.focusser.attr('id'));
   
               this.focusser.attr("tabindex", this.elementTabIndex);
   
@@ -2345,7 +2352,7 @@
               this.search.val("");
               this.focusser.val("");
           },
-  
+
           // single
           data: function(value) {
               var data,
@@ -2382,6 +2389,7 @@
               }).html([
                       "<ul class='select2-choices'>",
                       "  <li class='select2-search-field'>",
+                      "    <label class='assistive select2-input-label'>Autofill Input</label>",
                       "    <input type='text' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' class='select2-input'>",
                       "  </li>",
                       "</ul>",
@@ -2490,12 +2498,16 @@
                   _this.search[0].focus();
                   _this.selectChoice($(this));
               });
-  
+
               // rewrite labels from original element to focusser
               this.search.attr("id", "s2id_autogen"+nextUid());
+
+              this.label = this.container.find(".select2-input-label");
+              $(this.label).attr('for', this.search.attr('id'));
+
               $("label[for='" + this.opts.element.attr("id") + "']")
                   .attr('for', this.search.attr('id'));
-  
+
               this.search.on("input paste", this.bind(function() {
                   if (!this.isInterfaceEnabled()) return;
                   if (!this.opened()) {
@@ -2644,7 +2656,6 @@
   
               this.initContainerWidth();
               this.opts.element.addClass("select2-offscreen");
-  
               // set the placeholder if necessary
               this.clearSearch();
           },
@@ -2814,7 +2825,7 @@
                   enabledItem = $(
                       "<li class='select2-search-choice'>" +
                           "    <div></div>" +
-                          "    <a href='#' class='select2-search-choice-close' tabindex='-1'></a>" +
+                          "    <a href='#' onclick='return false;' class='select2-search-choice-close' tabindex='0'><span class='assistive'>Remove Filter</span></a>" +
                           "</li>"),
                   disabledItem = $(
                       "<li class='select2-search-choice select2-locked'>" +
@@ -2829,6 +2840,7 @@
               formatted=this.opts.formatSelection(data, choice.find("div"), this.opts.escapeMarkup);
               if (formatted != undefined) {
                   choice.find("div").replaceWith("<div>"+formatted+"</div>");
+                  choice.find("a span").replaceWith("<span class='assistive'>Remove "+formatted+" Filter</span>");
               }
               cssClass=this.opts.formatSelectionCssClass(data, choice.find("div"));
               if (cssClass != undefined) {

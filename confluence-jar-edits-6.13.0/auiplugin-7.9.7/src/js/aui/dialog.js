@@ -173,7 +173,7 @@
                       });
                   }
                   popup.show();
-  
+                  popup.attr('aria-hidden','false');
                   createPopup.current = this;
                   focusDialog(popup);
                   (0, _jquery2.default)(document).trigger('showLayer', ['popup', this]);
@@ -425,7 +425,7 @@
           }
   
           this.item = (0, _jquery2.default)('<li></li>').append(this.button).addClass('page-menu-item');
-          this.body = (0, _jquery2.default)('<div></div>').append(reference).addClass('dialog-panel-body').css('height', page.dialog.height + 'px');
+          this.body = (0, _jquery2.default)('<div></div>').append(reference).addClass('dialog-panel-body').attr('tabindex','-1').css('height', page.dialog.height + 'px');
           this.padding = DEFAULT_PADDING;
           if (className) {
               this.body.addClass(className);
@@ -445,6 +445,7 @@
               }
               page.curtab = tab.id;
               tab.body.show();
+              tab.body.focus()
               tab.item.addClass('selected');
               typeof tab.onselect === 'function' && tab.onselect();
               typeof page.ontabchange === 'function' && page.ontabchange(tab, cur);
@@ -716,7 +717,7 @@
           });
           this.popup = createPopup(options);
   
-          this.popup.element.addClass('aui-dialog');
+          this.popup.element.addClass('aui-dialog').attr('role','dialog');
           this.page = [];
           this.curpage = 0;
   
