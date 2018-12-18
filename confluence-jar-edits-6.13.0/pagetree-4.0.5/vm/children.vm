@@ -16,7 +16,7 @@
                 #set ($iconClass = "aui-iconfont-chevron-right")
                 #set ($ariaExpanded = "false")
             #end
-            <a id="plusminus${p.id}-${treeId}" class="plugin_pagetree_childtoggle aui-icon aui-icon-small $iconClass" aria-expanded="$ariaExpanded" role="button" aria-label="Toggle Page Tree"><span class="assistive">Toggle Page Tree</span></span>
+            <a id="plusminus${p.id}-${treeId}" class="plugin_pagetree_childtoggle aui-icon aui-icon-small $iconClass" href="#if($idsToExpandAsList.contains($p.id))$action.generateCollapseNodeLinkForNonJSUsers($p)#else $!action.generateExpandNodeLinkForNonJSUsers($p)#end" aria-expanded="$ariaExpanded" role="button" aria-label="Toggle Page Tree"><span class="assistive">Toggle Page Tree</span></span>
             </a>
         #else
             <span class="no-children icon"></span>

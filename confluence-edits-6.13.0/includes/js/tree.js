@@ -937,8 +937,13 @@ define('confluence/tree', [
             a.appendChild(dec);
             a.className = node.linkClass;
             var clickZone = document.createElement("div");
-            $(clickZone).addClass("click-zone").attr('tabindex','0');
+            $(clickZone).addClass("click-zone").attr('tabindex','0').attr('role','button');
             $(clickZone).click(clickZoneHandler);
+            $(clickZone).keyup(function(event) {
+                if (event.keyCode === 13) {
+                    $(this).click();
+                }
+            });
             $(li).mouseover(liOverHandler).mouseout(liOutHandler);
             li.appendChild(clickZone);
             li.appendChild(a);
