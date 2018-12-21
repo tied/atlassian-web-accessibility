@@ -90,8 +90,6 @@ define('confluence-page-banner/page-banner', [
         updateSystemContentItems();
     };
 
-    $("#content-metadata-page-restrictions").append('<span class="assistive">Page Restrictions</span>');
-
     var setup = function() {
         updateSystemContentItems();
 

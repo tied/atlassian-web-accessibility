@@ -65,6 +65,8 @@
        {/call}
        {if not($isSystemContentItem)}
            <span>{$label}</span>
+       {else}
+           <span class="assistive">{$tooltip}</span>
        {/if}
    </a>
 {/template}

@@ -331,7 +331,7 @@
         #end
         <span>
             #if ($iconClass != "")
-                <span class="aui-icon aui-icon-small aui-iconfont-$iconClass"><span class="assistive">$itemTooltip</span></span>
+                <span class="aui-icon aui-icon-small aui-iconfont-$iconClass"></span>
             #end
             $itemLabel
         </span>## span for IE
