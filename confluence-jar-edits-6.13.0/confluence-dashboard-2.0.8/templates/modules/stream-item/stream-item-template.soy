@@ -59,32 +59,30 @@
  * @param changeItemNumber
  */
 {template .updateItem private="true"}
-    <a href="{$changeItem.urlPath}" title="{$changeItem.title}">
-        <div class="update-item-icons">
-            {if $changeItem.thumbnailable}
-                <span id="twixie-{$changeSetNumber}{$changeItemNumber}" data-thumbnail-id="{$changeSetNumber}{$changeItemNumber}" class="update-item-arrow icon icon-section-closed"></span>
-            {else}
-                <span class="update-item-arrow"></span>
+    <div class="update-item-icons">
+        {if $changeItem.thumbnailable}
+            <span id="twixie-{$changeSetNumber}{$changeItemNumber}" data-thumbnail-id="{$changeSetNumber}{$changeItemNumber}" class="update-item-arrow icon icon-section-closed"></span>
+        {else}
+            <span class="update-item-arrow"></span>
+        {/if}
+        <span class="aui-icon {$changeItem.iconCss}">{$changeItem.friendlyContentType}</span>
+    </div>
+    <div class="update-item-content">
+            <a href="{$changeItem.urlPath}"><span class="update-item-title">{$changeItem.title}</span></a>
+        {if $changeItem.summary}
+            <p class="update-item-summary text-wrapped">{$changeItem.summary}</p>
+        {/if}
+        <div class="update-item-date-wrapper">
+            <time datetime="" class="update-item-date">{$changeItem.updateDescription}
+            {if $changeItem.viewChangesLink}
+                &nbsp;(<a href="{$changeItem.viewChangesLink}">{getText('view.change')}</a>)
             {/if}
-            <span class="aui-icon {$changeItem.iconCss}">{$changeItem.friendlyContentType}</span>
+            </time>
         </div>
-        <div class="update-item-content">
-            <span class="update-item-title">{$changeItem.title}</span>
-            {if $changeItem.summary}
-                <p class="update-item-summary text-wrapped">{$changeItem.summary}</p>
-            {/if}
-            <div class="update-item-date-wrapper">
-                <time datetime="" class="update-item-date">{$changeItem.updateDescription}
-                {if $changeItem.viewChangesLink}
-                    &nbsp;(<a href="{$changeItem.viewChangesLink}">{getText('view.change')}</a>)
-                {/if}
-                </time>
+        {if $changeItem.thumbnailable}
+            <div class="update-item-thumbnail-container">
+                <span><img id="thumbnail-{$changeSetNumber}{$changeItemNumber}" class="thumbnail" src="{$changeItem.thumbnailUrl}" width="{$changeItem.thumbnailWidth}" height="{$changeItem.thumbnailHeight}" style="display: none" alt=""/></span>
             </div>
-            {if $changeItem.thumbnailable}
-                <div class="update-item-thumbnail-container">
-                    <span><img id="thumbnail-{$changeSetNumber}{$changeItemNumber}" class="thumbnail" src="{$changeItem.thumbnailUrl}" width="{$changeItem.thumbnailWidth}" height="{$changeItem.thumbnailHeight}" style="display: none" /></span>
-                </div>
-            {/if}
-        </div>
-    </a>
+        {/if}
+    </div>
 {/template}
