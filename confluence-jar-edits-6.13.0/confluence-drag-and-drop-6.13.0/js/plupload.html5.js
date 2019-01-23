@@ -333,7 +333,7 @@
 				// Insert the input inside the input container
 				inputContainer.innerHTML = '<input id="' + uploader.id + '_html5" ' + ' style="font-size:999px"' +
 											' type="file" accept="' + mimes.join(',') + '" ' +
-											(uploader.settings.multi_selection && uploader.features.multi_selection ? 'multiple="multiple" aria-label="Upload Multiple Files"' : '') + ' />';
+											(uploader.settings.multi_selection && uploader.features.multi_selection ? 'multiple="multiple"' : '') + ' />';
 
 				inputContainer.scrollTop = 100;
 				inputFile = document.getElementById(uploader.id + '_html5');
