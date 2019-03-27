@@ -1,12 +1,12 @@
 <div>
     #set ($user = $action.getUserByName($username))
     #if ($user)
-        <img src="$webResourceHelper.getStaticResourcePrefix("ABSOLUTE")/images/icons/emoticons/check.png" width="16" height="16">
+        <img src="$webResourceHelper.getStaticResourcePrefix("ABSOLUTE")/images/icons/emoticons/check.png" width="16" height="16" alt="$action.getText('perms.can.use')"/>
         #if ($alreadyFollowing) $action.getText("community.macro.follow.already.following", ["#userLink($user)"])
         #else $action.getText("community.macro.follow.now.following", ["#userLink($user)"]) <br/>
         ($action.getText("community.macro.follow.refresh.for.updates")) #end
     #else
-        <img src="$webResourceHelper.getStaticResourcePrefix("ABSOLUTE")/images/icons/emoticons/error.png" width="16" height="16"/>
+        <img src="$webResourceHelper.getStaticResourcePrefix("ABSOLUTE")/images/icons/emoticons/error.png" width="16" height="16"alt="$action.getText('perms.cant.use')"/>
         $action.getText("community.macro.follow.select.user")
     #end
 </div>

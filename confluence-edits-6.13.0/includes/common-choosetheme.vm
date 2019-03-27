@@ -82,7 +82,7 @@
                         #else
                             $action.getText("theme.notheme.title")
                         #end
-                    </label>
+                    </span>
                     <p>
                     #if ($isGlobalAdmin)
                         $action.getText("global.theme.default.desc")

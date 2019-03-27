@@ -25,6 +25,7 @@
 
                 <body>
                     <table width="100%" border="0" cellpadding="5" cellspacing="0">
+                        <caption class="assistive">Space Details</caption>
                         <tr>
                             <td width="52%" valign="top">
                                 #parse("spaces/general-viewspacedetails.vm")
