@@ -24,7 +24,7 @@
                 <div class='panelMacro'><table class='tipMacro'>
                     <colgroup><col width='24'><col></colgroup>
                     <tr>
-                        <td valign='top'><img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" width="16" height="16" align="absmiddle" alt="" border="0"></td>
+                        <td valign='top'><img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" width="16" height="16" align="absmiddle" alt="$action.getText('perms.can.use')" border="0"></td>
                         <td>No duplicate class files found in classpath JARs</td>
                     </tr>
                 </table></div>
@@ -33,7 +33,7 @@
         <div class='panelMacro'><table class='warningMacro'>
             <colgroup><col width='24'><col></colgroup>
             <tr>
-                <td valign='top'><img src="$staticResourceUrlPrefix/images/icons/emoticons/forbidden.png" width="16" height="16" align="absmiddle" alt="" border="0"></td>
+                <td valign='top'><img src="$staticResourceUrlPrefix/images/icons/emoticons/forbidden.png" width="16" height="16" align="absmiddle" alt="$action.getText('perms.cant.use')" border="0"></td>
                 <td>Duplicate class files found in classpath JARs</td>
             </tr>
         </table></div>

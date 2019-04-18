@@ -2,7 +2,7 @@
 ##
 ## Requires $context to be set to 'page' or 'blogpost' to render the correct tabs (normally done by root.vmd).
 <content tag="content-navigation">
-    <div id="navigation" class="content-navigation $!mode">
+    <div id="navigation" class="content-navigation $!mode" tabindex="-1">
         #putMetadata('page-id', $page.id)
         <ul class="ajs-menu-bar">
             ## Actions on page and blog post navigation are subtle buttons

@@ -21,6 +21,7 @@
 
         <body>
             <table class="pageInfoLayoutTable">
+                <caption class="assistive">$action.getActionName($action.getClass().getName())</caption>
                 <tr>
                     <td valign="top" width="50%">
 
@@ -28,6 +29,7 @@
                             <div class="basicPanelBody">
 
                             <table class="pageInfoTable">
+                                <caption class="assistive">$action.getText('action.space.overview')</caption>
                                 <tr class="alternateRow">
                                     <td class="label" width="40%">$action.getText('title.name'):</td>
                                     <td>$confPage.title</td>
@@ -86,6 +88,7 @@
                             </div>
                             <div class="basicPanelBody">
                                 <table class="pageInfoTable">
+                                    <caption class="assistive">$helper.getText("action.page.incoming.links")</caption>
                                     #foreach ($link in $action.incomingLinksMap.asMap().entrySet())
                                         <tr>
                                             <td>
@@ -140,6 +143,7 @@
                     </div>
                     <div class="basicPanelBody">
                         <table class="pageInfoTable">
+                            <caption class="assistive">$helper.getText("$action.getText('hierarchy.word')")</caption>
                         #if( $page.parent )
                             <tr>
                                 <td>
@@ -228,8 +232,8 @@
 
                                     #if( $permissionHelper.canSetPermissions($action.authenticatedUser, $page ))
                                         <a href="${req.contextPath}/pages/removepagepermission.action?#url_xsrfToken()&pageId=$page.id&permissionId=$permission.id"
-                                        id="remove-page-permission-link-$permission.id">
-                                        <img src="$staticResourceUrlPrefix/images/icons/ulock_16.gif" height=16 width=16 border=0 title="$action.getText("remove.name")"></a>
+                                        id="remove-page-permission-link-$permission.id" aria-label="$action.getText("remove.name")">
+                                        <img src="$staticResourceUrlPrefix/images/icons/ulock_16.gif" height=16 width=16 border=0 title="$action.getText("remove.name")" alt="$action.getText("remove.name")"></a>
                                     #end
                                     <br>
                                 </li>
@@ -263,6 +267,7 @@
                     <div class="basicPanelBody">
 
                         <table class="pageInfoTable">
+                            <caption class="assistive">$helper.getText("action.page.hot.referrers")</caption>
                             #foreach ($referer in $action.hotReferrers)
                                 <tr>
                                     <td class="smallfont">($referer.viewCount)</td>
@@ -319,10 +324,11 @@
 
                                 #if (!$action.latestChanges.isEmpty())
                                     <table class="tableview" width="100%" cellspacing="0" cellpadding="0" style="padding: 5px">
+                                        <caption class="assistive">$action.getText('recent.changes')</caption>
                                         <tr>
-                                            <th>$action.getText('time.name')</th>
-                                            <th>$action.getText('editor.name')</th>
-                                            <th>&nbsp;</th>
+                                            <th scope="col">$action.getText('time.name')</th>
+                                            <th scope="col">$action.getText('editor.name')</th>
+                                            <th scope="col"><span class="assistive">View Changes</span></th>
                                         </tr>
                                         #foreach ($change in $action.latestChanges)
                                             <tr #alternateRowColors()>
@@ -367,7 +373,7 @@
                                 #if ($action.externalLinks && !$action.externalLinks.isEmpty())
                                     <span class="smalltext">$action.getText('external.links', ["$action.externalLinks.size()"])</span>
                                     #foreach ($externalLink in $action.externalLinks) <br>
-                                        &nbsp; &nbsp; <img src="$staticResourceUrlPrefix/images/icons/linkext7.gif" width="7" height="7" style="border-right:10px">   $action.renderUrlLink($externalLink)
+                                        &nbsp; &nbsp; <img src="$staticResourceUrlPrefix/images/icons/linkext7.gif" width="7" height="7" style="border-right:10px" alt="">   $action.renderUrlLink($externalLink)
                                     #end
                                 #end
 

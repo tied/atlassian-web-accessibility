@@ -11,7 +11,7 @@
         #requireResource("confluence.web.resources:global-permissions-inline-dialog")
         <content tag="selectedWebItem">perms</content>
         <content tag="content-navigation">
-            <div id="navigation" class="content-navigation">
+            <div id="navigation" class="content-navigation" tabindex="-1">
                 <a id="edit-permissions" class="aui-button edit-permissions" href="$req.contextPath/admin/permissions/editglobalpermissions.action">
                     <span class="aui-icon aui-icon-small aui-iconfont-edit"></span>
                     $i18n.getText("globalperms.editpermissions")
@@ -33,6 +33,7 @@
                 </div>
 
                 <table id="gPermissionsTable" class="permissions aui">
+                    <caption class="assistive">$i18n.getText('perms.groups')</caption>
                 #set ($groupRows = $action.groupPermissionRows)
                 #if (!$groupRows.empty)
                     #showGlobalPermissionsHeader()
@@ -53,10 +54,10 @@
                                     data-permission-group="$htmlUtil.htmlEncode($groupRow.groupName)"
                                     data-permission-set="$groupRow.isTypeAllowed($permission)">
                                     #if ($groupRow.isTypeAllowed($permission))
-                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg">
+                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg"  alt="$action.getText('perms.can.use')">
                                         #if ($permission == 'useconfluence') $action.getText('perms.can.use') #end
                                     #else
-                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg">
+                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg" alt="$action.getText('perms.cant.use')">
                                         #if ($permission == 'useconfluence') $action.getText('perms.cant.use') #end
                                     #end
                                 </td>
@@ -76,6 +77,7 @@
                 </div>
 
                 <table id="uPermissionsTable" class="permissions aui">
+                    <caption class="assistive">$action.getText("global.user.perms")</caption>
                 #set ($userRows = $action.userPermissionRows)
                 #if (!$userRows.empty)
                     #showGlobalPermissionsHeader()
@@ -98,10 +100,10 @@
                                     data-permission-user="$htmlUtil.htmlEncode($userRow.username)"
                                     data-permission-set="$userRow.isTypeAllowed($permission)">
                                     #if ($userRow.isTypeAllowed($permission))
-                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg">
+                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg" alt="$action.getText('perms.can.use')">
                                         #if ($permission == 'useconfluence') $action.getText('perms.can.use') #end
                                     #else
-                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg">
+                                        <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg" alt="$action.getText('perms.cant.use')">
                                         #if ($permission == 'useconfluence') $action.getText('perms.cant.use') #end
                                     #end
                                 </td>
@@ -123,14 +125,15 @@
                     </div>
 
                     <table id="unlicensedPermissionsTable" class="permissions aui">
+                        <caption class="assistive">$i18n.getText("global.unlicensed.users.perms")</caption>
                         <thead>
                         <tr>
-                            <th width="380" class="permissionHeading">&nbsp;</th>
-                            <th class="permissionTab">
+                            <th scope="col" width="380" class="permissionHeading">&nbsp;</th>
+                            <th scope="col" class="permissionTab">
                                 $i18n.getText("permissions.USECONFLUENCE")
                                 <a href="#" class="inlineDialog-unlicensedUseConfluence inline-help">$i18n.getText("inline.dialog.help")</a>
                             </th>
-                            <th class="permissionTab">
+                            <th scope="col" class="permissionTab">
                                 $i18n.getText("permissions.VIEWUSERPROFILES")
                                 <a href="#" class="inlineDialog-unlicensedViewProfiles inline-help">$i18n.getText("inline.dialog.help")</a>
                             </th>
@@ -143,16 +146,16 @@
                             #set ($authenticatedRow = $action.unlicensedAuthenticatedPermissionRow)
                             <td id="unlicensed-limiteduseconfluence" class="permissionCell">
                                 #if ($authenticatedRow.isTypeAllowed('LIMITEDUSECONFLUENCE'))
-                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg" data-enabled> $i18n.getText('perms.can.use')
+                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg" data-enabled  alt="$action.getText('perms.can.use')"> $i18n.getText('perms.can.use')
                                 #else
-                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg"> $i18n.getText('perms.cant.use')
+                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg"  alt="$action.getText('perms.cant.use')"> $i18n.getText('perms.cant.use')
                                 #end
                             </td>
                             <td id="unlicensed-viewuserprofiles" class="permissionCell">
                                 #if ($authenticatedRow.isTypeAllowed('VIEWUSERPROFILES'))
-                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg" data-enabled>
+                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg" data-enabled alt="$action.getText('perms.can.use')">
                                 #else
-                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg">
+                                    <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg" alt="$action.getText('perms.cant.use')">
                                 #end
                             </td>
                         </tr>
@@ -165,14 +168,15 @@
                 </div>
 
                 <table id="aPermissionsTable" class="permissions aui">
+                <caption class="assistive">$action.getText("global.anonymous.perms")</caption>
                 <thead>
                     <tr>
-                        <th width="380" class="permissionHeading">&nbsp;</th>
-                        <th class="permissionTab">
+                        <th scope="col" width="380" class="permissionHeading">&nbsp;</th>
+                        <th scope="col" class="permissionTab">
                             $i18n.getText("permissions.USECONFLUENCE")
                             <a href="#" class="inlineDialog-anonymousUseConfluence inline-help">$i18n.getText("inline.dialog.help")</a>
                         </th>
-                        <th class="permissionTab">
+                        <th scope="col" class="permissionTab">
                             $action.getText("permissions.VIEWUSERPROFILES")
                             <a href="#" class="inlineDialog-anonymousViewProfiles inline-help">$i18n.getText("inline.dialog.help")</a>
                         </th>
@@ -185,16 +189,16 @@
                     #set ($anonymousRow = $action.anonymousPermissionRow)
                     <td id="anonymous-useconfluence" class="permissionCell">
                         #if ($anonymousRow.isTypeAllowed('useconfluence'))
-                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg" data-enabled> $i18n.getText('perms.can.use')
+                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg" data-enabled alt="$action.getText('perms.can.use')"> $i18n.getText('perms.can.use')
                         #else
-                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg"> $i18n.getText('perms.cant.use')
+                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg" alt="$action.getText('perms.cant.use')"> $i18n.getText('perms.cant.use')
                         #end
                     </td>
                     <td id="anonymous-viewuserprofiles" class="permissionCell">
                         #if ($anonymousRow.isTypeAllowed('VIEWUSERPROFILES'))
-                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg" data-enabled>
+                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.svg" data-enabled alt="$action.getText('perms.can.use')">
                         #else
-                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg">
+                            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.svg" alt="$action.getText('perms.cant.use')">
                         #end
                     </td>
                 </tr>
