@@ -492,8 +492,9 @@ Confluence.Dialogs.CreateDialogBase = function CreateDialogBase(createOptions) {
                 $visibleItems.eq(0).dblclick();
             }
         });
-        searcher.form.find('input').attr('tabindex', 100);
+        searcher.form.find('input').attr('tabindex', 100).parent().prepend('<label for="createDialogFilter" class="assistive">AJS.I18n.getText("create.content.plugin.filter.name")</label>');
         $dialog.find(".dialog-title").prepend(createOptions.helpLinkTemplate(), searcher.form);
+        $dialog.find(".dialog-help-link > a").attr('tabindex', 100);
 
         createDialog.addPanel("SinglePanel", Confluence.Templates.Blueprints.createDialogBody(), "loading");
 
