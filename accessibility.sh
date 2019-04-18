@@ -12,11 +12,11 @@
 ####################################
 temp=/var/tmp
 DATE=$(date +%Y-%m-%d)
-# Example Full Path to Confluence Folder - /opt/atlassian-confluence-6.13.0/confluence
+# Example Full Path to Confluence Folder - /opt/atlassian-confluence-6.13.4/confluence
 installdir=/<full-path-to-confluence-folder>/confluence
 backuplocation=/<full-path-to-confluence-folder>/originals_files-$DATE
 modifiedfiles=$temp/modifiedfiles
-version='6.13.0'
+version='6.13.4'
 # this number corresponds with the folder version in GitHub
 
 ####################################
