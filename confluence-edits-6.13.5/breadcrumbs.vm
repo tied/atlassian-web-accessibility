@@ -11,7 +11,7 @@
     #set ($ellipsisCrumbs = $helper.getEllipsisCrumbs($breadcrumbs))
     #set ($ellipsisShown = false)
 
-    <ol id="$breadcrumbsId">
+    <ol id="$breadcrumbsId" tabindex="-1">
     ## Here we want to implement pseudo-breadcrumbs for the template editor, rather than using BreadcrumbAction which would return nothing.
     #if ($contentType == "template")
         #if (!$space.key)
@@ -30,7 +30,7 @@
             #if ($ellipsisCrumbs.contains($breadcrumb))
                 #set ($breadcrumbHidden = true)
                 #if(!$ellipsisShown)
-                    <li id="ellipsis" title="$i18n.getText("breadcrumbs.ellipsis.tooltip")"><span><strong>&#8230;</strong></span></li>
+                    <li id="ellipsis" title="$i18n.getText("breadcrumbs.ellipsis.tooltip")" aria-label="$i18n.getText("breadcrumbs.ellipsis.tooltip")" tabindex="0"><span><strong>&#8230;</strong></span></li>
                     #set ($ellipsisShown = true)
                 #end
             #else
