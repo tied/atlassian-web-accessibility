@@ -171,7 +171,7 @@
         </div>
 
         <table id="unlicensedPermissionsTable" class="editpermissions aui">
-            <caption class="assistive">$i18n.getText("global.unlicensed.users.perms")</caption
+            <caption class="assistive">$i18n.getText("global.unlicensed.users.perms")</caption>
             <thead>
             <tr>
                 <th scope="col" width="380" class="permissionHeading">&nbsp;</th>

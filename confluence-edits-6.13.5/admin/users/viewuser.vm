@@ -71,7 +71,7 @@
 
                     <div class="field-group viewMode">
                         #set($directories = $action.getDirectories())
-                        <label for="directory.name">#if($directories.size() > 1)$i18n.getText("directories.name")#{else}$i18n.getText("directory.name")#end</label>
+                        <span class="label" for="directory.name">#if($directories.size() > 1)$i18n.getText("directories.name")#{else}$i18n.getText("directory.name")#end</span>
                         <span id="directory.name" class="field-value">
                             #foreach ($directory in $directories)
                                 <p>$directory.name</p>
