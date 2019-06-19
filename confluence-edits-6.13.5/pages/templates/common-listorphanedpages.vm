@@ -15,14 +15,15 @@
                     
                     #pagination($action.paginationSupport $contextPath)
                     <table width="100%" cellspacing="1" class="aui tableview">
+                        <caption class="assistive">$action.getText("title.orphaned.pages")</caption>
                         <thead>
                         <tr>
-                            <th width="30%">$action.getText("heading.title") <span class="smalltext">($action.getText("heading.page.space"))</span></th>
-                            <th width="15%">$action.getText("heading.creator")</th>
-                            <th width="12%">$action.getText("heading.creation.date")</th>
-                            <th width="15%">$action.getText("heading.modifier")</th>
-                            <th width="12%">$action.getText("heading.mod.date")</th>
-                            <th width="16%">$action.getText("heading.operations")</th>
+                            <th scope="col" width="30%">$action.getText("heading.title") <span class="smalltext">($action.getText("heading.page.space"))</span></th>
+                            <th scope="col" width="15%">$action.getText("heading.creator")</th>
+                            <th scope="col" width="12%">$action.getText("heading.creation.date")</th>
+                            <th scope="col" width="15%">$action.getText("heading.modifier")</th>
+                            <th scope="col" width="12%">$action.getText("heading.mod.date")</th>
+                            <th scope="col" width="16%">$action.getText("heading.operations")</th>
                         </tr>
                         </thead>
                         #set ($orphanedPages = $action.paginationSupport.page)
