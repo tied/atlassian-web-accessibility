@@ -9,12 +9,12 @@
            data-username="$contributor.name"
            #if (!$userProfilePicture.isAnonymousPicture())href="$req.contextPath/display/~$contributor.name"#end
         >
-            <img class="page-history-contributor-profile-pic" src="$userProfilePicture.uriReference"/>
+            <img class="page-history-contributor-profile-pic" src="$userProfilePicture.uriReference" alt=""/>
             <span class="page-history-contributor-name">$contributor.getFullName()</span>
         </a>
     #else
     <a class="page-history-contributor-link">
-        <img class="page-history-contributor-profile-pic" src="$staticResourceUrlPrefix/images/icons/profilepics/anonymous.svg"/>
+        <img class="page-history-contributor-profile-pic" src="$staticResourceUrlPrefix/images/icons/profilepics/anonymous.svg" alt=""/>
         <span class="page-history-contributor-name">$action.getText("user.icon.anonymous.title")</span>
     </a>
     #end
@@ -82,20 +82,21 @@
             </style>
 
             <table id="page-history-container" width="100%" cellspacing="0" class="aui tableview">
+                <caption class="assistive">$action.getText('content.history.label')</caption>
                 <thead>
                     <tr>
-                        <th>&nbsp;</th>
-                        <th>$action.getText("heading.version.number")</th>
-                        <th>$action.getText("heading.version.date")</th>
-                        <th>$action.getText("heading.contributors")</th>
-                        <th>$action.getText("heading.comment")</th>
-                        <th>$action.getText("heading.actions")</th>
+                        <th scope="col"><span class="assistive">Compare</span></th>
+                        <th scope="col">$action.getText("heading.version.number")</th>
+                        <th scope="col">$action.getText("heading.version.date")</th>
+                        <th scope="col">$action.getText("heading.contributors")</th>
+                        <th scope="col">$action.getText("heading.comment")</th>
+                        <th scope="col">$action.getText("heading.actions")</th>
                     </tr>
                 </thead>
                 <tbody>
                     #foreach( $pageVersion in $allVersions )
                         <tr id="rowForVersion$pageVersion.version">
-                            <td width="%1"><input type="checkbox" name="selectedPageVersions" value="$pageVersion.version" #if ($action.isSelectedVersion($pageVersion.version)) checked #end></td>
+                            <td width="%1"><label for="checkbox-$pageVersion.version" class="assistive">Compare version $pageVersion.version</label><input type="checkbox" name="selectedPageVersions" value="$pageVersion.version" id="checkbox-$pageVersion.version" #if ($action.isSelectedVersion($pageVersion.version)) checked #end></td>
                             ## Version
                             <td align="left">
                                 #if ($velocityCount == 1)
@@ -159,6 +160,7 @@
             #form_xsrfToken()
             <input id="remove-historical-version-pageid" type="hidden" name="pageId" value="" />
             <input id="remove-historical-version-content-type" type="hidden" name="contentType" value="$action.page.type" />
+            <button aria-hidden="true" class="assitive" type="submit" aria-label="Delete Historical Version"></button>
         </form>
         <p><a href="${req.contextPath}/pages/viewinfo.action?pageId=${page.id}" class="aui-button aui-button-link">$action.getText('return.to.page.info')</a></p>
     #end

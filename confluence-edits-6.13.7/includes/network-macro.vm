@@ -39,16 +39,18 @@
     #if ($showAddUser)
             <form class="follow-user noprint aui" name="follow-user" action="$req.contextPath/followuser.action" method="post">
                 #form_xsrfToken()
-                <label>
                 <span class="container">
                     ## Can't use #tag or #bodytag within wikicontent since there is no PageContext CONF-14926
-                    <input type="text" name="follow-autocomplete" class="follow-user-box text" tabindex="225" autocomplete="off"/>
-                    <input type="hidden" value="" name="username"/>
+                    <label for="follow-user-autocomplete" class="assistive">Follow User Autocomplete</label>
+                    <input id="follow-user-autocomplete" type="text" name="follow-autocomplete" class="follow-user-box text" tabindex="0" autocomplete="off"/>
+                    <label for="follow-user-input" class="assistive">Follow User</label>
+                    <input id="follow-user-input" type="hidden" value="" name="username"/>
                 </span>
-                </label>
-                <input type="submit" class="aui-button" name="follow" value="$action.getText("person.follow")"/>
+                <label for="follow-submit" class="assistive">Follow $action.getText("person.follow")</label>
+                <input id="follow-submit" type="submit" class="aui-button" name="follow" value="$action.getText("person.follow")"/>
                 <div class="hidden parameters">
-                    <input type="hidden" class="followUserBoxPlaceholder" id="followUserBoxPlaceholder" value="$action.getText("follow.user.box.placeholder")" />
+                    <label for="follow-hidden-input" class="assistive">Hidden Placeholder</label>
+                    <input id="follow-hidden-input" type="hidden" class="followUserBoxPlaceholder" id="followUserBoxPlaceholder" value="$action.getText("follow.user.box.placeholder")" />
                 </div>
                 <div class="follow-user-result">&nbsp;</div>
             </form>
