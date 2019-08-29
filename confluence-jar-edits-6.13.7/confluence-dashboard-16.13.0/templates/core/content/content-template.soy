@@ -17,7 +17,8 @@
 		<h1 class="list-title">{$title}</h1>
 		<form action="" class="aui aui-group aui-group-split content-filter">
             <div class="aui-item">
-                <input type="text" class="text" name="filter" placeholder="{getText('filter.name')}" maxlength="40" />
+                <label for="list-filter" class="assistive">Filter</label>
+                <input id="list-filter" title="Filter" type="text" class="text" name="filter" placeholder="{getText('filter.name')}" maxlength="40" />
             </div>
         </form>
 	</header>
