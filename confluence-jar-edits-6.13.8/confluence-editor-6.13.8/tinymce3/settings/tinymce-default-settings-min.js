@@ -1,1 +1,0 @@
-define("confluence-editor/tinymce3/settings/tinymce-default-settings",[],function(){});

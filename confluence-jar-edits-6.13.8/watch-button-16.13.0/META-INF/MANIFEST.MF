@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Archiver-Version: Plexus Archiver
-Created-By: Apache Maven
-Built-By: root
-Build-Jdk: 1.8.0_202
-Atlassian-Build-Date: 2019-06-06T04:49:03+0000
-

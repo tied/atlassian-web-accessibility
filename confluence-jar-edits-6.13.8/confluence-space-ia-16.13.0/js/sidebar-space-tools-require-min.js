@@ -1,1 +1,0 @@
-require(["confluence-space-ia/sidebar-space-tools"],function(a){AJS.toInit(function(){a()})});

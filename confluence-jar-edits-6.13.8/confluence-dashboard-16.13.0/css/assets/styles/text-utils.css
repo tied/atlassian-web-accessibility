@@ -1,6 +1,0 @@
-.text-wrapped {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 100%;
-  display: block;
-  white-space: nowrap; }
