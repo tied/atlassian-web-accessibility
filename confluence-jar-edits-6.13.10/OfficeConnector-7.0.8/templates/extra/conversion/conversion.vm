@@ -1,0 +1,7 @@
+#requireResource("com.atlassian.confluence.extra.officeconnector:office-connector-css")
+<div class="office-container">
+#if ($allowEdit && $darkFeatures.isDarkFeatureEnabled('enable.legacy.edit.in.office'))<a href="$editHrefHtml" class="confluence-button office-editable" data-use-path-auth="$usePathAuth">Edit Document</a>#end
+    <div class="office-document">
+    $contentHtml
+    </div>
+</div>
