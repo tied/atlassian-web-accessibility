@@ -78,3 +78,16 @@
   margin: auto;
   background-image: url("assets/images/3.0/onboarding-dialog-illustration.svg");
   background-repeat: no-repeat; }
+
+.nav-item-container-starred .onboarding-tooltip-wrapper {
+    display: inline-block; }
+
+.aui-sidebar.expanded .nav-item-container-starred .onboarding-tooltip-wrapper {
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    right: 0; }
+
+.aui-sidebar:not(.expanded) .nav-item-container-starred .onboarding-tooltip-wrapper {
+    display: inline-block;
+    padding-left: 3px; }

@@ -82,7 +82,7 @@
 *   @param? page
 */
 {template .tooltipBase}
-    <button aria-controls="{$id}" data-aui-trigger class="onboarding-hotspot"></button>
+    <button aria-controls="{$id}" data-aui-trigger class="onboarding-hotspot" aria-label="Onboarding Token"></button>
     <aui-inline-dialog id="{$id}" class="onboarding-tooltips aui-help onboarding-inline-dialog" alignment="left top" responds-to="toggle" aria-hidden="true">
         {call .tooltipBaseContent data="all" /}
     </aui-inline-dialog>

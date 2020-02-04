@@ -127,6 +127,8 @@ define('confluence-dashboard/behaviors/aui-sidebar-resizable', ['module', 'expor
             this.triggerToggleSidebar('expand');
             this.setPanelWidth(this.EXPANDED_SIZE, this.EXPANDED_SIZE);
             this.persistSidebarSize();
+            $('.aui-sidebar').addClass('expanded');
+            $('a.aui-sidebar-toggle').attr('aria-expanded','true');
         },
         onCollapse: function onCollapse() {
             // if we collapses the sidebar after a resize, we should be able to return to the previous size
@@ -136,6 +138,8 @@ define('confluence-dashboard/behaviors/aui-sidebar-resizable', ['module', 'expor
             this.triggerToggleSidebar('collapse');
             this.setPanelWidth(COLLAPSED_SIZE, 'inherit');
             this.persistSidebarSize();
+            $('.aui-sidebar').removeClass('expanded');
+            $('a.aui-sidebar-toggle').attr('aria-expanded','false');
         },
         onResizeStart: function onResizeStart(e) {
             var _this2 = this;

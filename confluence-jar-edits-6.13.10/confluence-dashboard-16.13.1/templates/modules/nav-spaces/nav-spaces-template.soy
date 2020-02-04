@@ -10,7 +10,7 @@
 {template .space}
     <a href="{ $url }" class="aui-nav-item" title="{ $name }">
     	<span class="aui-avatar aui-avatar-small aui-avatar-project">
-            <span class="aui-avatar-inner"><img src="{ $logo }" alt="{ $name }"></span>
+            <span class="aui-avatar-inner"><img src="{ $logo }" alt=""></span>
         </span>
     	<span class="aui-nav-item-label">
     	    { $name }
@@ -18,9 +18,9 @@
     </a>
     {if not $isAnonymousUser}
         {if $virtuallyDeleted}
-            <button title="{getText('my.spaces.tooltip.add')}" class="undo-remove toggle-favourite aui-icon aui-icon-small aui-iconfont-unstar"></button>
+            <button title="{getText('my.spaces.tooltip.add')}" aria-label="{getText('my.spaces.tooltip.add')}" class="undo-remove toggle-favourite aui-icon aui-icon-small aui-iconfont-unstar"></button>
         {else}
-            <button title="{getText('my.spaces.tooltip.remove')}" class="remove toggle-favourite aui-icon aui-icon-small aui-iconfont-star"></button>
+            <button title="{getText('my.spaces.tooltip.remove')}" aria-label="{getText('my.spaces.tooltip.remove')}" class="remove toggle-favourite aui-icon aui-icon-small aui-iconfont-star"></button>
         {/if}
     {/if}
 {/template}
