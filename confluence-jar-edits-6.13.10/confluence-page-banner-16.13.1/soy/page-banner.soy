@@ -59,12 +59,14 @@
  * @param isSystemContentItem True if item being rendered belongs in the system-content-item section
  */
 {template .itemAnchor}
-   <a href="{$href}" title="{$tooltip}" {if $linkId}id="{$linkId}"{/if} {if $styleClasses}class="{$styleClasses}"{/if}>
+   <a href="{if $href}{$href}{else}#{/if}" title="{$tooltip}" aria-label="{$tooltip}" {if $linkId}id="{$linkId}"{/if} {if $styleClasses}class="{$styleClasses}"{/if}>
        {call .itemIcon}
            {param icon: $icon/}
        {/call}
        {if not($isSystemContentItem)}
            <span>{$label}</span>
+       {else}
+           <span class="assistive">{$tooltip}</span>
        {/if}
    </a>
 {/template}

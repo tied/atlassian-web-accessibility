@@ -84,6 +84,7 @@ define('confluence-page-banner/page-banner', [
         }
 
         $restrictionsIcon.attr('title', labelName);
+        $restrictionsIcon.attr('aria-label', labelName);
         applyTooltip($restrictionsIcon);
 
         updateSystemContentItems();
