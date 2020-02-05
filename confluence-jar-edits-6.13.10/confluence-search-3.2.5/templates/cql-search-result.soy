@@ -10,6 +10,7 @@
  * @param queryString
  */
 {template .searchResults}
+        <h2 class="assistive">Results</h2>
         <p id="search-results-meta" class="search-results-count" data-totalsize="{$totalSize}">
             {getText('confluence-search.results.meta', ($startIndex / $pageSize) + 1, ceiling($totalSize / $pageSize), $totalSize, $timeSpent/1000)|noAutoescape}
         </p>
@@ -102,6 +103,7 @@
         {/if}
         <li>{getText('confluence-search.tip.general', 'https://confluence.atlassian.com/display/DOC/Confluence+Search+Syntax')|noAutoescape}</li>
         <li>{getText('confluence-search.tip.restrictions')}</li>
+        <li>{getText('confluence-search.results.noresults.login')|noAutoescape}</li>
     </ul>
 
     <ul class="search-results" data-query="{$queryString}"></ul>
@@ -124,9 +126,9 @@
  * Missing search query error message
  */
 {template .searchMissingQuery}
-    <h2 class="search-missing-query-header">
+    <h3 class="search-missing-query-header">
         {getText('confluence-search.results.missing.query')}
-    </h2>
+    </h3>
     <p class="search-missing-query-body">
         <span class="search-missing-query-body-label">
             {getText('confluence-search.results.cql-missing.query')}

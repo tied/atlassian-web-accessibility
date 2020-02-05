@@ -25,9 +25,11 @@
         <li>
             <a data-value="custom">{getText('confluence-ui-components.date-picker.custom')}</a>
             <span class="absolute-date-pickers">
-                <input class="from-date-picker text" type="date" />
+                <label for="from-date" class="assistive">From Date</label>
+                <input id="from-date" class="from-date-picker text" type="date" />
                 <span>&ndash;</span>
-                <input class="to-date-picker text" type="date" />
+                <label for="to-date" class="assistive">To Date</label>
+                <input id="to-date" class="to-date-picker text" type="date" />
             </span>
         </li>
     </ul>

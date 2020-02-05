@@ -4,12 +4,13 @@
  * Renders a single toc-item-body element
  * @param outline
  * @param linkHref
+ * @param focusLink
  * @param linkText
  */
 {template .tocItemBody}
 <span class="toc-item-body" data-outline="{$outline}">
     <span class="toc-outline">{$outline}</span>
-    <a href="{$linkHref}" class="toc-link">{$linkText}</a>
+    <a href="{$linkHref}" onclick="{$focusLink}" class="toc-link">{$linkText}</a>
 </span>
 {/template}
 

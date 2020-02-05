@@ -149,9 +149,11 @@ define('confluence-space-ia/sidebar-space-tools', [
         $expandCollapseTrigger.attr('data-tooltip', $('.ia-fixed-sidebar').hasClass('collapsed') ? Confluence.Sidebar.expandTooltip : Confluence.Sidebar.collapseTooltip);
         AJS.bind('sidebar.collapsed', function() {
             $expandCollapseTrigger.attr('data-tooltip', Confluence.Sidebar.expandTooltip);
+            $expandCollapseTrigger.attr('aria-expanded','false');
         });
         AJS.bind('sidebar.expanded', function() {
             $expandCollapseTrigger.attr('data-tooltip', Confluence.Sidebar.collapseTooltip);
+            $expandCollapseTrigger.attr('aria-expanded','true');
         });
     }
 
