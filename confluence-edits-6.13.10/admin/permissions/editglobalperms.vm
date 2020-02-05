@@ -23,6 +23,7 @@
 </div>
 
 <table id="gPermissionsTable" class="editpermissions aui">
+    <caption class="assistive">$i18n.getText('perms.groups')</caption>
     #set ($groupRows = $action.groupPermissionRows)
     #if ($groupRows.size() > 0)
     #showGlobalPermissionsHeader()
@@ -44,15 +45,18 @@
             #set ($canSetGlobalPermission = $action.canSetPermissionOnGroup($permission, $groupRow.groupName))
 
             #if ($groupRow.isTypeAllowed($permission))
-                <input type="checkbox" name="$groupRow.buildCheckboxParameterName($permission)" checked #if(!$canSetGlobalPermission) disabled #end>
+                <label for="$groupRow.buildCheckboxParameterName($permission)" class="assistive">$groupRow.buildCheckboxParameterName($permission)</label>
+                <input id="$groupRow.buildCheckboxParameterName($permission)" type="checkbox" name="$groupRow.buildCheckboxParameterName($permission)" checked #if(!$canSetGlobalPermission) disabled #end>
                 ## use a hidden field to submit the value of the checked (but disabled) checkbox above (since disabled checkboxes don't get submitted)
                 #if(!$canSetGlobalPermission)
-                    <input type="hidden" name="$groupRow.buildCheckboxParameterName($permission)" value="on">
+                    <label for="$groupRow.buildCheckboxParameterName($permission)" class="assistive">$groupRow.buildCheckboxParameterName($permission)</label>
+                    <input id="$groupRow.buildCheckboxParameterName($permission)" type="hidden" name="$groupRow.buildCheckboxParameterName($permission)" value="on">
                 #end
-
-                <input type="hidden" name="$groupRow.buildHiddenParameterName($permission)" value="on">
+                <label for="$groupRow.buildHiddenParameterName($permission)" class="assistive">$groupRow.buildHiddenParameterName($permission)</label>
+                <input id="$groupRow.buildHiddenParameterName($permission)" type="hidden" name="$groupRow.buildHiddenParameterName($permission)" value="on">
             #else
-                <input type="checkbox" name="$groupRow.buildCheckboxParameterName($permission)" #if(!$canSetGlobalPermission) disabled #end>
+                <label for="$groupRow.buildCheckboxParameterName($permission)" class="assistive">$groupRow.buildCheckboxParameterName($permission)</label>
+                <input id="$groupRow.buildCheckboxParameterName($permission)" type="checkbox" name="$groupRow.buildCheckboxParameterName($permission)" #if(!$canSetGlobalPermission) disabled #end>
             #end
             #if ($permission == 'useconfluence') $action.getText('perms.can.use') #end
         </td>
@@ -89,7 +93,7 @@
     </div>
 
     <table id="uPermissionsTable" class="editpermissions aui">
-
+        <caption class="assistive">$action.getText("global.user.perms")</caption>
         #if (!$userRows.empty)
         #showGlobalPermissionsHeader()
             #foreach ($userRow in $userRows)
@@ -111,15 +115,18 @@
                     #set ($canSetGlobalPermission = $action.canSetPermissionOnUser($permission, $userRow.username))
 
                     #if ($userRow.isTypeAllowed($permission))
-                        <input type="checkbox" name="$userRow.buildCheckboxParameterName($permission)" checked #if(!$canSetGlobalPermission) disabled #end>
+                        <label for="$userRow.buildCheckboxParameterName($permission)" class="assistive">$userRow.buildCheckboxParameterName($permission)</label>
+                        <input id="$userRow.buildCheckboxParameterName($permission)" type="checkbox" name="$userRow.buildCheckboxParameterName($permission)" checked #if(!$canSetGlobalPermission) disabled #end>
                         ## use a hidden field to submit the value of the checked (but disabled) checkbox above (since disabled checkboxes don't get submitted)
                         #if(!$canSetGlobalPermission)
-                            <input type="hidden" name="$userRow.buildCheckboxParameterName($permission)" value="on">
+                            <label for="$userRow.buildCheckboxParameterName($permission)" class="assistive">$userRow.buildCheckboxParameterName($permission)</label>
+                            <input id="$userRow.buildCheckboxParameterName($permission)" type="hidden" name="$userRow.buildCheckboxParameterName($permission)" value="on">
                         #end
-
-                        <input type="hidden" name="$userRow.buildHiddenParameterName($permission)" value="on">
+                        <label for="$userRow.buildHiddenParameterName($permission)" class="assistive">$userRow.buildHiddenParameterName($permission)</label>
+                        <input id="$userRow.buildHiddenParameterName($permission)" type="hidden" name="$userRow.buildHiddenParameterName($permission)" value="on">
                     #else
-                        <input type="checkbox" name="$userRow.buildCheckboxParameterName($permission)" #if(!$canSetGlobalPermission) disabled #end>
+                        <label for="$userRow.buildCheckboxParameterName($permission)" class="assistive">$userRow.buildCheckboxParameterName($permission)</label>
+                        <input id="$userRow.buildCheckboxParameterName($permission)" type="checkbox" name="$userRow.buildCheckboxParameterName($permission)" #if(!$canSetGlobalPermission) disabled #end>
                     #end
                     #if ($permission == 'useconfluence') $action.getText('perms.can.use') #end
                 </td>
@@ -163,14 +170,15 @@
         </div>
 
         <table id="unlicensedPermissionsTable" class="editpermissions aui">
+            <caption class="assistive">$i18n.getText("global.unlicensed.users.perms")</caption>
             <thead>
             <tr>
-                <th width="380" class="permissionHeading">&nbsp;</th>
-                <th class="permissionTab">
+                <th scope="col" width="380" class="permissionHeading">&nbsp;</th>
+                <th scope="col" class="permissionTab">
                     $i18n.getText("permissions.USECONFLUENCE")
                     <a href="#" class="inlineDialog-unlicensedUseConfluence inline-help">$i18n.getText("inline.dialog.help")</a>
                 </th>
-                <th class="permissionTab">
+                <th scope="col" class="permissionTab">
                     $i18n.getText("permissions.VIEWUSERPROFILES")
                     <a href="#" class="inlineDialog-unlicensedViewProfiles inline-help">$i18n.getText("inline.dialog.help")</a>
                 </th>
@@ -183,19 +191,25 @@
                 #set ($unlicensedAuthenticatedRow = $action.unlicensedAuthenticatedPermissionRow)
                 <td class="permissionCell">
                     #if ($unlicensedAuthenticatedRow.isTypeAllowed('LIMITEDUSECONFLUENCE'))
-                        <input type="checkbox" name="$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')" checked>
-                        <input type="hidden" name="$unlicensedAuthenticatedRow.buildHiddenParameterName('limiteduseconfluence')" value="on">
+                        <label for="$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')" class="assistive">$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')</label>
+                        <input id="$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')" type="checkbox" name="$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')" checked>
+                        <label for="$unlicensedAuthenticatedRow.buildHiddenParameterName('limiteduseconfluence')" class="assistive">$unlicensedAuthenticatedRow.buildHiddenParameterName('limiteduseconfluence')</label>
+                        <input id="$unlicensedAuthenticatedRow.buildHiddenParameterName('limiteduseconfluence')" type="hidden" name="$unlicensedAuthenticatedRow.buildHiddenParameterName('limiteduseconfluence')" value="on">
                     #else
-                        <input type="checkbox" name="$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')">
+                        <label for="$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')" class="assistive">$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')</label>
+                        <input id="$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')" type="checkbox" name="$unlicensedAuthenticatedRow.buildCheckboxParameterName('limiteduseconfluence')">
                     #end
                     $i18n.getText('perms.can.use')
                 </td>
                 <td class="permissionCell">
                     #if ($unlicensedAuthenticatedRow.isTypeAllowed('VIEWUSERPROFILES'))
-                        <input type="checkbox" name="$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')" checked>
-                        <input type="hidden" name="$unlicensedAuthenticatedRow.buildHiddenParameterName('viewuserprofiles')" value="on">
+                        <label for="$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')" class="assistive">$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')</label>
+                        <input id="$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')" type="checkbox" name="$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')" checked>
+                        <label for="$unlicensedAuthenticatedRow.buildHiddenParameterName('viewuserprofiles')" class="assistive">$unlicensedAuthenticatedRow.buildHiddenParameterName('viewuserprofiles')</label>
+                        <input id="$unlicensedAuthenticatedRow.buildHiddenParameterName('viewuserprofiles')" type="hidden" name="$unlicensedAuthenticatedRow.buildHiddenParameterName('viewuserprofiles')" value="on">
                     #else
-                        <input type="checkbox" name="$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')">
+                        <label for="$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')" class="assistive">$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')</label>
+                        <input id="$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')" type="checkbox" name="$unlicensedAuthenticatedRow.buildCheckboxParameterName('viewuserprofiles')">
                     #end
                 </td>
             </tr>
@@ -208,14 +222,15 @@
     </div>
 
     <table id="aPermissionsTable" class="editpermissions aui">
+        <caption class="assistive">$action.getText("global.anonymous.perms")</caption>
         <thead>
             <tr>
-                <th width="380" class="permissionHeading">&nbsp;</th>
-                <th class="permissionTab">
+                <th scope="col" width="380" class="permissionHeading">&nbsp;</th>
+                <th scope="col" class="permissionTab">
                     $i18n.getText("permissions.USECONFLUENCE")
                     <a href="#" class="inlineDialog-anonymousUseConfluence inline-help">$i18n.getText("inline.dialog.help")</a>
                 </th>
-                <th class="permissionTab">
+                <th scope="col" class="permissionTab">
                     $i18n.getText("permissions.VIEWUSERPROFILES")
                     <a href="#" class="inlineDialog-anonymousViewProfiles inline-help">$i18n.getText("inline.dialog.help")</a>
                 </th>
@@ -228,19 +243,25 @@
             #set ($anonymousRow = $action.anonymousPermissionRow)
             <td class="permissionCell">
                 #if ($anonymousRow.isTypeAllowed('useconfluence'))
-                <input type="checkbox" name="$anonymousRow.buildCheckboxParameterName('useconfluence')" checked>
-                <input type="hidden" name="$anonymousRow.buildHiddenParameterName('useconfluence')" value="on">
+                <label for="$anonymousRow.buildCheckboxParameterName('useconfluence')" class="assistive">$anonymousRow.buildCheckboxParameterName('useconfluence')</label>
+                <input id="$anonymousRow.buildCheckboxParameterName('useconfluence')" type="checkbox" name="$anonymousRow.buildCheckboxParameterName('useconfluence')" checked>
+                <label for="$anonymousRow.buildHiddenParameterName('useconfluence')" class="assistive">$anonymousRow.buildHiddenParameterName('useconfluence')</label>
+                <input id="$anonymousRow.buildHiddenParameterName('useconfluence')" type="hidden" name="$anonymousRow.buildHiddenParameterName('useconfluence')" value="on">
                 #else
-                <input type="checkbox" name="$anonymousRow.buildCheckboxParameterName('useconfluence')">
+                <label for="$anonymousRow.buildCheckboxParameterName('useconfluence')" class="assistive">$anonymousRow.buildCheckboxParameterName('useconfluence')</label>
+                <input id="$anonymousRow.buildCheckboxParameterName('useconfluence')" type="checkbox" name="$anonymousRow.buildCheckboxParameterName('useconfluence')">
                 #end
                 $action.getText('perms.can.use')
             </td>
             <td class="permissionCell">
                 #if ($anonymousRow.isTypeAllowed('VIEWUSERPROFILES'))
-                <input type="checkbox" name="$anonymousRow.buildCheckboxParameterName('viewuserprofiles')" checked>
-                <input type="hidden" name="$anonymousRow.buildHiddenParameterName('viewuserprofiles')" value="on">
+                <label for="$anonymousRow.buildCheckboxParameterName('viewuserprofiles')" class="assistive">$anonymousRow.buildCheckboxParameterName('viewuserprofiles')</label>
+                <input id="$anonymousRow.buildCheckboxParameterName('viewuserprofiles')" type="checkbox" name="$anonymousRow.buildCheckboxParameterName('viewuserprofiles')" checked>
+                <label for="$anonymousRow.buildHiddenParameterName('viewuserprofiles')" class="assistive">$anonymousRow.buildHiddenParameterName('viewuserprofiles')</label>
+                <input id="$anonymousRow.buildHiddenParameterName('viewuserprofiles')" type="hidden" name="$anonymousRow.buildHiddenParameterName('viewuserprofiles')" value="on">
                 #else
-                <input type="checkbox" name="$anonymousRow.buildCheckboxParameterName('viewuserprofiles')">
+                <label for="$anonymousRow.buildCheckboxParameterName('viewuserprofiles')" class="assistive">$anonymousRow.buildCheckboxParameterName('viewuserprofiles')</label>
+                <input id="$anonymousRow.buildCheckboxParameterName('viewuserprofiles')" type="checkbox" name="$anonymousRow.buildCheckboxParameterName('viewuserprofiles')">
                 #end
             </td>
         </tr>

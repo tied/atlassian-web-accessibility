@@ -43,13 +43,13 @@
                     #themeIcon($currentThemeDescriptor)
                 </td>
                 <td valign="top">
-                    <label id="currentThemeName" class="formtitle">
+                    <span id="currentThemeName" class="formtitle" style="font-weight:bold;">
                         #if ($currentThemeDescriptor.i18nNameKey)
                             $action.getText($currentThemeDescriptor.i18nNameKey, $currentThemeDescriptor.name)
                         #else
                             $currentThemeDescriptor.name
                         #end
-                    </label>
+                    </span>
                     <br>
                     #if ($currentThemeDescriptor.descriptionKey)
                         $action.getText($currentThemeDescriptor.descriptionKey, $!currentThemeDescriptor.description)
@@ -76,13 +76,13 @@
                     <img src="$staticResourceUrlPrefix/images/themes/main-theme.gif" alt="" class="greybox">
                 </td>
                 <td valign="top">
-                    <label id="currentThemeName">
+                    <span id="currentThemeName" style="font-weight:bold;">
                         #if ($isGlobalAdmin)
                             $action.getText("global.theme.notheme.title")
                         #else
                             $action.getText("theme.notheme.title")
                         #end
-                    </label>
+                    </span>
                     <p>
                     #if ($isGlobalAdmin)
                         $action.getText("global.theme.default.desc")
@@ -106,7 +106,7 @@
                 </td>
                 <td valign="top">
                     <input type="radio" id="themeKey.default" name="themeKey" value="" #if ( (! $currentThemeDescriptor) || ($availableThemeDescriptors.size() == 0)) checked="true" #end >
-                    <label>
+                    <label for="themeKey.default">
                         #if ($isGlobalAdmin)
                             $action.getText("global.theme.notheme.title")
                         #else
@@ -137,7 +137,7 @@
                         <td valign="top">
                             <input type="radio" id="themeKey.$theme.completeKey" name="themeKey" value="$theme.completeKey"
                                 #if (($currentThemeDescriptor && $theme == $currentThemeDescriptor) || $theme.completeKey == $themeKey) checked="true" #end>
-                            <label>
+                            <label for="themeKey.$theme.completeKey">
                                 #if ($theme.i18nNameKey)
                                     $action.getText($theme.i18nNameKey, $theme.name)
                                 #else

@@ -1,7 +1,7 @@
 ## Dashboard navigation
 ##
 <content tag="content-navigation">
-    <div id="navigation" class="content-navigation">
+    <div id="navigation" class="content-navigation" tabindex="-1">
         <ul class="ajs-menu-bar">
             #menuMacros_renderButton("system.dashboard.button")
         </ul>
