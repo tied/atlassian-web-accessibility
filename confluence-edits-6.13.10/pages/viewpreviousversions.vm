@@ -1,0 +1,166 @@
+#* @vtlvariable name="action" type="com.atlassian.confluence.pages.actions.ViewPreviousVersionsAction" *#
+#* @vtlvariable name="allVersions" type="java.util.List<com.atlassian.confluence.core.VersionHistorySummary>" *#
+#* @vtlvariable name="contributor" type="com.atlassian.user.User" *#
+
+#macro(contributorAvatarAndName $contributor)
+    #if ($contributor && $contributor != "")
+        #set ($userProfilePicture = $userAccessor.getUserProfilePicture($contributor))
+        <a class="page-history-contributor-link"
+           data-username="$contributor.name"
+           #if (!$userProfilePicture.isAnonymousPicture())href="$req.contextPath/display/~$contributor.name"#end
+        >
+            <img class="page-history-contributor-profile-pic" src="$userProfilePicture.uriReference"/>
+            <span class="page-history-contributor-name">$contributor.getFullName()</span>
+        </a>
+    #else
+    <a class="page-history-contributor-link">
+        <img class="page-history-contributor-profile-pic" src="$staticResourceUrlPrefix/images/icons/profilepics/anonymous.svg"/>
+        <span class="page-history-contributor-name">$action.getText("user.icon.anonymous.title")</span>
+    </a>
+    #end
+#end
+
+#macro(additionalContributorsDialog $additionalContributors $page)
+    #if ($additionalContributors.size() > 0)
+    <button class="aui-button additional-contributors-button" aria-controls="additional-contributors-$page.id" data-aui-trigger="true">$additionalContributors.size()</button>
+    <span class="aui-button aui-button-link additional-contributors-button" aria-controls="additional-contributors-$page.id" data-aui-trigger="true">
+        #if($additionalContributors.size() == 1)
+            $action.getText("view.previous.versions.additional.contributors.one")
+        #else
+            $action.getText("view.previous.versions.additional.contributors", $additionalContributors.size())
+        #end
+    </span>
+    <aui-inline-dialog id="additional-contributors-$page.id"
+                       alignment="top left"
+                       responds-to="toggle"
+                       aria-hidden="true">
+        <div class="page-history-additional-contributors-dialog-content">
+            #foreach ( $additionalContributor in $additionalContributors)
+                <div class="additional-contributor-row">
+                    #if ($additionalContributor && $additionalContributor != "")
+                        #set ($userProfilePicture = $userAccessor.getUserProfilePicture($additionalContributor))
+                        <a class="page-history-additional-contributor-link"
+                           data-username="$additionalContributor.name"
+                           href="$req.contextPath/display/~$additionalContributor.name">
+                            <img class="page-history-additional-contributor-profile-pic" src="$userProfilePicture.uriReference"/>
+                            <span class="page-history-additional-contributor-name">$additionalContributor.fullName</span>
+                        </a>
+                    #else
+                        <a class="page-history-additional-contributor-link">
+                            <img class="page-history-additional-contributor-profile-pic" src="$staticResourceUrlPrefix/images/icons/profilepics/anonymous.svg"/>
+                            <span class="page-history-additional-contributor-name">$action.getText("user.icon.anonymous.title")</span>
+                        </a>
+                    #end
+                </div>
+            #end
+        </div>
+    </aui-inline-dialog>
+    #end
+#end
+
+<html>
+    <head>
+        <title>$action.getText("title.view.previous.versions")#if($page.title) - $page.title#end</title>
+    </head>
+
+    <content tag="title-text-span">$action.getText("title.view.previous.versions")</content>
+
+    #applyDecorator("root")
+        #decoratorParam("helper" $action.helper)
+        #decoratorParam("mode" "view-information")
+        #decoratorParam("calendar-width" "200px")
+        #decoratorParam("context" "$action.page.type")
+
+        #requireResource("confluence.web.resources:page-history")
+        <form name="diff" method="GET" action="diffpagesbyversion.action" class="aui">
+
+            <input type="submit" class="aui-button" value="$action.getText('compare.selected')">
+            <input type="hidden" name="pageId" value="$action.pageId">
+
+            <style>
+            .tableview td {white-space:nowrap; vertical-align:top;}
+            </style>
+
+            <table id="page-history-container" width="100%" cellspacing="0" class="aui tableview">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>$action.getText("heading.version.number")</th>
+                        <th>$action.getText("heading.version.date")</th>
+                        <th>$action.getText("heading.contributors")</th>
+                        <th>$action.getText("heading.comment")</th>
+                        <th>$action.getText("heading.actions")</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    #foreach( $pageVersion in $allVersions )
+                        <tr id="rowForVersion$pageVersion.version">
+                            <td width="%1"><input type="checkbox" name="selectedPageVersions" value="$pageVersion.version" #if ($action.isSelectedVersion($pageVersion.version)) checked #end></td>
+                            ## Version
+                            <td align="left">
+                                #if ($velocityCount == 1)
+                                    <strong>
+                                        <a href="viewpage.action?pageId=$page.id">$action.getText("current.version")</a>
+                                        (v. $page.version)
+                                    </strong>
+                                #else
+                                    <a class="view-historical-version-trigger" href="viewpage.action?pageId=${pageVersion.id}">v. $pageVersion.version</a>
+                                #end
+                            </td>
+                            ## Last modification date
+                            <td align="middle" #if($velocityCount == 1)  style="font-weight: bold;" #end>
+                                $dateFormatter.formatDateTime( $pageVersion.lastModificationDate )
+                            </td>
+                            ## Contributors
+                            <td class="contributors" style="white-space: normal;">
+                                #if ($darkFeatures.isDarkFeatureEnabled("collaborative-audit-log") && !$action.isOfflineCollabEditingMode())
+                                    #set ($additionalContributors = [])
+                                    #set ($maxContributors = 12)
+                                    #set ($contributors = $pageVersion.getContributorSet())
+                                    #foreach( $contributor in $contributors )
+                                        #if ($contributors.size() > $maxContributors && $velocityCount > $maxContributors)
+                                            #set ($dummy = $additionalContributors.add($contributor))
+                                        #else
+                                            #contributorAvatarAndName($contributor)
+                                        #end
+                                    #end
+                                    #additionalContributorsDialog($additionalContributors $pageVersion)
+                                #else
+                                    <strong>#userLink ($pageVersion.lastModifier)</strong>
+                                #end
+                            </td>
+                            ## Version comment
+                            <td>
+                                #if ($pageVersion.versionCommentAvailable)
+                                    <span class="change-comment">$pageVersion.renderedVersionComment</span>
+                                #end
+                            </td>
+                            ## Actions
+                            #if ($velocityCount == 1)
+                                <td>&nbsp;</td> ## No operations can be performed on the latest version
+                            #else
+                                <td align="middle">
+                                    #if ($action.isRevertPermitted())
+                                        #if ($pageVersion.version > 0)
+                                            <a class="restore-historical-version-trigger" href="revertpagebacktoversion.action?pageId=$page.id&version=${pageVersion.version}">$action.getText("restore.this.version")</a>
+                                        #end
+                                    #end
+                                    #if ($action.isRemoveHistoricalVersionPermitted())
+                                        &nbsp;&nbsp;<a class="remove-historical-version-trigger" data-pageid="$pageVersion.id" data-version="$pageVersion.version" href="#">$action.getText("remove.name")</a>
+                                    #end
+                                </td>
+                            #end
+                        </tr>
+                    #end
+                </tbody>
+            </table>
+        </form>
+        <form id="remove-historical-version-form" name="removehistoricalversion" method="POST" action="removehistoricalversion.action" class="hidden">
+            #form_xsrfToken()
+            <input id="remove-historical-version-pageid" type="hidden" name="pageId" value="" />
+            <input id="remove-historical-version-content-type" type="hidden" name="contentType" value="$action.page.type" />
+        </form>
+        <p><a href="${req.contextPath}/pages/viewinfo.action?pageId=${page.id}" class="aui-button aui-button-link">$action.getText('return.to.page.info')</a></p>
+    #end
+</html>
+
