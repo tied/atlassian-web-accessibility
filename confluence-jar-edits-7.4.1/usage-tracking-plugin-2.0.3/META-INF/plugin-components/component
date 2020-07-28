@@ -1,0 +1,3 @@
+com.atlassian.confluence.ext.usage.cluster.UnclusteredOnlySpringBean
+com.atlassian.confluence.ext.usage.event.UsageTaskQueue
+com.atlassian.confluence.ext.usage.index.UsageIndexManager
