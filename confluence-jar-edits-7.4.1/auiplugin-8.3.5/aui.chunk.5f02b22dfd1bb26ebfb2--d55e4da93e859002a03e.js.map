@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./vendor/jquery-ui/jquery.ui.scroll-parent.js"],"names":["__webpack_require__"],"mappings":"kKACAA,EAAA,kBADe","file":"aui.chunk.5f02b22dfd1bb26ebfb2--d55e4da93e859002a03e.js","sourcesContent":["export default 'jquery';\nimport 'jquery-ui/ui/scroll-parent';\n"],"sourceRoot":""}
