@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./styles/aui.pattern.icon.js"],"names":["__webpack_require__"],"mappings":"wIAAAA,EAAA","file":"aui.chunk.8b53bc9256f0d7fe84fe--c1cdafe29f4eac2332d0.js","sourcesContent":["import '@atlassian/aui/src/less/aui-icons.less'; // todo: split the icon pattern definition from the various (deprecated) glyphs.\n"],"sourceRoot":""}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./styles/aui.pattern.group.js"],"names":["__webpack_require__"],"mappings":"iHAAAA,EAAA,QACAA,EAAA","file":"aui.chunk.c223c4024cddcbe416c3--3a2ebc3d5c765ba19eed.js","sourcesContent":["import './aui.page.reset';\nimport '@atlassian/aui/src/less/aui-group.less';\n"],"sourceRoot":""}
