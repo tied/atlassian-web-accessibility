@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Built-By: root
+Atlassian-Build-Date: 2019-10-23T23:24:39+0000
+Created-By: Apache Maven 3.5.4
+Build-Jdk: 1.8.0_222
+
