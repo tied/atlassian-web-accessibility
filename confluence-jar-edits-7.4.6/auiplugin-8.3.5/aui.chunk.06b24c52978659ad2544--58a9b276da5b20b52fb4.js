@@ -1,0 +1,1 @@
+(window.__auiJsonp=window.__auiJsonp||[]).push([["aui.splitchunk.vendors--20a97d6a33"],{"O+lX":function(i,n,o){var u,p,a;p=[o("oDIA")],void 0===(a="function"==typeof(u=function(i){return i.ui=i.ui||{},i.ui.version="1.12.1"})?u.apply(n,p):u)||(i.exports=a)}}]);

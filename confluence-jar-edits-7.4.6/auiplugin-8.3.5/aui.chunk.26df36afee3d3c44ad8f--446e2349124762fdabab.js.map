@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./vendor/jquery-ui/jquery.ui.widget.js"],"names":["__webpack_require__"],"mappings":"yJACAA,EAAA,kBADe","file":"aui.chunk.26df36afee3d3c44ad8f--446e2349124762fdabab.js","sourcesContent":["export default 'jquery';\nimport 'jquery-ui/ui/widget';\n"],"sourceRoot":""}
