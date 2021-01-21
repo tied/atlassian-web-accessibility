@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"/dummy-file-path",
+"lineCount":1,
+"mappings":"AAAAA,GAAAC,OAAA,CAAW,QAAQ,EAAG,CAClBC,UAAAC,UAAAC,UAAA,CAA+B,2FAA/B,CAA4H,QAAQ,CAACC,CAAD,CAAS,CACzIA,CAAAC,GAAA,CAAU,uBAAV,CAAmCJ,UAAAK,eAAAC,qBAAAC,UAAnC,CACAJ,EAAAC,GAAA,CAAU,wBAAV,CAAoCJ,UAAAK,eAAAC,qBAAAE,WAApC,CACAL,EAAAC,GAAA,CAAU,mBAAV,CAA+BJ,UAAAK,eAAAC,qBAAAG,OAA/B,CAHyI,CAA7I,CADkB,CAAtB;",
+"sources":["input.js"],
+"names":["AJS","toInit","Confluence","Blueprint","setWizard","wizard","on","SpaceBlueprint","CommonWizardBindings","preRender","postRender","submit"]
+}

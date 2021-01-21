@@ -1,0 +1,1 @@
+Confluence.Blueprint.setDirectCallback("com.atlassian.confluence.plugins.confluence-create-content-plugin:create-blog-post",function(b,a){b=Confluence.getContextPath()+"/pages/createblogpost.action?spaceKey\x3d"+encodeURIComponent(a.spaceKey);if(a.initContext)for(var c in a.initContext)b+="\x26"+encodeURIComponent(c)+"\x3d"+encodeURIComponent(a.initContext[c]);a.finalUrl=b});

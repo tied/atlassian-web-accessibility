@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"/dummy-file-path",
+"lineCount":1,
+"mappings":"AAAAA,MAAA,CAAO,2CAAP,CAAoD,EAApD,CAAwD,QAAQ,EAAG,CAC/D,MAAO,CAAEC,OAASC,GAAAC,EAAAC,SAAA,EAAX,CADwD,CAAnE,CAOAC,QAAA,CAAQ,4BAAR,CAAAC,qBAAA,CAA2D,2CAA3D,CAAwG,2BAAxG,CAEAJ,IAAAK,UAAAC,KAAA,CAAmBC,MAAAC,WAAAC,eAAnB,CAAqD,QAArD,CAA+D,CAC3DC,aAAc,OAD6C,CAE3DC,UAAW,0DAFgD,CAA/D;",
+"sources":["input.js"],
+"names":["define","loaded","AJS","$","Deferred","require","exportModuleAsGlobal","deprecate","prop","window","Confluence","SpaceBlueprint","sinceVersion","extraInfo"]
+}

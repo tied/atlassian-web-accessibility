@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"/dummy-file-path",
+"lineCount":1,
+"mappings":"AAAAA,UAAAC,UAAAC,kBAAA,CAAuC,oFAAvC,CAA6H,QAAQ,CAACC,CAAD,CAAIC,CAAJ,CAAW,CACxIC,CAAAA,CAAoBL,UAAAM,eAAA,EAApBD,CAAkD,2CAAlDA,CAA6FE,kBAAA,CAAmBH,CAAAI,SAAnB,CAEjG,IAAIJ,CAAAK,YAAJ,CACI,IAAKC,IAAIA,CAAT,GAAgBN,EAAAK,YAAhB,CACIJ,CAAA,EAAqB,MAArB,CAA2BE,kBAAA,CAAmBG,CAAnB,CAA3B,CAAqD,MAArD,CAA2DH,kBAAA,CAAmBH,CAAAK,YAAA,CAAkBC,CAAlB,CAAnB,CAInEN,EAAAO,SAAA,CAAiBN,CAT2H,CAAhJ;",
+"sources":["input.js"],
+"names":["Confluence","Blueprint","setDirectCallback","e","state","createBlogPostUrl","getContextPath","encodeURIComponent","spaceKey","initContext","key","finalUrl"]
+}

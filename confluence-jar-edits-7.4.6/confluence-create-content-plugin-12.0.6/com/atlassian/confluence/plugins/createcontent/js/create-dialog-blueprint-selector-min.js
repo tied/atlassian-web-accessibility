@@ -1,0 +1,1 @@
+(function(c){var b=[];Confluence.Blueprint.Selector={registerSelector:function(a){a&&"function"===typeof a&&b.push(a)},getSelectors:function(){return b}}})(AJS.$);

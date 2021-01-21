@@ -1,0 +1,1 @@
+AJS.toInit(function(b){var a=AJS.Meta.get("content-blueprint-id");a&&(a='\x3cinput id\x3d"contentBlueprintId" type\x3d"hidden" name\x3d"contentBlueprintId" value\x3d"'+a+'"\x3e',b("#createpageform").append(a))});

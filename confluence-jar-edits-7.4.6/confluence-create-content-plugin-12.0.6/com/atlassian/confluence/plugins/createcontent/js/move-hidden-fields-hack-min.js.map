@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"/dummy-file-path",
+"lineCount":1,
+"mappings":"AAAAA,GAAAC,OAAA,CAAW,QAAS,CAACC,CAAD,CAAI,CACpBA,CAAA,CAAE,oDAAF,CAAAC,SAAA,CAA8D,aAA9D,CADoB,CAAxB;",
+"sources":["input.js"],
+"names":["AJS","toInit","$","appendTo"]
+}

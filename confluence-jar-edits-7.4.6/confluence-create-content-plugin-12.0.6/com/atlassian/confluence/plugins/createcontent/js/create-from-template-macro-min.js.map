@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"/dummy-file-path",
+"lineCount":1,
+"mappings":"AAGAA,GAAAC,OAAA,CAAW,QAAS,CAACC,CAAD,CAAI,CAGpBA,CAAA,CAAEC,QAAF,CAAAC,QAAA,CAAoB,CAChBC,KAAM,uDADU,CAEhBC,QAAS,GAFO,CAGhBC,MAAO,cAHS,CAIhBC,QAAS,GAJO,CAKhBC,SAAU,CALM,CAApB,CAQgCP,EAAAQ,CAAE,8BAAFA,CAEhCC,KAAA,CAA+B,QAAQ,EAAG,CACtC,IAAIC,EAAUV,CAAA,CAAE,IAAF,CACwB,OAAtC,GAAIU,CAAAC,KAAA,CAAa,eAAb,CAAJ,EAEID,CAAAE,MAAA,CAAc,QAAS,EAAG,CACtBF,CAAAG,SAAA,CAAiB,kBAAjB,CAEAC,WAAAC,UAAAC,0BAAA,CAA+CN,CAAAO,KAAA,EAA/C,CAEA,OAAO,CAAA,CALe,CAA1B,CAJkC,CAA1C,CAboB,CAAxB;",
+"sources":["input.js"],
+"names":["AJS","toInit","$","document","tooltip","live","gravity","title","delayIn","delayOut","createFromTemplateButtons","each","$button","attr","click","addClass","Confluence","Blueprint","loadDialogAndOpenTemplate","data"]
+}

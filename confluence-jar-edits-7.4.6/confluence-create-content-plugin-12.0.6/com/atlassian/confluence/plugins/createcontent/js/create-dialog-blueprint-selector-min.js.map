@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"/dummy-file-path",
+"lineCount":1,
+"mappings":"AAAC,SAAQ,CAACA,CAAD,CAAI,CACT,IAAIC,EAAY,EAEhBC,WAAAC,UAAAC,SAAA,CAAgC,CAW5BC,iBAAkBA,QAAQ,CAACC,CAAD,CAAK,CACvBA,CAAJ,EAAyB,UAAzB,GAAU,MAAOA,EAAjB,EACIL,CAAAM,KAAA,CAAeD,CAAf,CAFuB,CAXH,CAmB5BE,aAAcA,QAAQ,EAAG,CACrB,MAAOP,EADc,CAnBG,CAHvB,CAAZ,CAAD,CA0BGQ,GAAAT,EA1BH;",
+"sources":["input.js"],
+"names":["$","selectors","Confluence","Blueprint","Selector","registerSelector","fn","push","getSelectors","AJS"]
+}
