@@ -1,0 +1,4 @@
+com.atlassian.confluence.plugins.search.CQLSearcher#cqlSearcher
+com.atlassian.confluence.plugins.search.DefaultSearcher#searcherv3
+com.atlassian.confluence.plugins.search.model.LastModificationFormatter#lastModificationFormatter
+com.atlassian.confluence.plugins.search.model.SearchResultBuilderFactory#searchResultBuilderFactory

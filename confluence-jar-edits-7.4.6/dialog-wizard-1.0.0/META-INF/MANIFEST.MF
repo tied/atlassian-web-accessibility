@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Bundle-Description: Provides an easy way to create dialog wizards in C
+ onfluence.
+Bundle-License: https://www.atlassian.com/legal/customer-agreement
+Bundle-SymbolicName: com.atlassian.confluence.plugins.dialog-wizard
+Built-By: root
+Bnd-LastModified: 1566450529515
+Bundle-ManifestVersion: 2
+Bundle-DocURL: http://www.atlassian.com/
+Bundle-Vendor: Atlassian
+Import-Package: com.atlassian.confluence.languages;resolution:=optiona
+ l,com.atlassian.confluence.plugins.dialog.wizard.api;resolution:=opti
+ onal,com.atlassian.confluence.user;resolution:=optional,com.atlassian
+ .confluence.util.i18n;resolution:=optional,com.atlassian.plugin;resol
+ ution:=optional,com.atlassian.plugin.descriptors;resolution:=optional
+ ,com.atlassian.plugin.module;resolution:=optional,com.atlassian.plugi
+ ns.rest.common.security;resolution:=optional,com.atlassian.user;resol
+ ution:=optional,com.google.common.collect;resolution:=optional,javax.
+ annotation;resolution:=optional,javax.ws.rs;resolution:=optional,java
+ x.xml.bind.annotation;resolution:=optional,org.apache.commons.lang3;r
+ esolution:=optional,org.dom4j;resolution:=optional,org.slf4j;resoluti
+ on:=optional
+Tool: Bnd-3.5.0.201709291849
+Export-Package: com.atlassian.confluence.plugins.dialog.wizard.api;use
+ s:="com.atlassian.confluence.util.i18n,com.atlassian.plugin,com.atlas
+ sian.plugin.descriptors,com.atlassian.plugin.module,javax.annotation,
+ javax.xml.bind.annotation,org.dom4j";version="1.0.0"
+Bundle-Name: Dialog Wizard
+Bundle-Version: 1.0.0
+Atlassian-Build-Date: 2019-08-22T05:08:48+0000
+Created-By: Apache Maven Bundle Plugin
+Build-Jdk: 1.8.0_222
+
