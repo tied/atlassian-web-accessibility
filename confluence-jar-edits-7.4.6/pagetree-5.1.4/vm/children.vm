@@ -1,0 +1,136 @@
+#macro (contentNoLink $content)
+    #contentIcon($content)
+    $!webwork.htmlEncode($content.displayTitle)
+#end
+
+#macro (renderLoadMore $hasMoreAfter $currentPageId, $lastRenderedId)
+    #if ($hasMoreAfter)
+        <li class="page-tree-load-more-link-after">
+            <div class="plugin_pagetree_childtoggle_container"></div>
+            <div id="expand-page-tree-link-after">
+                <button class="aui-button expand-page-tree-link-after" id="children${currentPageId}-${treeId}"
+                        data-type="load-all-after" data-page-id="$currentPageId" data-tree-id="${treeId}"
+                        data-last-rendered-id="${lastRenderedId}" onclick="return false;">$action.getText('pagetree.loadMore')</button>
+            </div>
+        </li>
+    #end
+#end
+
+#macro (renderLoadPreviousMore $hasMoreAfter $currentPageId, $firstRenderedId)
+    #if ($hasMoreAfter)
+    <li class="page-tree-load-more-link-before">
+        <div class="plugin_pagetree_childtoggle_container"></div>
+        <div id="expand-page-tree-link-before">
+            <button class="aui-button expand-page-tree-link-before" id="children${currentPageId}-${treeId}"
+                    data-type="load-all-before" data-page-id="$currentPageId" data-tree-id="${treeId}"
+                    data-first-rendered-id="${firstRenderedId}" onclick="return false;">$action.getText('pagetree.loadMore')</button>
+        </div>
+    </li>
+    #end
+#end
+
+#macro (simplenode $p $idsToExpandAsList $startDepth $disableLinks)
+    #set ($treeId = $generalUtil.htmlEncode($action.getTreeId()))
+    #set ($hasVisibleChildren = $action.hasPermittedChildren($p))
+    #set ($isAncestorPage = $action.isAncestorPage($p))
+
+    <div class="plugin_pagetree_childtoggle_container">
+        #if ($hasVisibleChildren)
+            #if ($startDepth > 1 || $idsToExpandAsList.contains($p.id) || $isAncestorPage)
+                #set ($iconClass = "aui-iconfont-chevron-down")
+                #set ($additionalProperties = "data-expanded=true data-children-loaded=true")
+                #set ($ariaExpanded = "true")
+            #else
+                #set ($iconClass = "aui-iconfont-chevron-right")
+                #set ($additionalProperties = "")
+                #set ($ariaExpanded = "false")
+            #end
+            <a id="plusminus${p.id}-${treeId}" class="plugin_pagetree_childtoggle aui-icon aui-icon-small $iconClass"
+               href="#" data-type="toggle" data-page-id="${p.id}" data-tree-id="${treeId}" $additionalProperties aria-expanded="$ariaExpanded" role="button" aria-label="Toggle Page Tree">
+               <span class="assistive">Toggle Page Tree</span>
+            </a>
+        #else
+            <span class="no-children icon"></span>
+        #end
+    </div>
+    <div class="plugin_pagetree_children_content">
+        #set ($pageExcerptHtml = "")  ##clear previous excerpt value
+
+        #if ($action.getExcerpt())
+            #set ($pageExcerptHtml = $action.getPageExcerptHtml($p))
+            #if( "$!pageExcerptHtml" != "" )
+                #set ($pageExcerptHtml = "&nbsp;&mdash; <span class='smalltext'> " + $pageExcerptHtml + "</span>")
+            #end
+        #end
+
+        #if ($disableLinks)
+            <span class="plugin_pagetree_children_span" id="childrenspan${p.id}-${treeId}">#contentNoLink ($p)</span>$pageExcerptHtml
+        #else
+            <span class="plugin_pagetree_children_span" id="childrenspan${p.id}-${treeId}">#contentLink2 ($p false false)</span>$pageExcerptHtml
+        #end
+    </div>
+
+    #set ($tmp = $startDepth - 1)
+    <div id="children${p.id}-${treeId}" class="plugin_pagetree_children_container">
+        #if ($hasVisibleChildren)
+            #set($displayLoadMoreLink = false)
+            #if ($tmp <= 0)
+                #if ($isAncestorPage || $idsToExpandAsList.contains($p.id))
+                    #set($ulLoadMoreClass="")
+                    #if ($pageList.hasMoreAfter)
+                        #set($ulLoadMoreClass="has_show_more_after")
+                    #end
+                    <ul class="plugin_pagetree_children_list $ulLoadMoreClass" id="child_ul${p.id}-$treeId">
+                    #set ($pageList = $action.getLimitedPermittedChildren($p))
+                    $action.push($p.id, $pageList.hasMoreAfter, $pageList.lastLoadedId)
+                    #renderLoadPreviousMore($pageList.hasMoreBefore, ${p.id}, ${pageList.firstLoadedId})
+                    #foreach ($child in $pageList.pageList)
+                        <li>#simplenode($child $idsToExpandAsList $tmp $disableLinks)</li>
+                    #end
+                    #set($hasMoreInfo = $action.pop())
+                    #renderLoadMore($hasMoreInfo.hasMoreAfter, ${hasMoreInfo.id}, ${hasMoreInfo.lastLoadedId})
+                    </ul>
+                #end
+            #else
+                #set ($pageList = $action.getLimitedPermittedChildren($p))
+                $action.push($p.id, $pageList.hasMoreAfter, $pageList.lastLoadedId)
+                <ul class="plugin_pagetree_children_list" id="child_ul${p.id}-$treeId">
+                #renderLoadPreviousMore($pageList.hasMoreBefore, ${p.id}, ${pageList.firstLoadedId})
+                #foreach ($child in $pageList.pageList)
+                    <li>#simplenode($child $idsToExpandAsList $tmp $disableLinks)</li>
+                #end
+                #set($hasMoreInfo = $action.pop())
+                #renderLoadMore($hasMoreInfo.hasMoreAfter, ${hasMoreInfo.id}, ${hasMoreInfo.lastLoadedId})
+                </ul>
+            #end
+
+        #end
+    </div>
+    #set ($tmp = $tmp + 1)
+#end
+
+<ul class="plugin_pagetree_children_list" id="child_ul${page.id}-$generalUtil.htmlEncode($action.getTreeId())">
+#set($displayLoadMoreRootLink = false)
+
+#if ($action.hasRoot())
+    #set ($pageList = $action.getLimitedPermittedChildren($page))
+    #renderLoadPreviousMore($pageList.hasMoreBefore, $pageId, ${pageList.firstLoadedId})
+    $action.push($pageId, $pageList.hasMoreAfter, $pageList.lastLoadedId)
+
+    #foreach ($child in $pageList.pageList)
+        <li>#simplenode($child $action.idsToExpand $action.getStartDepth() $disableLinks)</li>
+    #end
+    #set($hasMoreInfo = $action.pop())
+    #renderLoadMore($hasMoreInfo.hasMoreAfter, ${hasMoreInfo.id}, ${hasMoreInfo.lastLoadedId})
+#else
+    #set ($pageList = $action.getLimitedPermittedStartPages($action.getSpaceKey()))
+    $action.push('Orphan', $pageList.hasMoreAfter, $pageList.lastLoadedId)
+
+    #renderLoadPreviousMore($pageList.hasMoreBefore, 'Orphan', ${pageList.firstLoadedId})
+    #foreach ($child in $pageList.pageList)
+        <li>#simplenode($child $action.idsToExpand $action.getStartDepth() $disableLinks)</li>
+    #end
+    #set($hasMoreInfo = $action.pop())
+    #renderLoadMore($hasMoreInfo.hasMoreAfter, ${hasMoreInfo.id}, ${hasMoreInfo.lastLoadedId})
+#end
+</ul>
