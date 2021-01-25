@@ -362,7 +362,9 @@
                     <div data-label="{$link.title}" data-class="{$link.styleClass}"
                          data-href="{$link.url}">{$link.title}</div>
                 {/foreach}
+            {if $hasConfigurePermission}
                 <div data-label="{getText('sidebar.main.configure.edit')}" data-class="configure-sidebar" data-href="">{getText('sidebar.main.configure.edit')}</div>
+            {/if}
             </div>
             {call aui.dropdown2.trigger}
                 {param id: 'space-tools-menu-trigger' /}
