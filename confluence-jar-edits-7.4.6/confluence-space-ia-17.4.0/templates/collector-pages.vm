@@ -30,13 +30,11 @@
                             <div class="collector-section-header-title">
                                 <h2>$action.getText("collector.pages.tree-browser.title")</h2>
                             </div>
-                            #if ($action.remoteUser)
-                                <div class="collector-section-header-browse-link">
-                                    <a class="reorder-pages-link" href="$req.contextPath/pages/reorderpages.action?key=$generalUtil.urlEncode($key)">
-                                        $action.getText("collector.pages.reorder.link")
-                                    </a>
-                                </div>
-                            #end
+                            <div class="collector-section-header-browse-link">
+                                <a class="reorder-pages-link" href="$req.contextPath/pages/reorderpages.action?key=$generalUtil.urlEncode($key)">
+                                    $action.getText("collector.pages.reorder.link")
+                                </a>
+                            </div>
                         </div>
                     </div>
                     $action.helper.renderConfluenceMacro("{pagetree:root=$action.root}", ${spaceKey})

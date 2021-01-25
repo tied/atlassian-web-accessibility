@@ -43,7 +43,7 @@
 * @param accessMode
 */
 {template .sidebar}
-<div class="acs-side-bar ia-scrollable-section{if not $hasConfigurePermission} anonymous{/if}">
+<div class="acs-side-bar ia-scrollable-section">
     <div class="acs-side-bar-space-info tipsy-enabled" data-configure-tooltip="{getText('sidebar.main.configure.flyout.help')}">
         <div class="avatar">
             <div class="space-logo" data-key="{$space.key}" data-name="{$space.name}" data-entity-type="confluence.space">
@@ -356,15 +356,13 @@
  * @param pageTreeState
  */
 {template .renderSpaceToolsSection}
-    <div class="space-tools-section{if not $hasConfigurePermission} anonymous{/if}">
-        {if $hasConfigurePermission}
+    <div class="space-tools-section">
             <div id="space-tools-menu-additional-items" class="hidden">
                 {foreach $link in $advancedLinks}
                     <div data-label="{$link.title}" data-class="{$link.styleClass}"
                          data-href="{$link.url}">{$link.title}</div>
                 {/foreach}
-                <div data-label="{getText('sidebar.main.configure.edit')}" data-class="configure-sidebar"
-                     data-href="">{getText('sidebar.main.configure.edit')}</div>
+                <div data-label="{getText('sidebar.main.configure.edit')}" data-class="configure-sidebar" data-href="">{getText('sidebar.main.configure.edit')}</div>
             </div>
             {call aui.dropdown2.trigger}
                 {param id: 'space-tools-menu-trigger' /}
@@ -384,7 +382,6 @@
                 {param extraClasses: 'aui-style-default space-tools-dropdown' /}
                 {param extraAttributes: ['data-aui-alignment': 'top left'] /}
             {/call}
-        {/if}
         <a class="expand-collapse-trigger aui-icon aui-icon-small {if $pageTreeState == 'hide'}aui-iconfont-chevron-double-right{else}aui-iconfont-chevron-double-left{/if}"  role="button" name="Sidebar toggle" tabindex="0"></a>
     </div>
 {/template}
