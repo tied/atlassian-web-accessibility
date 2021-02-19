@@ -1,0 +1,36 @@
+<bundles>
+  <web-resource key="confluence-search-ui-plugin-main">
+    <transformation extension="js">
+      <transformer key="jsI18n"/>
+    </transformation>
+    <transformation extension="soy">
+      <transformer key="soyTransformer"/>
+      <transformer key="jsI18n"/>
+    </transformation>
+    <transformation extension="less">
+      <transformer key="lessTransformer"/>
+    </transformation>
+    <context>confluence-search-ui-plugin-main</context>
+    <dependency>confluence.web.resources:almond</dependency>
+    <dependency>com.atlassian.plugins.atlassian-plugins-webresource-rest:web-resource-manager</dependency>
+    <dependency>com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path</dependency>
+    <dependency>com.atlassian.confluence.plugins.confluence-frontend:react</dependency>
+    <dependency>com.atlassian.confluence.plugins.confluence-frontend:react-dom</dependency>
+    <resource name="confluence-search-ui-plugin-main.js" type="download" location="confluence-search-ui-plugin-main.js" />
+  </web-resource>
+  <web-resource key="assets-DEV_PSEUDO_HASH">
+    <transformation extension="js">
+      <transformer key="jsI18n"/>
+    </transformation>
+    <transformation extension="soy">
+      <transformer key="soyTransformer"/>
+      <transformer key="jsI18n"/>
+    </transformation>
+    <transformation extension="less">
+      <transformer key="lessTransformer"/>
+    </transformation>
+    <resource name="e84558f70ce742e07cff8aedde25f73a.svg" type="download" location="e84558f70ce742e07cff8aedde25f73a.svg">
+      <param name="content-type" value="image/svg+xml"/>
+    </resource>
+  </web-resource>
+</bundles>

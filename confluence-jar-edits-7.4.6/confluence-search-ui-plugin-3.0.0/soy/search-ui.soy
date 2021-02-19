@@ -1,0 +1,18 @@
+{namespace Confluence.Templates.SearchUI}
+
+/**
+ * SearchUI WebPanel
+ */
+{template .webPanel}
+    <div id="search-ui" class="aui-quicksearch dont-default-focus header-quicksearch">
+        <input
+            id="quick-search-query"
+            aria-label="{getText('search.ui.input.label')}"
+            placeholder="{getText('search.ui.input.label')}"
+            type="text"
+        />
+
+        <div id="quick-search-alert" role="alert">{getText('search.ui.input.alert')}</div>
+        <aui-spinner size="small"></aui-spinner>
+    </div>
+{/template}

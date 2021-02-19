@@ -1,0 +1,26 @@
+{
+  "confluence-search-ui-open": [],
+  "confluence-search-ui-go-to-advance-search": [],
+  "confluence-search-ui-open-recent-content": [],
+  "confluence-search-ui-open-recent-space": [],
+  "confluence-search-ui-open-search-result": [
+    "searchId",
+    "position",
+    "spaces",
+    "contributors",
+    "contentTypes",
+    "date"
+
+  ],
+  "confluence-search-ui-leave-content-from-new-search": [
+    "searchId",
+    "period"
+  ],
+  "confluence-search-ui-edit-content-from-new-search": [
+    "searchId",
+    "period"
+  ],
+  "confluence-search-ui-fetch-error": [
+    "httpStatus"
+  ]
+}
