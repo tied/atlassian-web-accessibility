@@ -32,12 +32,13 @@
     display: none;
 }
 
+/* SU Custom Modification - For Quick Search Close Dialogue Text */
 .SU_CUSTOM_CLOSE_DIALOGUE_CONTAINER {
     margin-top: 15px;
 }
 
-SU_CUSTOM_CLOSE_DIALOGUE_INNER {
+.SU_CUSTOM_CLOSE_DIALOGUE_INNER {
     border: 1px solid black;
     border-radius: 3px;
-    padding: 5px;
+    padding: 7px;
 }

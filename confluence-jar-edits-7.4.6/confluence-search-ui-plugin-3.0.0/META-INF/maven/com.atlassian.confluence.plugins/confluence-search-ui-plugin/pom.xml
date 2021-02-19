@@ -75,7 +75,7 @@
                 <configuration>
                     <productVersion>${confluence.version}</productVersion>
                     <productDataVersion>${confluence.data.version}</productDataVersion>
-                    <enableQuickReload>${quick.reload.enabled}</enableQuickReload>
+                    <enableQuickReload>true</enableQuickReload>
                     <compressJs>false</compressJs>
                     <containerId>${containerId}</containerId>
                     <jvmArgs>${jvm.args}</jvmArgs>
