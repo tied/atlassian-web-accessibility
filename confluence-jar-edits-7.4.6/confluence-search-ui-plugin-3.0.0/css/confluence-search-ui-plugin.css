@@ -31,3 +31,13 @@
 #search-ui.hide-icon::after {
     display: none;
 }
+
+.SU_CUSTOM_CLOSE_DIALOGUE_CONTAINER {
+    margin-top: 15px;
+}
+
+SU_CUSTOM_CLOSE_DIALOGUE_INNER {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+}
