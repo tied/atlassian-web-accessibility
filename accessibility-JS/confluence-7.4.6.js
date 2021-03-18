@@ -11,6 +11,9 @@ $(document).ready(function() {
     <!-- Answers ITS Menu Link Adjustment -->
     $('#its-menu-link-content a[href$="/display/answers31"].spacelist-spacelink').attr('href', '/x/B4C6');
 
+    <!-- Remove quick search from tab; can be entered through '/' -->
+    $("#quick-search-query").attr("tabindex",[-1]);
+
     <!-- Fix Skip Links -->
     if (window.location.href.indexOf("editpage.action") > -1 || window.location.href.indexOf("resumedraft.action") > -1) {
         $('a[href^="#title-heading"]').attr('href', '#content-title-div').text('Skip to Content').attr('onclick', '$(\'#content-title-div\')[0].focus()');
