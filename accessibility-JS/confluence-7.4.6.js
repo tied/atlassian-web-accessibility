@@ -13,6 +13,8 @@ $(document).ready(function() {
 
     <!-- Remove quick search from tab; can be entered through '/' -->
     $("#quick-search-query").attr("tabindex",[-1]);
+    $("#quick-search-query").attr("placeholder","Search (Hotkey: ' / ')");
+
 
     <!-- Fix Skip Links -->
     if (window.location.href.indexOf("editpage.action") > -1 || window.location.href.indexOf("resumedraft.action") > -1) {
