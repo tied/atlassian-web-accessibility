@@ -1,1 +1,0 @@
-AJS.toInit(function(a){a("fieldset.create-content-template-fields > input").appendTo("form.editor")});
