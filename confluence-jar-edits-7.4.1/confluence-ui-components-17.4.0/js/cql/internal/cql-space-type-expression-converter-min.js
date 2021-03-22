@@ -1,1 +1,0 @@
-define("confluence-ui-components/js/cql/internal/cql-space-type-expression-converter",["underscore","confluence-ui-components/js/cql/internal/cql-special-spaces"],function(b,a){function c(g,d){var e=b.clone(d);var f=b.map(g.values,a.getUIValue);return{field:e,values:f,negate:g.negate}}return{convert:c}});
