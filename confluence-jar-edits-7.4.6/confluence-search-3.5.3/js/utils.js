@@ -21,6 +21,16 @@ define('confluence-search/utils', [
         return result.replace(/%20/g, '+');
     }
 
+    /**
+     * SU CUSTOM
+     */
+    $('div.cql-filter-field-input-container div ul li a').on('keypress',function(e){
+        var keyCode = e.which;
+        if ((keyCode===13)||(keyCode===32)) {
+            $(this).click();
+        }
+    });
+
     return {
         getFormParams: function ($form) {
             var params = {};
