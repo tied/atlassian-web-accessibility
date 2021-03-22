@@ -11,11 +11,11 @@
     <ul class="aui-nav">
         {foreach $type in $types}
         <li {if isFirst($type)} class="aui-nav-selected"{/if}>
-            <a data-value="{$type.type}">{$type.label}</a>
+            <a data-value="{$type.type}" tabindex="0">{$type.label}</a>
         </li>
         {/foreach}
          <li>
-            <a data-value="custom">{getText('confluence-ui-components.date-picker.custom')}</a>
+            <a data-value="custom" tabindex="0">{getText('confluence-ui-components.date-picker.custom')}</a>
          </li>
     </ul>
 </div>
