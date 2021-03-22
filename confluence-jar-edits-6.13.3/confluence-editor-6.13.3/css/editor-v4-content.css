@@ -1,4 +1,0 @@
-/* Prevent tinymce default outline for selected image CONFSRVDEV-5733 */
-.wiki-content.mce-content-body img[data-mce-selected] {
-    outline: 0;
-}
