@@ -15,7 +15,7 @@ $(document).ready(function() {
     $("#quick-search-query").attr("tabindex",[-1]);
     $("#quick-search-query").attr("placeholder","Search (Hotkey: ' / ')");
 
-    <!-- Make advanced search csl filters clickable through keyboard -->
+    <!-- Make advanced search cql filters clickable through keyboard -->
     $('div.cql-filter-field-input-container div ul li a').on('keypress',function(e){
         var keyCode = e.which;
         if ((keyCode===13)||(keyCode===32)) {
