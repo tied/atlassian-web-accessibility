@@ -1,6 +1,0 @@
-#requireResource("com.atlassian.confluence.extra.officeconnector:office-connector-css")
-<div class="office-container">
-    <div class="office-document">
-    $contentHtml
-    </div>
-</div>
