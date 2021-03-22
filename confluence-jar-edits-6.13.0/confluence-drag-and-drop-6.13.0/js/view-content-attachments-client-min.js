@@ -1,1 +1,0 @@
-define("confluence-drag-and-drop/view-content-attachments-client",["ajs"],function(a){return function(b){a.DragAndDropUtils.enableDropZoneOn(b("body")[0])}});require("confluence/module-exporter").safeRequire("confluence-drag-and-drop/view-content-attachments-client",function(a){require("ajs").toInit(a)});
