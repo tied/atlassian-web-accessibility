@@ -1,1 +1,0 @@
-(window.__auiJsonp=window.__auiJsonp||[]).push([["jquery.ui.plugin"],{iKtg:function(u,i,e){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),e("lSwU"),i.default="jquery",u.exports=i.default}},[["iKtg","runtime","aui.splitchunk.vendors--20a97d6a33","aui.splitchunk.vendors--9c8c8c1546","aui.splitchunk.172ffb6da7"]]]);

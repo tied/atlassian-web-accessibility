@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./vendor/jquery-ui/jquery.ui.droppable.js"],"names":["__webpack_require__"],"mappings":"4JACAA,EAAA,kBADe","file":"aui.chunk.5976981f3956e6072e63--b76bd90276ad9a25b9fb.js","sourcesContent":["export default 'jquery';\nimport 'jquery-ui/ui/widgets/droppable';\n"],"sourceRoot":""}

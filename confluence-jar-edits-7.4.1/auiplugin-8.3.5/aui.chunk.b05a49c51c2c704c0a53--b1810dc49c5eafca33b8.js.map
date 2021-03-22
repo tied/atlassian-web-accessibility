@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./vendor/jquery-ui/jquery.ui.mouse.js"],"names":["__webpack_require__"],"mappings":"wJACAA,EAAA,kBADe","file":"aui.chunk.b05a49c51c2c704c0a53--b1810dc49c5eafca33b8.js","sourcesContent":["export default 'jquery';\nimport 'jquery-ui/ui/widgets/mouse';\n"],"sourceRoot":""}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///../src/js/aui/internal/constants.js"],"names":["INPUT_SUFFIX"],"mappings":"oKAGIA,aAHiB","file":"aui.chunk.5deaa78ecf5552de0030--5f7dca8db060287e74de.js","sourcesContent":["const INPUT_SUFFIX = '-input';\n\nexport {\n    INPUT_SUFFIX\n}\n"],"sourceRoot":""}

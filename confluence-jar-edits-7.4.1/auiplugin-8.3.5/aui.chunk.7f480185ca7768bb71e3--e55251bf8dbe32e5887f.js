@@ -1,1 +1,0 @@
-(window.__auiJsonp=window.__auiJsonp||[]).push([["aui.deprecated.behaviour.jquery-throbber"],{Od9z:function(e,u,i){"use strict";Object.defineProperty(u,"__esModule",{value:!0}),i("VjKg"),u.default="jquery",e.exports=u.default}},[["Od9z","runtime","aui.splitchunk.89403fec76"]]]);

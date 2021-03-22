@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./vendor/jquery-ui/jquery.ui.data.js"],"names":["__webpack_require__"],"mappings":"uJACAA,EAAA,kBADe","file":"aui.chunk.b40c8a6295a0f02ec1e0--ca5f192cba1935c4e010.js","sourcesContent":["export default 'jquery';\nimport 'jquery-ui/ui/data';\n"],"sourceRoot":""}

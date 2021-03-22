@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./styles/aui.page.typography.js"],"names":["__webpack_require__"],"mappings":"iHAAAA,EAAA,QACAA,EAAA","file":"aui.chunk.b4ffb87056466a3be9b4--ab156eb5b170476a97d6.js","sourcesContent":["import './aui.page.reset';\nimport '@atlassian/aui/src/less/aui-page-typography.less';\n"],"sourceRoot":""}

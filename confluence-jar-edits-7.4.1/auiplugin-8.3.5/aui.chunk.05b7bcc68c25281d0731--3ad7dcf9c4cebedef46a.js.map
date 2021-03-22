@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./vendor/jquery-ui/jquery.ui.draggable.js"],"names":["__webpack_require__"],"mappings":"4JACAA,EAAA,QACAA,EAAA,kBAFe","file":"aui.chunk.05b7bcc68c25281d0731--3ad7dcf9c4cebedef46a.js","sourcesContent":["export default 'jquery';\nimport 'jquery-ui/themes/base/draggable.css';\nimport 'jquery-ui/ui/widgets/draggable';\n"],"sourceRoot":""}

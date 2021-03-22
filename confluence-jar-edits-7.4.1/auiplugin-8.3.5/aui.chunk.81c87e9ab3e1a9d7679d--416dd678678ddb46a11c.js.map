@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./behaviours/aui.behaviour.key-code.js"],"names":["default"],"mappings":"6SAASA","file":"aui.chunk.81c87e9ab3e1a9d7679d--416dd678678ddb46a11c.js","sourcesContent":["export { default as keyCode } from '@atlassian/aui/src/js/aui/key-code';\n"],"sourceRoot":""}

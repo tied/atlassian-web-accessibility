@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./vendor/jquery-ui/jquery.ui.sortable.js"],"names":["__webpack_require__"],"mappings":"2JACAA,EAAA,QACAA,EAAA,kBAFe","file":"aui.chunk.6880542ee9d1db428d90--3d4584a88af3f8040a6a.js","sourcesContent":["export default 'jquery';\nimport 'jquery-ui/themes/base/sortable.css';\nimport 'jquery-ui/ui/widgets/sortable';\n"],"sourceRoot":""}

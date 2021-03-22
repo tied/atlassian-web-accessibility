@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./styles/aui.pattern.avatar.js"],"names":["__webpack_require__"],"mappings":"0IAAAA,EAAA,QACAA,EAAA,QACAA,EAAA","file":"aui.chunk.4a2c6859f3027db92cbe--7da14337a97b578321d0.js","sourcesContent":["import './aui.page.reset';\nimport './aui.page.links';\nimport '@atlassian/aui/src/less/aui-avatars.less';\n"],"sourceRoot":""}

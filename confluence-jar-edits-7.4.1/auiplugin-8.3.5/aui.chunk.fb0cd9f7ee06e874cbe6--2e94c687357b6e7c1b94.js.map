@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./aui.component.button.js"],"names":["__webpack_require__"],"mappings":"+JAAAA,EAAA,QACAA,EAAA","file":"aui.chunk.fb0cd9f7ee06e874cbe6--2e94c687357b6e7c1b94.js","sourcesContent":["import './styles/aui.pattern.button';\nimport '@atlassian/aui/src/js/aui/button';\nexport {};\n"],"sourceRoot":""}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./deprecated/aui.behaviour.jquery-spin.js"],"names":["__webpack_require__"],"mappings":"6KACAA,EAAA,kBADe","file":"aui.chunk.fc2f039c28332799c459--bb4f9f901ddb0cb89e3f.js","sourcesContent":["export default 'jquery';\nimport '../../src/js/aui/spin';\n"],"sourceRoot":""}

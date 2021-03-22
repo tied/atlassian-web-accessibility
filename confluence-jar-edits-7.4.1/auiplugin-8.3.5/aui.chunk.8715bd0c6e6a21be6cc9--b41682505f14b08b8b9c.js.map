@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./vendor/jquery-ui/jquery.ui.selectable.js"],"names":["__webpack_require__"],"mappings":"6JACAA,EAAA,QACAA,EAAA,kBAFe","file":"aui.chunk.8715bd0c6e6a21be6cc9--b41682505f14b08b8b9c.js","sourcesContent":["export default 'jquery';\nimport 'jquery-ui/themes/base/selectable.css';\nimport 'jquery-ui/ui/widgets/selectable';\n"],"sourceRoot":""}

@@ -1,1 +1,0 @@
-(window.__auiJsonp=window.__auiJsonp||[]).push([["aui.splitchunk.f673ef53ac"],{TmQU:function(e,n,i){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=function(e,n){window.define&&(0,window.define)(e,[],function(){return n});return n},e.exports=n.default}}]);

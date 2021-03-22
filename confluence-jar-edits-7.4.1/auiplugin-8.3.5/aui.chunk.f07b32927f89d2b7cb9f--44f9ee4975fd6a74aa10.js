@@ -1,1 +1,0 @@
-(window.__auiJsonp=window.__auiJsonp||[]).push([["aui.splitchunk.7873ba9060"],{"7xUu":function(e,u,n){"use strict";Object.defineProperty(u,"__esModule",{value:!0});var t=n("uDDF");Object.defineProperty(u,"format",{enumerable:!0,get:function(){return function(e){return e&&e.__esModule?e:{default:e}}(t).default}})}}]);

@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./vendor/jquery-ui/jquery.ui.resizable.js"],"names":["__webpack_require__"],"mappings":"4JACAA,EAAA,QACAA,EAAA,kBAFe","file":"aui.chunk.a312bad5b76741024fb4--5eca985b02b335e904e5.js","sourcesContent":["export default 'jquery';\nimport 'jquery-ui/themes/base/resizable.css';\nimport 'jquery-ui/ui/widgets/resizable';\n"],"sourceRoot":""}
