@@ -55,6 +55,19 @@ $(document).ready(function() {
             //console.log("FOUND ELEMENT");
             $('#s2id_autogen3').before('<label for="s2id_autogen3" class="assistive">Filter Field 3</label>');
         });
+        waitForEl('#cql-add-filter-field', function() {
+            //console.log("FOUND ELEMENT");
+            $('#cql-add-filter-field').before('<label for="cql-add-filter-field" class="assistive">CQL Add Filter Field</label>');
+        });
+        waitForEl('div.select2-search input.select2-input', function() {
+            //console.log("FOUND ELEMENT");
+            $('div.select2-search input.select2-input').prop('id','rand_input_1');
+            $('#rand_input_1').before('<label for="rand_input_1" class="assistive">Rand Field 1</label>');
+        });
+
+
+
+
     };
 
     <!-- Fix Skip Links -->
