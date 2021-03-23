@@ -15,7 +15,7 @@ $(document).ready(function() {
     $("#quick-search-query").attr("tabindex",[-1]);
     $("#quick-search-query").attr("placeholder","Search (Hotkey: ' / ')");
 
-    <!-- Wait for element function -->
+    /* Wait for element function */
     var waitForEl = function(selector,callback) {
         if (jQuery(selector).length) {
             callback();
@@ -42,6 +42,14 @@ $(document).ready(function() {
                     $(this).click();
                 }
             });
+        });
+        waitForEl('#s2id_autogen1', function() {
+            //console.log("FOUND ELEMENT");
+            $('#s2id_autogen1').before('<label for="s2id_autogen1" class="assistive">Contributor Filter Field</label>');
+        });
+        waitForEl('#s2id_autogen2', function() {
+            //console.log("FOUND ELEMENT");
+            $('#s2id_autogen2').before('<label for="s2id_autogen2" class="assistive">Space Filter Field</label>');
         });
     };
 
