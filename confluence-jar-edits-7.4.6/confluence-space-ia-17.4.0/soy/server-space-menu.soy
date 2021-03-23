@@ -12,7 +12,7 @@
             <ul class="aui-list-truncate">
                 {foreach $space in $recentSpaces}
                     <li>
-                        <a href="{contextPath()}{$space.href}" class="aui-icon-container">
+                        <a href="{contextPath()}{$space.href}" class="aui-icon-container" role="menuitem">
                         <img class="icon space-logo" src="{$space.logo}">{$space.name}</a>
                     </li>
                 {/foreach}
