@@ -51,6 +51,10 @@ $(document).ready(function() {
             //console.log("FOUND ELEMENT");
             $('#s2id_autogen2').before('<label for="s2id_autogen2" class="assistive">Space Filter Field</label>');
         });
+        waitForEl('#s2id_autogen3', function() {
+            //console.log("FOUND ELEMENT");
+            $('#s2id_autogen3').before('<label for="s2id_autogen3" class="assistive">Filter Field 3</label>');
+        });
     };
 
     <!-- Fix Skip Links -->
