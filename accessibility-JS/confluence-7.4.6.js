@@ -15,13 +15,35 @@ $(document).ready(function() {
     $("#quick-search-query").attr("tabindex",[-1]);
     $("#quick-search-query").attr("placeholder","Search (Hotkey: ' / ')");
 
-    <!-- Make advanced search cql filters clickable through keyboard -->
-    $('div.cql-filter-field-input-container div ul li a').on('keypress',function(e){
-        var keyCode = e.which;
-        if ((keyCode===13)||(keyCode===32)) {
-            $(this).click();
+    <!-- Wait for element function -->
+    var waitForEl = function(selector,callback) {
+        if (jQuery(selector).length) {
+            callback();
+        } else {
+            setTimeout(function() {
+                waitForEl(selector, callback);
+            }, 100);
         }
-    });
+    }; 
+
+    /* 
+     * COMPLETE: Allows filters in advanced search to be selectable by keyboard.
+     *           This pairs with custom Jar modification of confluence-search-ui-plugin-3.0.0.jar.
+     *           Only runs on the search page, then waits for the elements to appear.
+     */
+    var url = document.location.href;
+    if (url.indexOf("dosearchsite.action") > -1) {
+        //console.log("***** FOUND DOSEARCHSITE IN URL *****")
+        waitForEl('div.cql-filter-field-input-container div ul li a', function() {
+            //console.log("FOUND ELEMENT");
+            $('div.cql-filter-field-input-container div ul li a').on('keypress',function(e){
+                var keyCode = e.which;
+                if ((keyCode===13)||(keyCode===32)) {
+                    $(this).click();
+                }
+            });
+        });
+    };
 
     <!-- Fix Skip Links -->
     if (window.location.href.indexOf("editpage.action") > -1 || window.location.href.indexOf("resumedraft.action") > -1) {
