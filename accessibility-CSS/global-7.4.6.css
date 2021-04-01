@@ -272,7 +272,7 @@ a.configure-sidebar {
 .aui-dropdown2 a:hover {
     color: white !important;
 }
-.aui-dropdown2-trigger {
+a.aui-dropdown2-trigger {
     height: 14px;
 }
 /* End Add */
