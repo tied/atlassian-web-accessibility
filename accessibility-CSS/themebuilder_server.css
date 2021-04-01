@@ -179,7 +179,7 @@ div#its-menu-link-content {
     right: auto !important;
     margin-left: -41px;
 }
-@media (min-width: 1325px) {
+/* @media (min-width: 1325px) {
     #main {
         margin: auto !important;
         max-width: 1200px;
@@ -189,7 +189,7 @@ div#its-menu-link-content {
     #footer {
         margin-left: unset !important
     }
-}
+} */ 
 /* Logo Breakpoint */
 @media (max-width: 600px) {
     #logo span {
