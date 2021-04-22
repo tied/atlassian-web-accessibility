@@ -66,44 +66,43 @@ $(document).ready(function() {
         });
 
     };
-    <!-- BEGIN TESTING -->
-    // Must have element selector before element ID!
-    // Keypress DOES NOT work; keydown/up does...
-    // Following function brings focus to the space list dropdown menu
-    // TODO: Allow for keyboard arrow key navigation!
-    var ddFocus;
-    $("a#helpandsupport-menu-link").on('keydown',function(e){
-        var keyCode = e.which;
-        if ((keyCode===13)||(keyCode===32)||(keyCode===40)) {
-            console.log("Help and Support selected");
-            $("#helpandsupport-menu-link-content div:first-child span ul li:first-child a").attr('tabindex','-1').focus();
-            var ddFocus=$("#helpandsupport-menu-link-content div:first-child span ul li:first-child a");
+
+    /**** Top Keyboard Navigation Fix ****/
+    
+    var ddFocus; // Retain focused element after selecting drop down section with keyboard
+
+    /* Following function brings focus to the first link element in each 
+     * section's corresponding drop down, as well as sets the ddFocus 
+     * variable.
+     */
+    $('div.aui-header-primary ul.aui-nav li a.aui-dropdown2-trigger').on('keydown', function(e){
+        
+        // Enter, space, or Down Arrow keys
+        if ((e.keyCode===13)||(e.keyCode===32)||(e.keyCode===40)) {
+
+            console.log("***** BEGIN DROP DOWN CHECKS *****");
+
+            // Element ID 
+            var eID=$(this).attr('id');
+            //console.log("Element ID: "+eID);
+
+            // Element ID Content Container Selector
+            var eIDC=eID+"-content";
+            //console.log("Content Selector: "+eIDC);
+
+            // Create full element selector
+            var eSelector="#"+eIDC+" div:first-child span:first-child ul li:first-child a";
+            //console.log("Full Selector: "+eSelector);
+
+            // Set focus to first link element in content container
+            $(eSelector).attr('tabindex','-1').focus();
+
+            // Set drop down focus
+            ddFocus=$(eSelector);
         }
     });
-    $("a#its-menu-link").on('keydown',function(e){
-        var keyCode = e.which;
-        if ((keyCode===13)||(keyCode===32)||(keyCode===40)) {
-            console.log("ITS selected");
-            $("#its-menu-link-content div:first-child span:first-child ul li:first-child a").attr('tabindex','-1').focus();
-            var ddFocus=$("#its-menu-link-content div:first-child span ul li:first-child a");
-        }
-    });
-    $("a#coll-menu-link").on('keydown',function(e){
-        var keyCode = e.which;
-        if ((keyCode===13)||(keyCode===32)||(keyCode===40)) {
-            console.log("Colleges selected");
-            $("#coll-menu-link-content div:first-child span ul li:first-child a").attr('tabindex','-1').focus();
-            var ddFocus=$("#coll-menu-link-content div:first-child span ul li:first-child a");
-        }
-    });
-    $("a#osu-menu-link").on('keydown',function(e){
-        var keyCode = e.which;
-        if ((keyCode===13)||(keyCode===32)||(keyCode===40)) {
-            console.log("Other SU selected");
-            $("#osu-menu-link-content div:first-child span ul li:first-child a").attr('tabindex','-1').focus();
-            var ddFocus=$("#osu-menu-link-content div:first-child span ul li:first-child a");
-        }
-    });
+    
+    // Allows keyboard navigation by arrow keys to the drop downs 
     $('li a').on('keydown', function(e){
         if (e.keyCode == 40) {
             console.log("DOWN");
@@ -117,7 +116,6 @@ $(document).ready(function() {
             console.log(ddFocus);
         }
     });
-    <!-- END TESTING -->
 
     <!-- Fix Skip Links -->
     if (window.location.href.indexOf("editpage.action") > -1 || window.location.href.indexOf("resumedraft.action") > -1) {
