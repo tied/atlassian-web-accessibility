@@ -1,0 +1,169 @@
+<header id="header" role="banner">
+  <nav class="aui-header aui-dropdown2-trigger-group look-for-me" role="navigation" aria-label="Primary">
+    <div class="aui-header-logo">
+      <h1 id="logo" class="aui-header-logo aui-header-logo-custom">
+        <!-- emumpton December 2019 - modifying Spaces, Pages, Categories, and header for JSD Help Desk connect space -->
+        <!-- <a href="https://answers.syr.edu/x/AwAF"> -->
+        <a href="/">
+          <span class="aui-header-logo-text">
+            <ac:macro ac:name="panel-info">
+              <ac:parameter ac:name="type">site.name</ac:parameter>
+            </ac:macro>
+          </span>
+          <ac:macro ac:name="panel-logo">
+            <ac:parameter ac:name="global">true</ac:parameter>
+          </ac:macro>
+        </a>
+      </h1>
+    </div>
+    <div class="aui-header-primary">
+      <ul class="aui-nav" style="width:auto;">
+        <ac:macro ac:name="panel-show">
+          <ac:parameter ac:name="group">confluence-users</ac:parameter>
+          <ac:rich-text-body>
+            <li>
+              <a id="its-menu-link" class="conf-macro-leftover" href="/dashboard.action">Dashboard</a>
+            </li>
+            <ac:macro ac:name="set-flag">
+              <ac:parameter ac:name="name">conf-user</ac:parameter>
+              <ac:parameter ac:name="state">true</ac:parameter>
+              <ac:parameter ac:name="type">user</ac:parameter>
+            </ac:macro>
+          </ac:rich-text-body>
+        </ac:macro>
+        <ac:macro ac:name="panel-hide">
+          <ac:parameter ac:name="group">confluence-users</ac:parameter>
+          <ac:rich-text-body>
+            <li>
+              <a id="its-menu-link" class="conf-macro-leftover" href="/dashboard.action">Popular Pages</a>
+            </li>
+            <ac:macro ac:name="set-flag">
+              <ac:parameter ac:name="name">conf-user</ac:parameter>
+              <ac:parameter ac:name="state">true</ac:parameter>
+              <ac:parameter ac:name="type">user</ac:parameter>
+            </ac:macro>
+          </ac:rich-text-body>
+        </ac:macro>
+        
+        <li>
+          <a id="helpandsupport-menu-link" class="aui-dropdown2-trigger aui-nav-link aui-alignment-target aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left" aria-controls="helpandsupport-menu-link-content" aria-haspopup="true" role="button" title="Help and Support" tabindex="0" data-aui-trigger="" resolved="" aria-expanded="false" href="#helpandsupport-menu-link-content">
+            Help &amp; Support
+            <span class="icon aui-icon-dropdown"></span>
+          </a>
+          <div id="helpandsupport-menu-link-content" class="aui-dropdown2 aui-style-default aui-dropdown2-in-header aui-layer aui-alignment-element aui-alignment-side-bottom aui-alignment-snap-left aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left aui-alignment-enabled" role="menu" aria-hidden="true" resolved="" data-aui-alignment="bottom auto" data-aui-alignment-static="true" style="z-index: 12000; top: 0px; left: 0px; position: absolute;">
+            <div class="aui-dropdown2-section" id="recent-spaces-section">
+              <ac:macro ac:name="spaces-by-category">
+                <ac:parameter ac:name="Label">help_support</ac:parameter>
+              </ac:macro>
+            </div>
+          </div>
+        </li>
+        
+        <li>
+          <a id="its-menu-link" class="aui-dropdown2-trigger aui-nav-link aui-alignment-target aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left" aria-controls="its-menu-link-content" aria-haspopup="true" role="button" title="Spaces" tabindex="0" data-aui-trigger="" resolved="" aria-expanded="false" href="#its-menu-link-content">
+            ITS
+            <span class="icon aui-icon-dropdown"></span>
+          </a>
+          <div id="its-menu-link-content" class="aui-dropdown2 aui-style-default aui-dropdown2-in-header aui-layer aui-alignment-element aui-alignment-side-bottom aui-alignment-snap-left aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left aui-alignment-enabled" role="menu" aria-hidden="true" resolved="" data-aui-alignment="bottom auto" data-aui-alignment-static="true" style="z-index: 12000; top: 0px; left: 0px; position: absolute;">
+            <div class="aui-dropdown2-section" id="recent-spaces-section">
+              <ac:macro ac:name="spaces-by-category">
+                <ac:parameter ac:name="Label">its</ac:parameter>
+              </ac:macro>
+              <strong>Departments</strong>
+              <ac:macro ac:name="spaces-by-category">
+                <ac:parameter ac:name="Label">its_departments</ac:parameter>
+              </ac:macro>
+              <strong>Academic Services</strong>
+              <ac:macro ac:name="spaces-by-category">
+                <ac:parameter ac:name="Label">academic_services</ac:parameter>
+              </ac:macro>
+              <ac:macro ac:name="panel-show">
+                <ac:parameter ac:name="group">ITS-Staff,ITS-AASC-StudentEmployees,answers-its-admin,ITS-AASC-SC,confluence-administrators</ac:parameter>
+                <ac:rich-text-body>
+                  <strong>Service Center</strong>
+                  <ac:macro ac:name="spaces-by-category">
+                    <ac:parameter ac:name="Label">service_center</ac:parameter>
+                  </ac:macro>
+                </ac:rich-text-body>
+              </ac:macro>
+            </div>
+          </div>
+        </li>
+        
+<!-- 
+        <li>
+          <a id="gc-menu-link" class="aui-dropdown2-trigger aui-nav-link aui-alignment-target aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left" aria-controls="gc-menu-link-content" aria-haspopup="true" role="button" title="General Computing" tabindex="0" data-aui-trigger="" resolved="" aria-expanded="false" href="#gc-menu-link-content">
+            General Computing
+            <span class="icon aui-icon-dropdown"></span>
+          </a>
+          <div id="gc-menu-link-content" class="aui-dropdown2 aui-style-default aui-dropdown2-in-header aui-layer aui-alignment-element aui-alignment-side-bottom aui-alignment-snap-left aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left aui-alignment-enabled" role="menu" aria-hidden="true" resolved="" data-aui-alignment="bottom auto" data-aui-alignment-static="true" style="z-index: 12000; top: 0px; left: 0px; position: absolute;">
+            <div class="aui-dropdown2-section" id="recent-spaces-section">
+              <ac:macro ac:name="spaces-by-category">
+                <ac:parameter ac:name="Label">general_computing</ac:parameter>
+              </ac:macro>
+            </div>
+          </div>
+        </li>
+-->
+        
+        <li>
+          <a id="coll-menu-link" class="aui-dropdown2-trigger aui-nav-link aui-alignment-target aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left" aria-controls="coll-menu-link-content" aria-haspopup="true" role="button" title="Colleges" tabindex="0" data-aui-trigger="" resolved="" aria-expanded="false" href="#coll-menu-link-content">
+            Colleges
+            <span class="icon aui-icon-dropdown"></span>
+          </a>
+          <div id="coll-menu-link-content" class="aui-dropdown2 aui-style-default aui-dropdown2-in-header aui-layer aui-alignment-element aui-alignment-side-bottom aui-alignment-snap-left aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left aui-alignment-enabled" role="menu" aria-hidden="true" resolved="" data-aui-alignment="bottom auto" data-aui-alignment-static="true" style="z-index: 12000; top: 0px; left: 0px; position: absolute;">
+            <div class="aui-dropdown2-section" id="recent-spaces-section">
+              <ac:macro ac:name="spaces-by-category">
+                <ac:parameter ac:name="Label">colleges</ac:parameter>
+              </ac:macro>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a id="osu-menu-link" class="aui-dropdown2-trigger aui-nav-link aui-alignment-target aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left" aria-controls="osu-menu-link-content" aria-haspopup="true" role="button" title="Other SU" tabindex="0" data-aui-trigger="" resolved="" aria-expanded="false" href="#osu-menu-link-content">
+            Other SU
+            <span class="icon aui-icon-dropdown"></span>
+          </a>
+          <div id="osu-menu-link-content" class="aui-dropdown2 aui-style-default aui-dropdown2-in-header aui-layer aui-alignment-element aui-alignment-side-bottom aui-alignment-snap-left aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left aui-alignment-enabled" role="menu" aria-hidden="true" resolved="" data-aui-alignment="bottom auto" data-aui-alignment-static="true" style="z-index: 12000; top: 0px; left: 0px; position: absolute;">
+            <div class="aui-dropdown2-section" id="recent-spaces-section">
+              <ac:macro ac:name="spaces-by-category">
+                <ac:parameter ac:name="Label">other_su</ac:parameter>
+              </ac:macro>
+            </div>
+          </div>
+        </li>
+        <ac:macro ac:name="panel-menu">
+          <ac:parameter ac:name="menutype">header-left</ac:parameter>
+        </ac:macro>
+        <ac:macro ac:name="panel-menu">
+          <ac:parameter ac:name="menutype">header-right</ac:parameter>
+        </ac:macro>
+      </ul>
+    </div>
+    <div class="aui-header-secondary">
+      <ul class="aui-nav">
+        <li>
+          <ac:macro ac:name="panel-menu">
+            <ac:parameter ac:name="menutype">aui-quicksearch</ac:parameter>
+          </ac:macro>
+        </li>
+        <li>
+          <ac:macro ac:name="panel-menu">
+            <ac:parameter ac:name="menutype">aui-help</ac:parameter>
+          </ac:macro>
+        </li>
+        <li>
+          <ac:macro ac:name="panel-menu">
+            <ac:parameter ac:name="menutype">aui-admin</ac:parameter>
+          </ac:macro>
+        </li>
+        <li>
+          <ac:macro ac:name="panel-menu">
+            <ac:parameter ac:name="menutype">aui-user</ac:parameter>
+          </ac:macro>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br class="clear">&nbsp;</br>
+</header>

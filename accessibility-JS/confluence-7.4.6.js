@@ -65,10 +65,19 @@ $(document).ready(function() {
             $('#rand_input_1').before('<label for="rand_input_1" class="assistive">Rand Field 1</label>');
         });
 
-
-
-
     };
+    <!-- BEGIN TESTING -->
+	$('#osu-menu-link').on('keypress',function(e){
+        //e.preventDefault();
+        var keyCode = e.which;
+        console.log(keyCode);
+        if ((keyCode===13)||(keyCode===32)||(keyCode===40)) {
+         	console.log("OSU Clicked");
+         	console.log("Button "+keyCode)
+            $("#osu-menu-link-content div:first-child span ul li:first-child a").attr('tabindex','-1').focus();
+        }
+    });
+    <!-- END TESTING -->
 
     <!-- Fix Skip Links -->
     if (window.location.href.indexOf("editpage.action") > -1 || window.location.href.indexOf("resumedraft.action") > -1) {
@@ -150,24 +159,24 @@ $(document).ready(function() {
     <!-- Dropdown Menus -->
     var checkExist = setInterval(function() {
         if ($('#help-menu-link').length) {
-		$('#help-menu-link-leading, #admin-menu-link-content, #space-tools-menu, #user-menu-link-content, #action-menu-primary').attr('tabindex', '-1');
-		$('a#help-menu-link').click(function() {
-			$('#help-menu-link-leading').focus();
-		});
-		$('a#admin-menu-link').click(function() {
-			$('#admin-menu-link-content').focus();
-		});
-		$('a#user-menu-link').click(function() {
-			$('#user-menu-link-content').focus();
-		});
-		$('#space-tools-menu-trigger').click(function() {
-			$('#space-tools-menu .space-tools-navigation li:first-child a').focus();
-		});
-		$('a#action-menu-link').click(function() {
-			$('#action-menu-primary').focus();
-		});
-        }
-    }, 1000);
+			$('#help-menu-link-leading, #admin-menu-link-content, #space-tools-menu, #user-menu-link-content, #action-menu-primary').attr('tabindex', '-1');
+			$('a#help-menu-link').click(function() {
+				$('#help-menu-link-leading').focus();
+			});
+			$('a#admin-menu-link').click(function() {
+				$('#admin-menu-link-content').focus();
+			});
+			$('a#user-menu-link').click(function() {
+				$('#user-menu-link-content').focus();
+			});
+			$('#space-tools-menu-trigger').click(function() {
+				$('#space-tools-menu .space-tools-navigation li:first-child a').focus();
+			});
+			$('a#action-menu-link').click(function() {
+				$('#action-menu-primary').focus();
+			});
+        	}
+    	}, 1000);
 if ($(window).width() < 1300) {
 	   var checkExistMoreMenu = setInterval(function() {
 			if ($('a#aui-responsive-header-dropdown-0-trigger').length) {	
