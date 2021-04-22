@@ -67,14 +67,54 @@ $(document).ready(function() {
 
     };
     <!-- BEGIN TESTING -->
-	$('#osu-menu-link').on('keypress',function(e){
-        //e.preventDefault();
+    // Must have element selector before element ID!
+    // Keypress DOES NOT work; keydown/up does...
+    // Following function brings focus to the space list dropdown menu
+    // TODO: Allow for keyboard arrow key navigation!
+    var ddFocus;
+    $("a#helpandsupport-menu-link").on('keydown',function(e){
         var keyCode = e.which;
-        console.log(keyCode);
         if ((keyCode===13)||(keyCode===32)||(keyCode===40)) {
-         	console.log("OSU Clicked");
-         	console.log("Button "+keyCode)
+            console.log("Help and Support selected");
+            $("#helpandsupport-menu-link-content div:first-child span ul li:first-child a").attr('tabindex','-1').focus();
+            var ddFocus=$("#helpandsupport-menu-link-content div:first-child span ul li:first-child a");
+        }
+    });
+    $("a#its-menu-link").on('keydown',function(e){
+        var keyCode = e.which;
+        if ((keyCode===13)||(keyCode===32)||(keyCode===40)) {
+            console.log("ITS selected");
+            $("#its-menu-link-content div:first-child span:first-child ul li:first-child a").attr('tabindex','-1').focus();
+            var ddFocus=$("#its-menu-link-content div:first-child span ul li:first-child a");
+        }
+    });
+    $("a#coll-menu-link").on('keydown',function(e){
+        var keyCode = e.which;
+        if ((keyCode===13)||(keyCode===32)||(keyCode===40)) {
+            console.log("Colleges selected");
+            $("#coll-menu-link-content div:first-child span ul li:first-child a").attr('tabindex','-1').focus();
+            var ddFocus=$("#coll-menu-link-content div:first-child span ul li:first-child a");
+        }
+    });
+    $("a#osu-menu-link").on('keydown',function(e){
+        var keyCode = e.which;
+        if ((keyCode===13)||(keyCode===32)||(keyCode===40)) {
+            console.log("Other SU selected");
             $("#osu-menu-link-content div:first-child span ul li:first-child a").attr('tabindex','-1').focus();
+            var ddFocus=$("#osu-menu-link-content div:first-child span ul li:first-child a");
+        }
+    });
+    $('li a').on('keydown', function(e){
+        if (e.keyCode == 40) {
+            console.log("DOWN");
+            $(ddFocus).parent().next().children().focus();
+            ddFocus=$(':focus');
+            console.log(ddFocus);
+        } else if (e.keyCode == 38) {
+            console.log("UP");
+            $(ddFocus).parent().prev().children().focus();
+            ddFocus=$(':focus');
+            console.log(ddFocus);
         }
     });
     <!-- END TESTING -->
