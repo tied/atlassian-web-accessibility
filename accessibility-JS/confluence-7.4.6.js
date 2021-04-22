@@ -105,15 +105,15 @@ $(document).ready(function() {
     // Allows keyboard navigation by arrow keys to the drop downs 
     $('li a').on('keydown', function(e){
         if (e.keyCode == 40) {
-            console.log("DOWN");
+            //console.log("DOWN");
             $(ddFocus).parent().next().children().focus();
             ddFocus=$(':focus');
-            console.log(ddFocus);
+            //console.log(ddFocus);
         } else if (e.keyCode == 38) {
-            console.log("UP");
+            //console.log("UP");
             $(ddFocus).parent().prev().children().focus();
             ddFocus=$(':focus');
-            console.log(ddFocus);
+            //console.log(ddFocus);
         }
     });
 
