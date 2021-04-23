@@ -4427,7 +4427,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                                                     s.createElement(
                                                         "div",
                                                         { className: "SearchContentItem_content-image-container__3uA1n" },
-                                                        u && s.createElement("img", { src: u, alt: "space icon", className: a("content-image " + (d ? "content-image-round" : "su_custom-search_icon"), f) }),
+                                                        u && s.createElement("img", { src: u, alt: "space icon", className: a("content-image " + (d ? "content-image-round" : ""), f) }).className("su_custom-search_icon_image"),
                                                         !u && s.createElement("div", { className: (t ? t + " " : "") + a("content-image " + (t ? "" : "content-default-image"), f) })
                                                     ),
                                                     s.createElement(
@@ -9163,7 +9163,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                                                                       ref: this.checkboxRef,
                                                                       onKeyDown: m,
                                                                   }),
-                                                                  o && c.createElement("img", { src: o, alt: "space icon", className: a(l ? "img-round" : "su_custom-search_icon", f) }),
+                                                                  o && c.createElement("img", { src: o, alt: "space icon", className: a(l ? "img-round" : "", f) }).className("su_custom-search_icon_image"),
                                                                   c.createElement("span", { tabIndex: "-1", className: "CheckboxListItem_checkbox-list-item-text__2pijI" }, i),
                                                                   t.getLozengeComponent(u)
                                                               )
