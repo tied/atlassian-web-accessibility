@@ -9067,6 +9067,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                                     focus: "CheckboxListItem_focus__2-38p",
                                     "img-round": "CheckboxListItem_img-round__3e1Sr",
                                     "checkbox-list-item-text": "CheckboxListItem_checkbox-list-item-text__2pijI",
+                                    // SU Custom: Added to apply class to search space image
                                     "sucssi": "su_custom-space_search_image",
                                 },
                             },
@@ -9164,6 +9165,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                                                                       ref: this.checkboxRef,
                                                                       onKeyDown: m,
                                                                   }),
+                                                                  // SU Custom: Added "sucssi" (SU Custom Space Search Icon)
                                                                   o && c.createElement("img", { src: o, alt: "space icon", className: a(l ? "img-round sucssi" : "sucssi", f) }),
                                                                   c.createElement("span", { tabIndex: "-1", className: "CheckboxListItem_checkbox-list-item-text__2pijI" }, i),
                                                                   t.getLozengeComponent(u)
@@ -9226,6 +9228,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                     focus: "CheckboxListItem_focus__2-38p",
                     "img-round": "CheckboxListItem_img-round__3e1Sr",
                     "checkbox-list-item-text": "CheckboxListItem_checkbox-list-item-text__2pijI",
+                    // SU Custom: Added to apply class to search spage image
                     "sucssi": "su_custom-space_search_image",
                 });
         },
