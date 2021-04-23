@@ -9067,6 +9067,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                                     focus: "CheckboxListItem_focus__2-38p",
                                     "img-round": "CheckboxListItem_img-round__3e1Sr",
                                     "checkbox-list-item-text": "CheckboxListItem_checkbox-list-item-text__2pijI",
+                                    "sucssi": "su_custom-space_search_image",
                                 },
                             },
                             h = (function () {
@@ -9163,7 +9164,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                                                                       ref: this.checkboxRef,
                                                                       onKeyDown: m,
                                                                   }),
-                                                                  o && c.createElement("img", { src: o, alt: "space icon", className: a(l ? "img-round" : "", f) }),
+                                                                  o && c.createElement("img", { src: o, alt: "space icon", className: a(l ? "img-round sucssi" : "sucssi", f) }),
                                                                   c.createElement("span", { tabIndex: "-1", className: "CheckboxListItem_checkbox-list-item-text__2pijI" }, i),
                                                                   t.getLozengeComponent(u)
                                                               )
@@ -9217,7 +9218,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
         function (e, t, n) {
             (t = e.exports = n(10)(!1)).push([
                 e.i,
-                '.CheckboxListItem_checkbox-list-item-component__3FNWN {\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n}\n\nlabel.CheckboxListItem_checkbox-list-item-component__3FNWN {\n    padding: 7px 10px;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN.CheckboxListItem_focus__2-38p {\n    background: #f4f5f7;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN:hover {\n    background: #f4f5f7;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN [role=menuitem]:focus {\n    outline: 0;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN input[type="checkbox"] {\n    margin-right: 10px;\n    /* fix safari wrong width when text overflows */\n    flex-shrink: 0;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN button {\n    font-size: 14px;\n    width: 100%;\n    padding: 7px 10px;\n    border: 0;\n    background: none;\n    color: #344563;\n    cursor: pointer;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN img {\n    border-radius: 2px;\n    margin-right: 10px;\n    flex-basis: 24px;\n    height: 24px;\n}\n\nimg.CheckboxListItem_img-round__3e1Sr {\n    border-radius: 12px;\n}\n\n.CheckboxListItem_checkbox-list-item-text__2pijI {\n    flex-grow: 1;\n    overflow: hidden;\n    white-space: nowrap;\n    text-align: left;\n    text-overflow: ellipsis;\n}\n',
+                '.CheckboxListItem_checkbox-list-item-component__3FNWN {\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n}\n\nlabel.CheckboxListItem_checkbox-list-item-component__3FNWN {\n    padding: 7px 10px;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN.CheckboxListItem_focus__2-38p {\n    background: #f4f5f7;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN:hover {\n    background: #f4f5f7;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN [role=menuitem]:focus {\n    outline: 0;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN input[type="checkbox"] {\n    margin-right: 10px;\n    /* fix safari wrong width when text overflows */\n    flex-shrink: 0;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN button {\n    font-size: 14px;\n    width: 100%;\n    padding: 7px 10px;\n    border: 0;\n    background: none;\n    color: #344563;\n    cursor: pointer;\n}\n\n.CheckboxListItem_checkbox-list-item-component__3FNWN img {\n    border-radius: 2px;\n    margin-right: 10px;\n    flex-basis: 24px;\n    height: 24px;\n}\n\nimg.CheckboxListItem_img-round__3e1Sr {\n    border-radius: 12px;\n}\n\n.su_custom-space_search_image{\n     }\n\n.CheckboxListItem_checkbox-list-item-text__2pijI {\n    flex-grow: 1;\n    overflow: hidden;\n    white-space: nowrap;\n    text-align: left;\n    text-overflow: ellipsis;\n}\n',
                 "",
             ]),
                 (t.locals = {
@@ -9225,6 +9226,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                     focus: "CheckboxListItem_focus__2-38p",
                     "img-round": "CheckboxListItem_img-round__3e1Sr",
                     "checkbox-list-item-text": "CheckboxListItem_checkbox-list-item-text__2pijI",
+                    "sucssi": "su_custom-space_search_image",
                 });
         },
         function (e, t, n) {
