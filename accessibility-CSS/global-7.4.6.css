@@ -446,7 +446,7 @@ h1#title-text, #main-header-placeholder h1 a {
 .wiki-content .innerCell {
     overflow-x: unset;
 }
-img:not(.cp-img) {
+img:not(.cp-img, div#content-space-filter-checkbox-list label img) {
     max-width: 100% !important;
     height: auto !important;
 }
