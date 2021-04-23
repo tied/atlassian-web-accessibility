@@ -9163,7 +9163,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                                                                       ref: this.checkboxRef,
                                                                       onKeyDown: m,
                                                                   }),
-                                                                  o && c.createElement("img", { src: o, alt: "space icon", className: a(l ? "img-round" : "", f) }),
+                                                                  o && c.createElement("img", { src: o, alt: "space icon", className: a(l ? "img-round scssi" : "scssi", f) }),
                                                                   c.createElement("span", { tabIndex: "-1", className: "CheckboxListItem_checkbox-list-item-text__2pijI" }, i),
                                                                   t.getLozengeComponent(u)
                                                               )
