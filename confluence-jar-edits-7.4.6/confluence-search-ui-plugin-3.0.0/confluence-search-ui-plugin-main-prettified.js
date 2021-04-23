@@ -4427,7 +4427,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                                                     s.createElement(
                                                         "div",
                                                         { className: "SearchContentItem_content-image-container__3uA1n" },
-                                                        u && s.createElement("img", { src: u, alt: "space icon", className: a("content-image " + (d ? "content-image-round su_custom-search_icon" : "su_custom-search_icon"), f) }),
+                                                        u && s.createElement("img", { src: u, alt: "space icon", className: a("content-image " + (d ? "content-image-round" : "su_custom-search_icon"), f) }),
                                                         !u && s.createElement("div", { className: (t ? t + " " : "") + a("content-image " + (t ? "" : "content-default-image"), f) })
                                                     ),
                                                     s.createElement(
@@ -7444,7 +7444,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                             return s.createElement(
                                 "a",
                                 { className: "search-drawer-list-item RecentSpaceItem_recent-space-item-component__1oCK5", href: a + t.href, onClick: f, onKeyDown: n },
-                                s.createElement("img", { className: "RecentSpaceItem_recent-space-item-icon__3NSIm su_custom-search_icon", src: t.logo, alt: "space icon" }),
+                                s.createElement("img", { className: "RecentSpaceItem_recent-space-item-icon__3NSIm", src: t.logo, alt: "space icon" }),
                                 s.createElement("div", { className: "RecentSpaceItem_recent-space-title__qUP_R", title: t.name }, t.name)
                             );
                         }
@@ -9163,7 +9163,7 @@ define("confluence-search-ui-plugin-main", ["react", "confluence/api/constants",
                                                                       ref: this.checkboxRef,
                                                                       onKeyDown: m,
                                                                   }),
-                                                                  o && c.createElement("img", { src: o, alt: "space icon", className: a(l ? "img-round su_custom-search_icon" : "su_custom-search_icon", f) }),
+                                                                  o && c.createElement("img", { src: o, alt: "space icon", className: a(l ? "img-round" : "su_custom-search_icon", f) }),
                                                                   c.createElement("span", { tabIndex: "-1", className: "CheckboxListItem_checkbox-list-item-text__2pijI" }, i),
                                                                   t.getLozengeComponent(u)
                                                               )
