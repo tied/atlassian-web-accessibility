@@ -104,16 +104,48 @@ $(document).ready(function() {
     
     // Allows keyboard navigation by arrow keys to the drop downs 
     $('li a').on('keydown', function(e){
+        // DOWN
         if (e.keyCode == 40) {
-            //console.log("DOWN");
-            $(ddFocus).parent().next().children().focus();
-            ddFocus=$(':focus');
-            //console.log(ddFocus);
+            isNext=$(ddFocus).parent().next().length
+            //console.log("Next Parent Length (Down): "+isNext);
+            if (isNext > 0){
+                //console.log("DOWN");
+                $(ddFocus).parent().next().children().focus();
+                ddFocus=$(':focus');
+                //console.log(ddFocus);
+            } else {
+                //isNextSection=$(ddFocus).closest('span.conf-macro').nextAll('span.conf-macro:first').find('ul>li>a').length;
+                isNextSection=$(ddFocus).closest('span.conf-macro').nextAll('span.conf-macro:first').length;
+                //nextSection=$(ddFocus).closest('span.conf-macro').nextAll('span.conf-macro:first').find('ul>li>a');
+                nextSection=$(ddFocus).closest('span.conf-macro').nextAll('span.conf-macro:first');
+                //console.log("Next Section Length (Down): "+isNextSection);
+                //console.log("Next Section: "+nextSection.html());
+                if (isNextSection > 0){
+                    nextSectionFirstLink=nextSection.find('ul>li:first-child>a').focus();
+                    ddFocus=$(':focus');
+                }
+            }
+        // UP
         } else if (e.keyCode == 38) {
-            //console.log("UP");
-            $(ddFocus).parent().prev().children().focus();
-            ddFocus=$(':focus');
-            //console.log(ddFocus);
+            isPrev=$(ddFocus).parent().prev().length
+            //console.log("Prev Parent Length (Up): "+isPrev);
+            if (isPrev > 0){
+                //console.log("DOWN");
+                $(ddFocus).parent().prev().children().focus();
+                ddFocus=$(':focus');
+                //console.log(ddFocus);
+            } else {
+                //isNextSection=$(ddFocus).closest('span.conf-macro').nextAll('span.conf-macro:first').find('ul>li>a').length;
+                isPrevSection=$(ddFocus).closest('span.conf-macro').prevAll('span.conf-macro:first').length;
+                //nextSection=$(ddFocus).closest('span.conf-macro').nextAll('span.conf-macro:first').find('ul>li>a');
+                prevSection=$(ddFocus).closest('span.conf-macro').prevAll('span.conf-macro:first');
+                //console.log("Prev Section Length (Up): "+isPrevSection);
+                //console.log("Prev Section: "+prevSection.html());
+                if (isPrevSection > 0){
+                    prevSectionFirstLink=prevSection.find('ul>li:last-child>a').focus();
+                    ddFocus=$(':focus');
+                }
+            }
         }
     });
 
