@@ -446,7 +446,10 @@ h1#title-text, #main-header-placeholder h1 a {
 .wiki-content .innerCell {
     overflow-x: unset;
 }
-img:not(.cp-img, div#content-space-filter-checkbox-list label img) {
+/* The .su-custom-space_search_image class is added through modifying 
+ * a JS file in the confluence-search-ui-plugin-3.0.0.jar file 
+ */
+img:not(.cp-img,.su_custom-space_search_image) {
     max-width: 100% !important;
     height: auto !important;
 }
