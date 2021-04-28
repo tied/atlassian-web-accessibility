@@ -17,7 +17,7 @@ define('confluence/header-user-menu', [
 
     function initialiseUserAvatar() {
         var avatarUrl = Meta.get('current-user-avatar-uri-reference');
-        $('#user-menu-link').find('.aui-avatar-inner img').attr('src', avatarUrl);
+        $('#user-menu-link').find('.aui-avatar-inner img').attr('src', avatarUrl).attr('alt', '');
     }
 
     return function() {

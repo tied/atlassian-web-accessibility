@@ -13,7 +13,13 @@
         #set ($iconType = "page-blogpost")
     #end
 
-    <span class="icon#if($iconType != "") aui-icon aui-icon-small aui-iconfont-$iconType#end $!additionalClasses">$!text</span>
+    <span class="icon#if($iconType != "") aui-icon aui-icon-small aui-iconfont-$iconType#end $!additionalClasses">
+    #if ($!text)
+        <span class="assistive">$text</span>
+    #else
+        $text
+    #end
+    </span>
 #end
 
 #macro (contentIcon $content)
@@ -536,27 +542,28 @@ Prints the search result pagination info. for a pager object (i.e. with total si
  *#
 #macro (blogPostsCalendar $cal)
     <table id="blogcalendar" class="blogcalendar" border="0" cellspacing="0" cellpadding="2" summary="$action.getText('monthly.calander.with.links.to.news.items')">
+        <caption class="assistive">$action.getText('monthly.calander.with.links.to.news.items')</caption>
            <tr>
-               <th class="calendarhead">
+               <th scope="col" class="calendarhead">
                    #if ($cal.lastPostInPreviousMonth)
                    <a href="$req.contextPath/display/$cal.spaceKey/$cal.previousMonth/" rel="nofollow"><span class="backArrow"><span>&lt;&lt;</span></span></a>
                    #else &nbsp; #end
                </th>
-               <th class="calendarhead" colspan="5" align="center"><a class="calendarhead" href="$req.contextPath/display/$cal.spaceKey/$cal.currentMonth/">$cal.formatMonthYear()</a></th>
-               <th class="calendarhead">
+               <th scope="col" class="calendarhead" colspan="5" align="center"><a class="calendarhead" href="$req.contextPath/display/$cal.spaceKey/$cal.currentMonth/">$cal.formatMonthYear()</a></th>
+               <th scope="col" class="calendarhead">
                    #if ($cal.firstPostInNextMonth)
                    <a href="$req.contextPath/display/$cal.spaceKey/$cal.nextMonth" rel="nofollow"><span class="fwdArrow"><span>&gt;&gt;</span></span></a>
                    #else &nbsp; #end
                </th>
            </tr>
            <tr>
-               <th abbr="Sunday" align="center">$action.getText('sunday.abbr')</th>
-               <th abbr="Monday" align="center">$action.getText('monday.abbr')</th>
-               <th abbr="Tuesday" align="center">$action.getText('tuesday.abbr')</th>
-               <th abbr="Wednesday" align="center">$action.getText('wednesday.abbr')</th>
-               <th abbr="Thursday" align="center">$action.getText('thursday.abbr')</th>
-               <th abbr="Friday" align="center">$action.getText('friday.abbr')</th>
-               <th abbr="Saturday" align="center">$action.getText('saturday.abbr')</th>
+               <th scope="col" abbr="Sunday" align="center">$action.getText('sunday.abbr')</th>
+               <th scope="col" abbr="Monday" align="center">$action.getText('monday.abbr')</th>
+               <th scope="col" abbr="Tuesday" align="center">$action.getText('tuesday.abbr')</th>
+               <th scope="col" abbr="Wednesday" align="center">$action.getText('wednesday.abbr')</th>
+               <th scope="col" abbr="Thursday" align="center">$action.getText('thursday.abbr')</th>
+               <th scope="col" abbr="Friday" align="center">$action.getText('friday.abbr')</th>
+               <th scope="col" abbr="Saturday" align="center">$action.getText('saturday.abbr')</th>
            </tr>
 
         #set ( $weeks = ($cal.getDaysInMonth() + $cal.startingDayOfMonth)/7 )
@@ -591,27 +598,28 @@ Prints the search result pagination info. for a pager object (i.e. with total si
     #set ($cal = $action.calendarForThisMonth)
 
     <table class="blogcalendar" border="0" cellspacing="0" cellpadding="2" summary="$action.getText('monthly.calander.with.links.to.news.items')">
+        <caption class="assistive">$action.getText('monthly.calander.with.links.to.news.items')</caption>
            <tr>
-               <th class="calendarhead">
+               <th scope="col" class="calendarhead">
                    #if ($cal.lastPostInPreviousMonth)
                    <a href="$req.contextPath/display/$cal.spaceKey/$cal.previousMonth/" rel="nofollow"><img src="$staticResourceUrlPrefix/images/icons/back_16.gif" height=16 width=16 border=0 align=absmiddle title="$action.getText('previous.month')"></a>
                    #else &nbsp; #end
                </th>
-               <th class="calendarhead" colspan="5" align="center"><a class="calendarhead" href="$req.contextPath/display/$cal.spaceKey/$cal.currentMonth/">$cal.formatMonthYear()</a></th>
-               <th class="calendarhead">
+               <th scope="col" class="calendarhead" colspan="5" align="center"><a class="calendarhead" href="$req.contextPath/display/$cal.spaceKey/$cal.currentMonth/">$cal.formatMonthYear()</a></th>
+               <th scope="col" class="calendarhead">
                    #if ($cal.firstPostInNextMonth)
                    <a href="$req.contextPath/display/$cal.spaceKey/$cal.nextMonth" rel="nofollow"><img src="$staticResourceUrlPrefix/images/icons/forwd_16.gif" height=16 width=16 border=0 align=absmiddle title="$action.getText('next.month')"></a>
                    #else &nbsp; #end
                </th>
            </tr>
            <tr>
-               <th abbr="Sunday" align="center">$action.getText('sunday.abbr')</th>
-               <th abbr="Monday" align="center">$action.getText('monday.abbr')</th>
-               <th abbr="Tuesday" align="center">$action.getText('tuesday.abbr')</th>
-               <th abbr="Wednesday" align="center">$action.getText('wednesday.abbr')</th>
-               <th abbr="Thursday" align="center">$action.getText('thursday.abbr')</th>
-               <th abbr="Friday" align="center">$action.getText('friday.abbr')</th>
-               <th abbr="Saturday" align="center">$action.getText('saturday.abbr')</th>
+               <th scope="col" abbr="Sunday" align="center">$action.getText('sunday.abbr')</th>
+               <th scope="col" abbr="Monday" align="center">$action.getText('monday.abbr')</th>
+               <th scope="col" abbr="Tuesday" align="center">$action.getText('tuesday.abbr')</th>
+               <th scope="col" abbr="Wednesday" align="center">$action.getText('wednesday.abbr')</th>
+               <th scope="col" abbr="Thursday" align="center">$action.getText('thursday.abbr')</th>
+               <th scope="col" abbr="Friday" align="center">$action.getText('friday.abbr')</th>
+               <th scope="col" abbr="Saturday" align="center">$action.getText('saturday.abbr')</th>
            </tr>
 
         #set ( $weeks = ($cal.getDaysInMonth() + $cal.startingDayOfMonth)/7 )
@@ -755,32 +763,32 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 
 #macro (showPermissionsHeader)
         <tr>
-            <th width="25%">&nbsp;</th>
-            <th colspan="2">$action.getText('all')</th>
-            <th colspan="2">$action.getText('perms.pages')</th>
-            <th colspan="2">$action.getText('perms.news')</th>
-            <th colspan="2">$action.getText('perms.attachments')</th>
-            <th colspan="2">$action.getText('perms.comments')</th>
-            <th>$action.getText('perms.restrictions')</th>
-            <th>$action.getText('perms.mail')</th>
-            <th colspan="2">$action.getText('perms.space')</th>
+            <th scope="col" width="25%"><span class="assistive">Entity</span></th>
+            <th scope="col" colspan="2">$action.getText('all')</th>
+            <th scope="col" colspan="2">$action.getText('perms.pages')</th>
+            <th scope="col" colspan="2">$action.getText('perms.news')</th>
+            <th scope="col" colspan="2">$action.getText('perms.attachments')</th>
+            <th scope="col" colspan="2">$action.getText('perms.comments')</th>
+            <th scope="col">$action.getText('perms.restrictions')</th>
+            <th scope="col">$action.getText('perms.mail')</th>
+            <th scope="col" colspan="2">$action.getText('perms.space')</th>
         </tr>
         <tr>
-            <th>&nbsp;</th>
-            <th width="40">$action.getText('perms.view')</th>
-            <th width="40">$action.getText('perms.removeown')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add')</th>
-            <th width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add')</th>
-            <th width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add')</th>
-            <th width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add')</th>
-            <th width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.add.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.remove')</th>
-            <th class="permissions-group-start" width="40">$action.getText('perms.export')</th>
-            <th width="40">$action.getText('perms.admin')</th>
+            <th scope="col"><span class="assistive">Entity Name</span></th>
+            <th scope="col" width="40">$action.getText('perms.view')</th>
+            <th scope="col" width="40">$action.getText('perms.removeown')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add')</th>
+            <th scope="col" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add')</th>
+            <th scope="col" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add')</th>
+            <th scope="col" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add')</th>
+            <th scope="col" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.add.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.remove')</th>
+            <th scope="col" class="permissions-group-start" width="40">$action.getText('perms.export')</th>
+            <th scope="col" width="40">$action.getText('perms.admin')</th>
         </tr>
 #end
 
@@ -790,27 +798,27 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 #macro (showGlobalPermissionsHeader)
     <thead>
         <tr>
-            <th width="230" class="permissionHeading">&nbsp;</th>
-            <th width="150" class="permissionHeading">&nbsp;</th>
+            <th scope="col" width="230" class="permissionHeading">&nbsp;</th>
+            <th scope="col" width="150" class="permissionHeading">&nbsp;</th>
             #if ($action.userStatusPluginEnabled)
                 <th width="150" class="permissionTab">
                     $i18n.getText("permissions.UPDATEUSERSTATUS")
                     <a href="#" class="inlineDialog-updateStatus inline-help">$i18n.getText("inline.dialog.help")</a>
                 </th>
             #end
-            <th width="150" class="permissionTab">
+            <th scope="col" width="150" class="permissionTab">
                 $i18n.getText("permissions.PERSONALSPACE")
                 <a href="#" class="inlineDialog-personalSpace inline-help">$i18n.getText("inline.dialog.help")</a>
             </th>
-            <th width="150" class="permissionTab">
+            <th scope="col" width="150" class="permissionTab">
                 $i18n.getText("permissions.CREATESPACE")
                 <a href="#" class="inlineDialog-createSpace inline-help">$i18n.getText("inline.dialog.help")</a>
             </th>
-            <th width="150" class="permissionTab">
+            <th scope="col" width="150" class="permissionTab">
                 $i18n.getText("permissions.ADMINISTRATECONFLUENCE")
                 <a href="#" class="inlineDialog-adminConfluence inline-help">$i18n.getText("inline.dialog.help")</a>
             </th>
-            <th width="150" class="permissionTab">
+            <th scope="col" width="150" class="permissionTab">
                 $i18n.getText("permissions.SYSTEMADMINISTRATOR")
                 <a href="#" class="inlineDialog-adminSystem inline-help">$i18n.getText("inline.dialog.help")</a>
             </th>
@@ -844,7 +852,8 @@ Prints the search result pagination info. for a pager object (i.e. with total si
     </div>
 
     <form name="disableanyuserpermission" action="disableanyuserviewspacepermission.action">
-        <input type="hidden" name="key" value="$spaceKey"/>
+        <label for="$spaceKey-form" class="assistive">$spaceKey</label>
+        <input id="$spaceKey-form" type="hidden" name="key" value="$spaceKey"/>
     </form>
 
     <div class="hidden any-user-perm-dialog-title">
@@ -916,7 +925,7 @@ Prints the search result pagination info. for a pager object (i.e. with total si
         ["setpagepermissions"],
         ["removemail"],
         ["exportspace", "setspacepermissions"]])
-
+        <caption class="assistive">$action.getText("permissions-to-select")</caption>
         #if ($entity == "g")
             #set ($groupRows = $action.groupPermissionRows)
             #if (!$groupRows.empty)
@@ -1001,16 +1010,19 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 ## Don't show checkboxes for owners of personal spaces
     #if ($edit == "true" && !($action.getSpace().getType().toString() == "personal" && $username == $action.getSpace().getCreatorName()) )
         #if ($row.isTypeAllowed($permission))
-            <input type="checkbox" name="$row.buildCheckboxParameterName($permission)" checked="checked">
-            <input type="hidden" name="$row.buildHiddenParameterName($permission)" value="on">
+            <label for="$row.buildCheckboxParameterName($permission)" class="assistive">$row.buildCheckboxParameterName($permission)</label>
+            <input id="$row.buildCheckboxParameterName($permission)" type="checkbox" name="$row.buildCheckboxParameterName($permission)" checked="checked">
+            <label for="$row.buildHiddenParameterName($permission)" class="assistive">$row.buildHiddenParameterName($permission)</label>
+            <input id="$row.buildHiddenParameterName($permission)" type="hidden" name="$row.buildHiddenParameterName($permission)" value="on">
         #else
-            <input type="checkbox" name="$row.buildCheckboxParameterName($permission)">
+            <label for="$row.buildCheckboxParameterName($permission)" class="assistive">$row.buildCheckboxParameterName($permission)</label>
+            <input id="$row.buildCheckboxParameterName($permission)" type="checkbox" name="$row.buildCheckboxParameterName($permission)">
         #end
     #else
         #if ($row.isTypeAllowed($permission))
-            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" width=16 height=16 align=absmiddle border=0>
+            <img src="$staticResourceUrlPrefix/images/icons/emoticons/check.png" width=16 height=16 align=absmiddle border=0 alt="$action.getText('perms.can.use')">
         #else
-            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png" width=16 height=16 align=absmiddle border=0>
+            <img src="$staticResourceUrlPrefix/images/icons/emoticons/error.png" width=16 height=16 align=absmiddle border=0 alt="$action.getText('perms.cant.use')">
         #end
     #end
 </td>
@@ -1061,8 +1073,9 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 
     <form id="${prefix}quick-search" class="quick-search" method="get" action="$req.contextPath/dosearchsite.action">
         <fieldset>
+            <legend class="assistive">$action.getText("quick.search.${prefix}legend")</legend>
             <label class="assistive" for="${prefix}quick-search-query">$action.getText("quick.search.${prefix}legend")</label>
-            <input id="${prefix}quick-search-query" class="quick-search-query" type="search"#if($accessKey) accessKey="$accessKey"#end autocomplete="off" name="queryString" size="25" title="$action.getText("quick.search.${prefix}legend")" />
+            <input id="${prefix}quick-search-query" class="quick-search-query"  role="search" type="search"#if($accessKey) accessKey="$accessKey"#end autocomplete="off" name="queryString" size="25" title="$action.getText("quick.search.${prefix}legend")" />
             <input id="${prefix}quick-search-submit" class="quick-search-submit" type="submit" value="$action.getText("quick.search.${prefix}submit")" />
             <div class="aui-dd-parent quick-nav-drop-down"></div>
         </fieldset>
@@ -1686,17 +1699,18 @@ Prints the search result pagination info. for a pager object (i.e. with total si
     #end
 
     <table class="grid" width="100%">
+        <caption class="assistive">$action.getText("title.cache.statistics")</caption>
         <tr>
-            <th class="smalltext">$action.getText("cache.name")</th>
-            <th class="smalltext">$action.getText("cache.percentused")</th>
-            <th class="smalltext">$action.getText("cache.effectiveness")</th>
+            <th scope="col" class="smalltext">$action.getText("cache.name")</th>
+            <th scope="col" class="smalltext">$action.getText("cache.percentused")</th>
+            <th scope="col" class="smalltext">$action.getText("cache.effectiveness")</th>
             #if ($action.showDistributions)
-                <th class="smalltext">$action.getText("cache.current.max.entries")</th>
-                <th class="smalltext">$action.getText("cache.current.heap.size.mb")</th>
-                <th class="smalltext">$action.getText("cache.hit") / $action.getText("cache.miss") / $action.getText("${expiredCountHeaderProperty}")</th>
-                <th class="smalltext">$action.getText("cache.adjust.max.entries")</th>
+                <th scope="col" class="smalltext">$action.getText("cache.current.max.entries")</th>
+                <th scope="col" class="smalltext">$action.getText("cache.current.heap.size.mb")</th>
+                <th scope="col" class="smalltext">$action.getText("cache.hit") / $action.getText("cache.miss") / $action.getText("${expiredCountHeaderProperty}")</th>
+                <th scope="col" class="smalltext">$action.getText("cache.adjust.max.entries")</th>
             #end
-            <th class="smalltext">$action.getText("cache.flush.entries")</th>
+            <th scope="col" class="smalltext">$action.getText("cache.flush.entries")</th>
         </tr>
         #foreach($cacheStatistic in $cacheStatistics)
             #if ($action.showDistributions || $cacheStatistic.hasContents())
@@ -1712,10 +1726,13 @@ Prints the search result pagination info. for a pager object (i.e. with total si
                     <td align="center">
                         <form method="POST" id="$cacheStatistic.name" action="adjustcachesize.action">
                             #form_xsrfToken()
-                            <input name="cacheSize" size="5" type="text" value="$cacheStatistic.maxSize"/>
-                            <input type="hidden" name="cacheName" value="$cacheStatistic.name" />
-                            <input type="hidden" name="showDistributions" value="true" />
-                            <input type="submit" value="$action.getText("save.name")"/>
+                            <label for="cacheSize" class="assistive">cacheSize</label>
+                            <input id="cacheSize" name="cacheSize" size="5" type="text" value="$cacheStatistic.maxSize"/>
+                            <label for="cacheName" class="assistive">cacheName</label>
+                            <input id="cacheName" type="hidden" name="cacheName" value="$cacheStatistic.name" />
+                            <label for="showDistributions" class="assistive">showDistributions</label>
+                            <input id="showDistributions" type="hidden" name="showDistributions" value="true" />
+                            <input id="$action.getText("save.name")" type="submit" value="$action.getText("save.name")"/>
                         </form>
                     </td>
                 #end
@@ -1744,7 +1761,8 @@ Prints the search result pagination info. for a pager object (i.e. with total si
 
 ## Used with AJS.I18n.getText(key) in JavaScript
 #macro (jsI18n $key)
-    <input type="hidden" title="i18n.$key" value="$htmlUtil.htmlEncode($i18n.getText($key))">
+    <label for="i18n.$key" class="assistive">i18n.$key</label>
+    <input type="hidden" id="i18n.$key" title="i18n.$key" value="$htmlUtil.htmlEncode($i18n.getText($key))">
 #end
 
 ## Use this macro to request that a key-value pair be made available to AJS.Meta in JavaScript.

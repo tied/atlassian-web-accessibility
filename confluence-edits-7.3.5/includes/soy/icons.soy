@@ -24,13 +24,9 @@
  *
  * @param iconTitle the text representation of the icon (used as tooltip and inline text)
  * @param iconCss the CSS class for the icon
- * @param? linkColour the link colour
- * @param linkHref the link target location
  */
 {template .contentIconFont}
-    <a{if $linkColour} {$linkColour}{/if} href="{$linkHref}" title="{$iconTitle}">
-        <span class="aui-icon {$iconCss}">{$iconTitle}</span>
-    </a>
+    <span class="aui-icon {$iconCss}">{$iconTitle}</span>
 {/template}
 
 /**

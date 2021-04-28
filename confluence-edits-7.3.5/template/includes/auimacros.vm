@@ -2,7 +2,7 @@
 ## AUI-specific macros
 ## When adding new macros make sure not to overlap names with macros.vm CONF-15666
 #macro (onoffAUI $fieldname $checked)
-    <input name="$fieldname" type="checkbox" class="checkbox" disabled #if ($checked == true) checked #end>
+    <input id="$fieldname" name="$fieldname" type="checkbox" class="checkbox" disabled #if ($checked == true) checked #end>
 #end
 
 #macro (yesnoAUI $checked)

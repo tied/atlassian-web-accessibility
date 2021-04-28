@@ -21,8 +21,11 @@ define('confluence/attachments', [
                 var attachmentId = $(this).parents('tr:first')[0].id.substr(11); // "attachment-".length;
                 // Use the parent container since there can be multiple macros on the same page
                 var historyRows = $('.history-' + attachmentId, attachmentTable);
-                $(this).toggleClass('icon-section-opened');
-                $(this).toggleClass('icon-section-closed');
+                if ($(this).hasClass("icon-section-opened")) {
+                    $(this).toggleClass("icon-section-opened").attr('aria-expanded','false').toggleClass("icon-section-closed");
+                } else if ($(this).hasClass("icon-section-closed")){
+                    $(this).toggleClass("icon-section-closed").attr('aria-expanded','true').toggleClass("icon-section-opened");
+                }
                 historyRows.toggleClass('hidden');
 
                 e.stopPropagation();

@@ -7,7 +7,7 @@
 
 #if ($helper.page.id)
     <content tag="pageId">$helper.page.id</content>
-    <content tag="pageTitle"><a href="$req.contextPath$helper.page.urlPath">$helper.page.title</a></content>
+    <content tag="pageTitle">$helper.page.title</content>
     <content tag="numberOfAttachments">$helper.numberOfAttachments</content>
 #end
 

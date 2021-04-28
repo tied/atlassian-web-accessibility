@@ -41,15 +41,16 @@
 
         #if (!$results.empty)
             <table class="aui tableview attachments">
+                <caption class="assistive">$action.getText('attachments.word')</caption>
                 <thead>
                     <tr>
-                        <th class="#sortHover("")">#sortLink("" "$req.contextPath/spaces/listattachmentsforspace.action?key=$!htmlUtil.urlEncode($space.key)&fileExtension=$!htmlUtil.urlEncode($!fileExtension)&sortBy=" $action.getText('columnheading.name'))</th>
-                        <th class="#sortHover("size")">#sortLink("size" "$req.contextPath/spaces/listattachmentsforspace.action?key=$!htmlUtil.urlEncode($space.key)&fileExtension=$!htmlUtil.urlEncode($!fileExtension)&sortBy=size" $action.getText('columnheading.size'))</th>
-                        <th>$action.getText('creator.name')</th>
-                        <th class="#sortHover("createddate")">#sortLink("createddate" "$req.contextPath/spaces/listattachmentsforspace.action?key=$!htmlUtil.urlEncode($space.key)&fileExtension=$!htmlUtil.urlEncode($!fileExtension)&sortBy=createddate" $action.getText('columnheading.creation.date'))</th>
-                        <th class="#sortHover("date")">#sortLink("date" "$req.contextPath/spaces/listattachmentsforspace.action?key=$!htmlUtil.urlEncode($space.key)&fileExtension=$!htmlUtil.urlEncode($!fileExtension)&sortBy=date" $action.getText('space-last-mod-date'))</th>
-                        <th class="labels">$action.getText('labels.name')</th>
-                        <th class="attachedto">$action.getText('attached.to')</th>
+                        <th scope="col" class="#sortHover("")">#sortLink("" "$req.contextPath/spaces/listattachmentsforspace.action?key=$!htmlUtil.urlEncode($space.key)&fileExtension=$!htmlUtil.urlEncode($!fileExtension)&sortBy=" $action.getText('columnheading.name'))</th>
+                        <th scope="col" class="#sortHover("size")">#sortLink("size" "$req.contextPath/spaces/listattachmentsforspace.action?key=$!htmlUtil.urlEncode($space.key)&fileExtension=$!htmlUtil.urlEncode($!fileExtension)&sortBy=size" $action.getText('columnheading.size'))</th>
+                        <th scope="col">$action.getText('creator.name')</th>
+                        <th scope="col" class="#sortHover("createddate")">#sortLink("createddate" "$req.contextPath/spaces/listattachmentsforspace.action?key=$!htmlUtil.urlEncode($space.key)&fileExtension=$!htmlUtil.urlEncode($!fileExtension)&sortBy=createddate" $action.getText('columnheading.creation.date'))</th>
+                        <th scope="col" class="#sortHover("date")">#sortLink("date" "$req.contextPath/spaces/listattachmentsforspace.action?key=$!htmlUtil.urlEncode($space.key)&fileExtension=$!htmlUtil.urlEncode($!fileExtension)&sortBy=date" $action.getText('space-last-mod-date'))</th>
+                        <th scope="col" class="labels">$action.getText('labels.name')</th>
+                        <th scope="col" class="attachedto">$action.getText('attached.to')</th>
                     </tr>
                 </thead>
 

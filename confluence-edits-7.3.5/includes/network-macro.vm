@@ -39,8 +39,8 @@
     #if ($showAddUser)
             <form class="follow-user noprint aui" name="follow-user" action="$req.contextPath/followuser.action" method="post">
                 #form_xsrfToken()
-                <label>
                 <span class="container">
+                    <label for="follow-user-autocomplete" class="assistive">Follow User Autocomplete</label>
                     <input  class="text autocomplete-user follow-user-box text"
                             type="text"
                             name="username"
@@ -49,14 +49,13 @@
                             data-max="10"
                             data-template="{literal}{title}{/literal}"/>
                 </span>
-                </label>
-
-                <input type="submit" class="aui-button" name="follow" value="$action.getText("person.follow")"/>
+                <label for="follow-submit" class="assistive">Follow $action.getText("person.follow")</label>
+                <input id="follow-submit" type="submit" class="aui-button" name="follow" value="$action.getText("person.follow")"/>
                 <div class="hidden parameters">
-                    <input type="hidden" class="followUserBoxPlaceholder" id="followUserBoxPlaceholder" value="$action.getText("follow.user.box.placeholder")" />
+                    <label for="follow-hidden-input" class="assistive">Hidden Placeholder</label>
+                    <input id="follow-hidden-input" type="hidden" class="followUserBoxPlaceholder" id="followUserBoxPlaceholder" value="$action.getText("follow.user.box.placeholder")" />
                 </div>
                 <div class="follow-user-result">&nbsp;</div>
             </form>
     #end
-
 </div>

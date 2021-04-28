@@ -482,6 +482,7 @@ define('confluence/tree', [
                     ul.appendChild(li);
                     this.$li[0].appendChild(ul);
                     addClassesForClickZone(this.$li, 'opened', addNodeOpenedClasses);
+                    $(".click-zone:first", this.$li).attr('aria-label','Collapse Page Tree').attr('aria-expanded','true');
                     $('.click-zone:first', this.$li).css('display', 'inline');
                     $('.rollback:first', this.$li).css('display', 'none');
                 }
@@ -573,6 +574,7 @@ define('confluence/tree', [
                     ul.show();
                     this.closed = false;
                     addClassesForClickZone(this.$li, 'opened', addNodeOpenedClasses);
+                    $(".click-zone:first", this.$li).attr('aria-label','Collapse Page Tree').attr('aria-expanded','true');
                     updateVisibleNodes();
                     callback(true);
                     return true;
@@ -875,8 +877,10 @@ define('confluence/tree', [
             }
             if ($(this.parentNode).hasClass('closed')) {
                 obj.visibleNodes[this.parentNode.num].open();
+                $(this).attr('aria-expanded','true').attr('aria-label','Collapse Page Tree');
             } else {
                 obj.visibleNodes[this.parentNode.num].close();
+                $(this).attr('aria-expanded','false').attr('aria-label','Expand Page Tree');
             }
             return false;
         };
@@ -958,6 +962,12 @@ define('confluence/tree', [
             a.className = node.linkClass;
 
             var clickZone = createListNode('div', 'click-zone', '', true, clickZoneHandler);
+            $(clickZone).addClass("click-zone").attr('tabindex','0').attr('role','button');
+            $(clickZone).keyup(function(event) {
+                if (event.keyCode === 13) {
+                    $(this).click();
+                }
+            });
 
             $li.mouseover(liOverHandler).mouseout(liOutHandler);
             li.appendChild(clickZone);
@@ -983,9 +993,11 @@ define('confluence/tree', [
 
             if ($li.hasClass('opened')) {
                 addClassesForClickZone($li, 'closed', addNodeClosedClasses);
+                $(clickZone).attr('aria-label','Expand Page Tree').attr('aria-expanded','false');
                 li.closed = true;
             } else if ($li.hasClass('closed')) {
                 addClassesForClickZone($li, 'closed', addNodeClosedClasses);
+                $(clickZone).attr('aria-label','Expand Page Tree').attr('aria-expanded','false');
                 li.toBeLoaded = true;
             } else {
                 $(clickZone).css('display', 'none');

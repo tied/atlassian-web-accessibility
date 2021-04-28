@@ -15,14 +15,15 @@
 
         #pagination($action.paginationSupport $contextPath)
         <table width="100%" cellspacing="1" class="tableview aui">
+            <caption class="assistive">$action.getText("heading.title.perms")</caption>
             <thead>
                 <tr>
-                    <th width="20%">$action.getText("heading.title.perms") <span class="smalltext">($action.getText("heading.page.space"))</span></th>
-                    <th width="12%">$action.getText("heading.permission")</th>
-                    <th width="15%">$action.getText("heading.permitted.to")</th>
-                    <th width="12%">$action.getText("heading.creator")</th>
-                    <th width="15%">$action.getText("heading.creation.date")</th>
-                    <th width="6%">$action.getText("heading.operations")</th>
+                    <th scope="col" width="20%">$action.getText("heading.title.perms") <span class="smalltext">($action.getText("heading.page.space"))</span></th>
+                    <th scope="col" width="12%">$action.getText("heading.permission")</th>
+                    <th scope="col" width="15%">$action.getText("heading.permitted.to")</th>
+                    <th scope="col" width="12%">$action.getText("heading.creator")</th>
+                    <th scope="col" width="15%">$action.getText("heading.creation.date")</th>
+                    <th scope="col" width="6%">$action.getText("heading.operations")</th>
                 </tr>
             </thead>
             #if( !$action.permissionPages || $action.permissionPages.size()==0 )
@@ -60,7 +61,7 @@
                             $dateFormatter.format( $permission.creationDate )
                         </td>
                         <td>
-                            <center><a href="$req.contextPath/pages/removepagepermission.action?pageId=$page.id&permissionId=$permission.id&#url_xsrfToken()"><img src="$staticResourceUrlPrefix/images/icons/ulock_16.gif" height="16" width="16" border="0" align="absmiddle" title="$i18n.getText("removerestrictions.name")"></a><center>
+                            <center><a href="$req.contextPath/pages/removepagepermission.action?pageId=$page.id&permissionId=$permission.id&#url_xsrfToken()" aria-label="$i18n.getText("removerestrictions.name")"><img src="$staticResourceUrlPrefix/images/icons/ulock_16.gif" height="16" width="16" border="0" align="absmiddle" alt="$i18n.getText("removerestrictions.name")"></a><center>
                         </td>
                     </tr>
                     #end

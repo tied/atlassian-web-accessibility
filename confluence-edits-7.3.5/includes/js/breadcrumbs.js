@@ -29,6 +29,11 @@ define('confluence/breadcrumbs', [
                     AJS.log(e);
                 }
             });
+            $('#ellipsis').keyup(function(event) {
+                if (event.keyCode === 13) {
+                    $(this).click();
+                }
+            });
         },
 
         /**
