@@ -1,0 +1,1 @@
+(window.__auiJsonp=window.__auiJsonp||[]).push([["aui.pattern.icon"],[],[["YQ7q","runtime","aui.splitchunk.336ae4f9e7"]]]);

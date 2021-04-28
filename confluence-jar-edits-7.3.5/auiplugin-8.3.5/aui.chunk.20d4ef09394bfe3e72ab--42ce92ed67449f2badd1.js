@@ -1,0 +1,1 @@
+(window.__auiJsonp=window.__auiJsonp||[]).push([["aui.internal.alignment"],{PH7o:function(i,n,u){"use strict";u("vbuG")}},[["PH7o","runtime","aui.splitchunk.vendors--b47d4b691d","aui.splitchunk.vendors--084821f40b","aui.splitchunk.084821f40b"]]]);
