@@ -1,0 +1,39 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven Bundle Plugin
+Built-By: root
+Build-Jdk: 11.0.5
+Atlassian-Build-Date: 2019-12-04T00:59:30+0000
+Atlassian-Plugin-Key: com.atlassian.confluence.plugins.confluence-page-b
+ anner
+Bnd-LastModified: 1575421170238
+Bundle-Description: Displays a pluggable banner at the top of Confluence
+  pages.
+Bundle-DocURL: http://www.atlassian.com/
+Bundle-License: https://www.atlassian.com/legal/customer-agreement
+Bundle-ManifestVersion: 2
+Bundle-Name: Confluence Page Banner
+Bundle-SymbolicName: com.atlassian.confluence.plugins.confluence-page-ba
+ nner
+Bundle-Vendor: Atlassian
+Bundle-Version: 17.3.1
+Import-Package: com.atlassian.confluence.plugin.descriptor.web.condition
+ s,com.atlassian.confluence.core;resolution:=optional,com.atlassian.conf
+ luence.pages;resolution:=optional,com.atlassian.confluence.pages.action
+ s;resolution:=optional,com.atlassian.confluence.plugin.descriptor.web;r
+ esolution:=optional,com.atlassian.confluence.security;resolution:=optio
+ nal,com.atlassian.confluence.spaces;resolution:=optional,com.atlassian.
+ confluence.themes;resolution:=optional,com.atlassian.confluence.user;re
+ solution:=optional,com.atlassian.core.filters;resolution:=optional,com.
+ atlassian.plugin;resolution:=optional,com.atlassian.plugin.spring.scann
+ er.annotation.imports;resolution:=optional,com.atlassian.plugin.web;res
+ olution:=optional,com.atlassian.plugin.web.descriptors;resolution:=opti
+ onal,com.atlassian.plugin.web.model;resolution:=optional,com.atlassian.
+ plugin.webresource;resolution:=optional,com.atlassian.sal.api.features;
+ resolution:=optional,com.atlassian.user;resolution:=optional,com.google
+ .common.base;resolution:=optional,com.google.common.collect;resolution:
+ =optional,javax.servlet.http;resolution:=optional,org.apache.commons.la
+ ng3;resolution:=optional,com.atlassian.confluence.plugin.descriptor.web
+ .conditions.user
+Spring-Context: *
+Tool: Bnd-3.5.0.201709291849
+

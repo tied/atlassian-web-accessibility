@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven Bundle Plugin
+Built-By: root
+Build-Jdk: 11.0.5
+Atlassian-Build-Date: 2019-11-29T11:34:59+0000
+Bnd-LastModified: 1575027300573
+Bundle-Description: Macro which shows search results keystroke by keystr
+ oke.
+Bundle-DocURL: https://www.atlassian.com/
+Bundle-License: https://maven.atlassian.com/public/licenses/license.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Confluence Live Search Macros Plugin
+Bundle-SymbolicName: com.atlassian.confluence.plugins.confluence-livesea
+ rch-plugin
+Bundle-Vendor: Atlassian
+Bundle-Version: 3.1.5
+Import-Package: com.atlassian.confluence.content.render.xhtml;resolution
+ :=optional,com.atlassian.confluence.macro;resolution:=optional,com.atla
+ ssian.confluence.plugin.services;resolution:=optional,com.atlassian.con
+ fluence.spaces;resolution:=optional,com.atlassian.renderer;resolution:=
+ optional,com.atlassian.renderer.v2;resolution:=optional,com.atlassian.r
+ enderer.v2.macro;resolution:=optional,org.apache.commons.lang3;resoluti
+ on:=optional
+Tool: Bnd-3.5.0.201709291849
+

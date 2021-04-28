@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-Description: Atlassian Confluence plugin providing quick commen
+ ting functionality
+Bundle-License: https://www.atlassian.com/legal/customer-agreement
+Bundle-SymbolicName: com.atlassian.confluence.plugins.confluence-quick
+ -edit
+Built-By: bamboo-agent
+Bnd-LastModified: 1586410177759
+Bundle-ManifestVersion: 2
+Bundle-DocURL: https://www.atlassian.com/
+Bundle-Vendor: Atlassian
+Import-Package: css;version="0.0.0",jscripts;version="0.0.0",soy;versi
+ on="0.0.0",templates;version="0.0.0",com.atlassian.renderer;version="
+ 6.2.7",javax.ws.rs;version="1.1.1",com.atlassian.user;version="3.0",o
+ rg.slf4j;version="1.6.4",com.atlassian.plugins.rest.common.security;v
+ ersion="2.6.2.1",javax.xml.stream;version="0.0.0",net.jcip.annotation
+ s;version="1.0",javax.xml.bind.annotation;version="2.1",javax.servlet
+ .http;version="3.0",javax.ws.rs.core;version="1.1.1"
+Tool: Bnd-3.5.0.201709291849
+Export-Package: com.atlassian.confluence.plugins.quickcomment;resoluti
+ on:=optional;version="7.3.5",css;resolution:=optional;version="7.3.5"
+ ,jscripts;resolution:=optional;version="7.3.5",jscripts.handlers;reso
+ lution:=optional;version="7.3.5",jscripts.handlers.comment;resolution
+ :=optional;version="7.3.5",jscripts.view-content;resolution:=optional
+ ;version="7.3.5",soy;resolution:=optional;version="7.3.5",templates;r
+ esolution:=optional;version="7.3.5"
+Bundle-Name: Quick Comment Plugin
+Bundle-Version: 7.3.5
+Atlassian-Build-Date: 2020-04-09T05:29:37+0000
+Created-By: Apache Maven Bundle Plugin
+Build-Jdk: 1.8.0_222
+

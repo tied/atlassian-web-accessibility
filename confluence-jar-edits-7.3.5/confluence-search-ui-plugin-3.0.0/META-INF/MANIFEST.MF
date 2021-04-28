@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-Description: Confluence Search UI Plugin
+Bundle-License: https://www.atlassian.com/legal/customer-agreement
+Bundle-SymbolicName: com.atlassian.confluence.plugins.confluence-searc
+ h-ui-plugin
+Built-By: root
+Bnd-LastModified: 1565049072354
+Bundle-ManifestVersion: 2
+Bundle-DocURL: https://www.atlassian.com/
+Bundle-Vendor: Atlassian
+Import-Package: com.atlassian.confluence.languages,com.atlassian.confl
+ uence.setup.settings,com.atlassian.confluence.user,com.atlassian.conf
+ luence.util.i18n,com.atlassian.plugin,com.atlassian.confluence.event.
+ events.admin,com.atlassian.core.filters,com.atlassian.event.api,com.a
+ tlassian.json.marshal,com.atlassian.plugin.elements,com.atlassian.plu
+ gin.spring.scanner.annotation.imports,com.atlassian.user,com.atlassia
+ n.webresource.api.data,com.google.gson,javax.annotation,javax.servlet
+ ,javax.servlet.http,org.slf4j,org.springframework.stereotype,com.atla
+ ssian.confluence.plugin.descriptor.web,com.atlassian.confluence.plugi
+ n.descriptor.web.conditions,com.atlassian.confluence.plugin.descripto
+ r.web.conditions.user
+Atlassian-Plugin-Key: com.atlassian.confluence.plugins.confluence-sear
+ ch-ui-plugin
+Tool: Bnd-3.5.0.201709291849
+Spring-Context: *
+Bundle-Name: Confluence Search UI Plugin
+Bundle-Version: 3.0.0
+Atlassian-Build-Date: 2019-08-05T23:51:11+0000
+Atlassian-Scan-Folders: META-INF/plugin-descriptors
+Created-By: Apache Maven Bundle Plugin
+Build-Jdk: 1.8.0_202
+
