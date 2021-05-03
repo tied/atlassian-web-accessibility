@@ -69,7 +69,7 @@
  **/
 {template .section}
 <div{if $id} id="{$id}"{/if} class="aui-dropdown2-section{call aui.renderExtraClasses data="all" /}"{call aui.renderExtraAttributes data="all" /}>
-    {if $label}<strong role="presentation" class="aui-dropdown2-heading">{$label}</strong>{/if}
+    {if $label}<strong /*role="presentation" */class="aui-dropdown2-heading">{$label}</strong>{/if}
     {$content|noAutoescape}
 </div>
 {/template}
@@ -85,15 +85,12 @@
 {template .itemGroup}
 <div
     {sp}{if $id} id="{$id}"{/if}
-    {sp}role="presentation"
     {sp}class="aui-dropdown2-section{call aui.renderExtraClasses data="all" /}
     "{call aui.renderExtraAttributes data="all" /}>
     {if $label}
-        <strong role="presentation" class="aui-dropdown2-heading">{$label}</strong>
+        <strong class="aui-dropdown2-heading">{$label}</strong>
     {/if}
-    <div role="group"{if $label} aria-label="{$label}"{/if}>
-        {call .itemList data="all" /}
-    </div>
+    {call .itemList data="all" /}
 </div>
 {/template}
 
@@ -103,9 +100,9 @@
  * @param? isTruncated Boolean. Prevents the text in the links from wrapping to two lines
  **/
 {template .itemList private="true"}
-    <ul{if $isTruncated} class="aui-list-truncate"{/if} role="presentation">
+    <ul{if $isTruncated} class="aui-list-truncate"{/if}>
         {foreach $item in $items}
-            <li {if $item.isHidden}class="aui-dropdown2-hidden" aria-hidden="true"{/if} role="presentation">
+            <li {if $item.isHidden}class="aui-dropdown2-hidden" aria-hidden="true"{/if}>
                 {switch $item.itemType}
                     {case 'checkbox'}
                         {call .menuCheckbox data="$item" /}
