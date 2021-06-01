@@ -6,9 +6,9 @@
 {template .createDialogLocationPanel}
     <div class="create-dialog-location-bar">
         <div>
-            <label>{getText('create.content.plugin.select.space')}</label>
+            <label for="space-select-dropdown">{getText('create.content.plugin.select.space')}</label>
             <div class="space-select-control-container">
-                <input type="text" class="space-select" tabindex="100"/>
+                <input type="text" class="space-select" id="space-select-dropdown" tabindex="100"/>
                 <div class="description hidden">
                     {getText('create.content.plugin.select.space.limit.notice')}
                     &nbsp;
