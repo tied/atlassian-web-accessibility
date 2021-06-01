@@ -39,12 +39,15 @@
             #if ($startDepth > 1 || $idsToExpandAsList.contains($p.id) || $isAncestorPage)
                 #set ($iconClass = "aui-iconfont-chevron-down")
                 #set ($additionalProperties = "data-expanded=true data-children-loaded=true")
+                #set ($ariaExpanded = "true")
             #else
                 #set ($iconClass = "aui-iconfont-chevron-right")
                 #set ($additionalProperties = "")
+                #set ($ariaExpanded = "false")
             #end
             <a id="plusminus${p.id}-${treeId}" class="plugin_pagetree_childtoggle aui-icon aui-icon-small $iconClass"
-               href="#" data-type="toggle" data-page-id="${p.id}" data-tree-id="${treeId}" $additionalProperties>
+               href="#" data-type="toggle" data-page-id="${p.id}" data-tree-id="${treeId}" $additionalProperties aria-expanded="$ariaExpanded" role="button" aria-label="Toggle Page Tree">
+               <span class="assistive">Toggle Page Tree</span>
             </a>
         #else
             <span class="no-children icon"></span>

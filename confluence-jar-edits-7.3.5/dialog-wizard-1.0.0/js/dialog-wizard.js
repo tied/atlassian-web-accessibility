@@ -43,7 +43,7 @@
             }
 
             // Set equal tab-index on all panel elements to respect tab-order. 10 feels good.
-            $soyRender.find("a, area, button, input, object, select, textarea").attr("tabindex", "10");
+            // $soyRender.find("a, area, button, input, object, select, textarea").attr("tabindex", "10");
 
             // The wizard content may fill the dialog page, or specify a description to appear on the right. In that case,
             // we wrap with our own template.
@@ -157,7 +157,7 @@
                 delete wizardData.pages[pageId];
             });
             // Set tabindex for Create button
-            buttons.find(".aui-button-primary").attr("tabindex", "10");
+            // buttons.find(".aui-button-primary").attr("tabindex", "10");
             // Put here code for AFTER the page is visible in the browser
             $soyRender.find('input, select, textarea').eq(0).focus();
 

@@ -107,9 +107,11 @@ require([
                  * Creates an HTML element representing a single item in the TOC, including outline level and a link.
                  */
                 function createTocItemBody(element, outline) {
+                    var focusLink = element.id.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\\\$&");
                     return $(Confluence.Plugins.TableOfContents.Client.tocItemBody({
                         outline: outline,
                         linkHref: '#' + element.id,
+                        focusLink: '$("#' + focusLink + '").focus();',
                         linkText: element.textContent
                     }));
                 }
@@ -201,6 +203,7 @@ require([
                             .find(headerElementsSelector)
                             .filter(regexFilter)
                             .each(function () {
+                                $(this).attr("tabindex", "-1");
                                 setPrecedenceLevel(this, elementPrecedence.indexOf(this.nodeName))
                             })
                             .toArray();

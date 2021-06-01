@@ -40,10 +40,12 @@
                         link.classList.remove("aui-iconfont-chevron-right");
                         link.classList.add("aui-iconfont-chevron-down");
                         link.setAttribute('data-expanded', true);
+                        link.setAttribute('aria-expanded', true);
                     } else {
                         link.classList.remove("aui-iconfont-chevron-down");
                         link.classList.add("aui-iconfont-chevron-right");
                         link.setAttribute('data-expanded', false);
+                        link.setAttribute('aria-expanded', false);
                     }
 
                     if (doExpand == MODE_EXPAND) {
@@ -316,7 +318,7 @@
                             pagetreeChildrenDiv.removeClass("hidden");
 
                         /* Make the + a - */
-                        $("#plusminus" + _rootPage).addClass("aui-iconfont-chevron-down").removeClass("aui-iconfont-chevron-right");
+                        $("#plusminus" + _rootPage).addClass("aui-iconfont-chevron-down").removeClass("aui-iconfont-chevron-right").attr('aria-expanded', 'true');
 
                         /* Highlight target page if it exists */
                         $("#childrenspan" + targetPages[parseInt(treeId)] + "-" + treeId).addClass("plugin_pagetree_current");

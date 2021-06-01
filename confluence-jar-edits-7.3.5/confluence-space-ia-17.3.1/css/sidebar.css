@@ -621,7 +621,8 @@ li.child-item > a,
     margin-left: 0;
 }
 
-.acs-nav-list-page-tree-section .page-tree-header h5 {
+.acs-nav-list-page-tree-section .page-tree-header h5,
+.acs-nav-list-page-tree-section .toggle-link {
     display: inline-block;
 }
 

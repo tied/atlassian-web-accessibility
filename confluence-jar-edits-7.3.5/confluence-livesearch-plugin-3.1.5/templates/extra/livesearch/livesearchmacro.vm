@@ -7,8 +7,10 @@
     <div class="aui-dd-parent"></div>
     <form class="aui aui-dd-parent" name="livesearchForm" method="GET" action="$req.contextPath/dosearchsite.action">
         <fieldset class="search-macro-fields">
+            <legend class="assistive">Quick Search</legend>
             <div class="search-macro-query">
-                <input class="text" type="text" name="queryString" autocomplete="off" placeholder="$!{placeholder}">
+                <label for="quick-search-query-macro" class="assistive">$i18n.getText('confluence.extra.livesearch.label')</label>
+                <input id="quick-search-query-macro" class="text" role="search" type="text" name="queryString" autocomplete="off" placeholder="$!{placeholder}">
                 #if($isLarge)
                 <span class="aui-icon aui-icon-large aui-iconfont-search">$i18n.getText('confluence.extra.livesearch.label')</span>
                 #end

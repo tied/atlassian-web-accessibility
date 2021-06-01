@@ -24,6 +24,7 @@
             <form class="aui" id="search-form">
                 <h1>$action.getText('confluence-search.title')</h1>
                 <span class="search-input-wrapper">
+                    <label for="query-string" class="assistive">$i18n.getText('confluence-search.title')</label>
                     <input type="text" class="text long-field search-input" name="queryString" id="query-string" value="$!action.queryString" incremental="true" maxlength="255">
                     <span class="aui-icon aui-icon-small aui-iconfont-help help-button">Help</span>
                 </span>

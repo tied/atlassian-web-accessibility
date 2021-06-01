@@ -221,9 +221,9 @@
             if (canHide) {
                 function setTooltip($link) {
                     if ($link.hasClass('aui-iconfont-plan-disabled')) {
-                        $link.attr('data-tooltip', AJS.I18n.getText('sidebar.main.configure.hide.help'));
+                        $link.attr('data-tooltip', AJS.I18n.getText('sidebar.main.configure.hide.help')).attr('aria-label', AJS.I18n.getText('sidebar.main.configure.hide.help'));
                     } else {
-                        $link.attr('data-tooltip', AJS.I18n.getText('sidebar.main.configure.show.help'));
+                        $link.attr('data-tooltip', AJS.I18n.getText('sidebar.main.configure.show.help')).attr('aria-label', AJS.I18n.getText('sidebar.main.configure.show.help'));
                     }
                 }
 

@@ -26,6 +26,13 @@ AJS.toInit(function($) {
                 cache: false,
                 success: bindMenu
             });
+            var checkExistSpaceMenu = setInterval(function() {
+                console.log('Spaces Button Clicked');
+                if ($('#space-menu-link-content div:first-child ul li:first-child a').length) {
+                    clearInterval(checkExistSpaceMenu);
+                    $("#space-menu-link-content div:first-child ul li:first-child a").attr('tabindex','-1').focus();
+                }
+            }, 50);
         }
         return false;
     });
