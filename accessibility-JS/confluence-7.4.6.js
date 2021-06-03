@@ -67,6 +67,10 @@ $(document).ready(function() {
 
     };
 
+    /**** Top Menu Link Fix: Add role="menu-item" for ARIA ****/
+
+    $('ul.spaces-by-category-user-macro li a').attr('role','menuitem');
+
     /**** Top Keyboard Navigation Fix ****/
     
     var ddFocus; // Retain focused element after selecting drop down section with keyboard
@@ -245,9 +249,9 @@ $(document).ready(function() {
 			$('a#action-menu-link').click(function() {
 				$('#action-menu-primary').focus();
 			});
-        	}
-    	}, 1000);
-if ($(window).width() < 1300) {
+        }
+    }, 1000);
+    if ($(window).width() < 1300) {
 	   var checkExistMoreMenu = setInterval(function() {
 			if ($('a#aui-responsive-header-dropdown-0-trigger').length) {	
 				console.log('More Button Adjustment');
